@@ -1,0 +1,36 @@
+# 根目录标记，表示配置从这个目录开始适用，且配置不应被上级目录的配置覆盖
+root = true
+
+[*]  # 适用于所有文件的通用配置
+
+# 文件字符集使用UTF-8
+charset = utf-8
+
+# 文件结束时自动添加新行
+insert_final_newline = true
+
+# 设置换行符为LF（Linux和macOS的换行符），而不是CRLF（Windows使用）
+end_of_line = lf
+
+# 缩进使用空格
+indent_style = space
+
+# 每级缩进的空格数
+indent_size = 2
+
+# 自动去除行尾空格
+trim_trailing_whitespace = true
+
+# 单行最大长度设置为153个字符，这里跟ESlint的保持一致
+max_line_length = 153
+
+# 设置制表符宽度为4个空格字符
+tab_width = 4
+
+[{*.markdown,*.md}]  # 仅适用于Markdown文件的特殊配置
+
+# Markdown文件不限制单行最大长度
+max_line_length = off
+
+# Markdown文件允许行尾空白，这在Markdown中用于表示换行非常重要
+trim_trailing_whitespace = false
