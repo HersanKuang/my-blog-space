@@ -11,7 +11,7 @@ const config: Config = {
           dark: '#252d38' // 深色主题的主色
         },
         secondary: {
-          light: '#eceef2', // 浅色主题字体背景的颜色
+          light: '#f2f5f8', // 浅色主题字体背景的颜色
           dark: '#3e4b5e' // 深色主题字体背景的颜色
         },
         background: {

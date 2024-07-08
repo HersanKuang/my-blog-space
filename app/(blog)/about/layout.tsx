@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 interface BlogLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const BlogLayout = ({ children }: BlogLayoutProps) => {

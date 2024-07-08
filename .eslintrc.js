@@ -18,18 +18,11 @@ module.exports = {
     'eslint:recommended', // 使用 ESLint 的推荐规则
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended', // 使用 TypeScript 插件的推荐规则
-    'plugin:prettier/recommended' // 启用 Prettier 插件，确保代码风格的一致性
+    'plugin:prettier/recommended', // 启用 Prettier 插件，确保代码风格的一致性
+    'plugin:@next/next/recommended', // 使用 Next.js ESLint插件扩展
+    'eslint:recommended',
+    'next'
   ],
-  // 指定解析器
-  parser: '@typescript-eslint/parser',
-  // 指定解析器的选项
-  parserOptions: {
-    sourceType: 'module',
-    ecmaVersion: 2021,
-    ecmaFeatures: {
-      jsx: true // 支持 JSX 语法
-    }
-  },
   // 插件配置
   plugins: ['react', 'jsx-a11y', '@typescript-eslint', 'prettier', 'react-hooks'],
   // 规则配置

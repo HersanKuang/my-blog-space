@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } from 'next/constants.js';
 
-const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME, GIT_HASH } = process.env;
+const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME } = process.env;
 
 function getGitHash() {
   try {
@@ -82,10 +82,8 @@ const config = (phase, { defaultConfig }) => {
       ...sharedConfig,
       // swc -> speedy web compiler Rust-base -> Babel + Terser
       swcMinify: true, // 默认开启
-      // 打包的目录
-      distDir: './dist',
-      // eslint 报错时依然构建项目
-      ignoreDuringBuilds: false,
+      // 打包的目录，这里使用默认的 .next 目录，否则在打包之后本地运行 `next start dist` 会无法读取环境配置文件
+      // distDir: './dist',
       // 关闭 source map
       productionBrowserSourceMaps: false,
       // 构建时生成一个 ID，用于识别应用程序版本
