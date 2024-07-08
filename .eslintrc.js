@@ -31,17 +31,14 @@ module.exports = {
     }
   },
   // 插件配置
-  plugins: [
-    'react',
-    'jsx-a11y',
-    '@typescript-eslint',
-    'prettier',
-    'react-hooks'
-  ],
+  plugins: ['react', 'jsx-a11y', '@typescript-eslint', 'prettier', 'react-hooks'],
   // 规则配置
   rules: {
     'prettier/prettier': 'error', // Prettier 的错误显示为 ESLint 错误
-    '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { vars: 'all', args: 'after-used', ignoreRestSiblings: true }
+    ],
     '@typescript-eslint/no-explicit-any': 'off', // 关闭不能声明 any 类型的警告
     '@typescript-eslint/no-inferrable-types': 0, // 关闭可以自动类型推断时, 不用显式声明类型的错误
     '@typescript-eslint/no-non-null-assertion': 0, // 关闭不能使用断言
@@ -55,18 +52,26 @@ module.exports = {
     'no-plusplus': [2, { allowForLoopAfterthoughts: true }], // 关闭 for 语句不能使用一元表达式
     'no-continue': 0, // 关闭循环语法不能使用 continue
     'default-case': 0, // 关闭 switch 必须要有 default 语句
-    'comma-dangle': [2, { arrays: 'never', objects: 'never', imports: 'never', exports: 'never', functions: 'never' }], // 配置尾逗号规则
+    'comma-dangle': [
+      2,
+      {
+        arrays: 'never',
+        objects: 'never',
+        imports: 'never',
+        exports: 'never',
+        functions: 'never'
+      }
+    ], // 配置尾逗号规则
     'linebreak-style': 0, // 关闭换行符的规则
     'arrow-body-style': 0, // 关闭箭头函数体规则
     'consistent-return': 0, // 关闭函数条件返回规则
-    'import/extensions': [2, 'ignorePackages', { ts: 'never', tsx: 'never', js: 'never', jsx: 'never', json: 'never' }], // 配置引入本地文件无后缀
-    'import/no-unresolved': [2, { ignore: ['crypto-js'] }], // eslint 无法识别 webpack 的别名以及 externals 的配置
+    'import/extensions': 0, // 配置引入本地文件无后缀
+    'import/no-unresolved': 0, // eslint 无法识别检测导入语句中的模块是否存在
     'import/no-extraneous-dependencies': 0, // 关闭 package.json 的 dependencies 无依赖项而不得使用的限制
     'import/prefer-default-export': 0, // 关闭模块文件只有一个元素导出时, 必须使用默认导出的限制
 
-    'radix': 0, // 关闭 parseInt 需要传入第二参数的限制
-    'indent': [2, 2, { SwitchCase: 1 }], // 配置缩进规则, 必须是缩进 2 个空格
-    'max-len': [2, { code: 80 }], // 一行的字符最大长度数限制为 80
+    radix: 0, // 关闭 parseInt 需要传入第二参数的限制
+    indent: [2, 2, { SwitchCase: 1 }], // 配置缩进规则, 必须是缩进 2 个空格
     'operator-linebreak': 0, // 关闭拼接符限制
 
     // React 相关规则
@@ -82,7 +87,10 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0, // 关闭 JSX 的事件必须伴随其它事件的限制
     'jsx-a11y/no-static-element-interactions': 0, // 关闭 JSX 的事件必须配置角色身份才能使用的限制
     'jsx-a11y/no-noninteractive-element-interactions': 0, // 关闭不是交互元素不允许绑定事件的限制
-    'react/no-invalid-html-attribute': 0 // 关闭检查标准的HTML rel属性值的限制
+    'react/no-invalid-html-attribute': 0, // 关闭检查标准的HTML rel属性值的限制
+    'react/button-has-type': 0, // 关闭按钮的类型检查
+    'react/react-in-jsx-scope': 0, // 关闭必须引入的 React 的 jsx 作用域
+    'react/function-component-definition': 0
   },
   ignorePatterns: ['.eslintrc.js'] // 忽略 ESLint 检查的文件
 };

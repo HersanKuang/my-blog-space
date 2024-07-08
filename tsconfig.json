@@ -27,13 +27,18 @@
       ]
     }
   },
+  "references": [
+    {
+      "path": "./config/tsconfig.json"
+    }
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "build/types/**/*.ts",
-    "./build/types/**/*.ts",
+    "config/types/**/*.ts",
+    "./config/types/**/*.ts",
     "./dist/types/**/*.ts"
   ],
   "exclude": [
