@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    // 指定编译成 ES 的那个版本
+    "target": "ESNext",
+    // 指定生成模板的模式
+    "module": "CommonJS",
+
+    // 开启严格模式
+    "strict": true,
+
+    /** 附加检查配置 */
+    // 检查函数是否都有返回值
+    "noImplicitReturns": true,
+    // 检查 switch 语句, 防止贯穿
+    "noFallthroughCasesInSwitch": true,
+
+    /** 模板解析配置 */
+    // 指定模块解析方式
+    "moduleResolution": "node",
+    // 允许 export = 方式导出和 import = 的方式导入
+    "esModuleInterop": true,
+    // 允许从 json 文件中导入、导出
+    "resolveJsonModule": true,
+
+    /** 高级选项配置 */
+    // 忽略所有的声明文件 (*.d.ts) 的类型检查
+    "skipLibCheck": true
+  }
+}

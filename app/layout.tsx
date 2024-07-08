@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -62,7 +63,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     <html lang="zh">
       {/* 预连接，加载一个跨域资源并且并且不会携带任何用户凭据 */}
       <link rel="preconnect" href={`//${HOSTNAME}/`} crossOrigin="anonymous" />
-      {/* 指定iOS设备上添加到主屏幕时显示的图标*/}
+      {/* 指定iOS设备上添加到主屏幕时显示的图标 */}
       <link
         rel="apple-touch-icon"
         sizes="180x180"

@@ -1,50 +1,88 @@
+/**
+ * 0 表示 off
+ * 1 表示 warn
+ * 2 表示 error
+ */
 module.exports = {
+  // 指定运行的环境
   env: {
-    node: true, // 指定脚本的运行环境是 Node.js
+    browser: true, // 浏览器环境
+    es6: true, // es6 所有语法的环境
+    node: true, // node 环境
     es2021: true // 使用 ES2021 的语法支持
   },
+  // 扩展配置, 即导入第三方的配置规则文件
   extends: [
+    'airbnb',
+    'airbnb/hooks',
     'eslint:recommended', // 使用 ESLint 的推荐规则
+    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended', // 使用 TypeScript 插件的推荐规则
-    'plugin:prettier/recommended', // 启用 Prettier 插件，确保代码风格的一致性
-    'plugin:react/recommended' // 使用 React 插件的推荐规则
+    'plugin:prettier/recommended' // 启用 Prettier 插件，确保代码风格的一致性
   ],
-  parser: '@typescript-eslint/parser', // 指定 ESLint 解析器
+  // 指定解析器
+  parser: '@typescript-eslint/parser',
+  // 指定解析器的选项
   parserOptions: {
-    ecmaVersion: 2021, // ECMAScript 版本
-    sourceType: 'module', // 模块化类型，使用 ES 模块
-    project: './tsconfig.json', // 指向 TypeScript 配置文件，让 ESLint 了解项目结构
+    sourceType: 'module',
+    ecmaVersion: 2021,
     ecmaFeatures: {
       jsx: true // 支持 JSX 语法
     }
   },
+  // 插件配置
   plugins: [
-    '@typescript-eslint', // 使用 TypeScript 插件
-    'prettier', // 使用 Prettier 插件
-    'react', // 使用 React 插件
-    'react-hooks' // 使用 React Hooks 插件
+    'react',
+    'jsx-a11y',
+    '@typescript-eslint',
+    'prettier',
+    'react-hooks'
   ],
+  // 规则配置
   rules: {
     'prettier/prettier': 'error', // Prettier 的错误显示为 ESLint 错误
-    'no-unused-vars': 'off', // 关闭这个规则，因为 TypeScript 已经检查了
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      { vars: 'all', args: 'after-used', ignoreRestSiblings: true }
-    ],
-    '@typescript-eslint/no-explicit-any': 'off',
-    // 对未使用的变量报错，但允许参数在使用之后的变量未被使用
-    'no-console': 'off', // 对 console 语句关闭警告
-    eqeqeq: ['error', 'always'], // 要求使用 === 和 !==
-    curly: 'error', // 强制使用大括号的风格
-    'no-throw-literal': 'error', // 禁止抛出字面量错误 throw "error"; 必须使用 Error 对象
-    'no-return-await': 'off', // 禁止不必要的 return await
-    'require-await': 'error', // 禁止没有 await 表达式的 async 函数
-    'spaced-comment': ['error', 'always', { exceptions: ['-', '+'] }] // 确保注释后有空格
-  },
-  settings: {
-    react: {
-      version: 'detect' // 自动检测 React 版本
-    }
+    '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
+    '@typescript-eslint/no-explicit-any': 'off', // 关闭不能声明 any 类型的警告
+    '@typescript-eslint/no-inferrable-types': 0, // 关闭可以自动类型推断时, 不用显式声明类型的错误
+    '@typescript-eslint/no-non-null-assertion': 0, // 关闭不能使用断言
+    '@typescript-eslint/no-shadow': 2, // 开启 TS 全局变量和局部变量同名的报错警告
+    '@typescript-eslint/explicit-module-boundary-types': 0, // 关闭 TS 必须书写函数返回值类型的警告
+
+    'no-console': 0, // 关闭 console 警告
+    'no-debugger': process.env.NODE_ENV === 'production' ? 1 : 0, // debugger 的设置
+    'no-bitwise': 0, // 关闭不能使用位运算
+    'no-param-reassign': 0, // 关闭函数的参数是对象时, 不能更改该对象属性的限制
+    'no-plusplus': [2, { allowForLoopAfterthoughts: true }], // 关闭 for 语句不能使用一元表达式
+    'no-continue': 0, // 关闭循环语法不能使用 continue
+    'default-case': 0, // 关闭 switch 必须要有 default 语句
+    'comma-dangle': [2, { arrays: 'never', objects: 'never', imports: 'never', exports: 'never', functions: 'never' }], // 配置尾逗号规则
+    'linebreak-style': 0, // 关闭换行符的规则
+    'arrow-body-style': 0, // 关闭箭头函数体规则
+    'consistent-return': 0, // 关闭函数条件返回规则
+    'import/extensions': [2, 'ignorePackages', { ts: 'never', tsx: 'never', js: 'never', jsx: 'never', json: 'never' }], // 配置引入本地文件无后缀
+    'import/no-unresolved': [2, { ignore: ['crypto-js'] }], // eslint 无法识别 webpack 的别名以及 externals 的配置
+    'import/no-extraneous-dependencies': 0, // 关闭 package.json 的 dependencies 无依赖项而不得使用的限制
+    'import/prefer-default-export': 0, // 关闭模块文件只有一个元素导出时, 必须使用默认导出的限制
+
+    'radix': 0, // 关闭 parseInt 需要传入第二参数的限制
+    'indent': [2, 2, { SwitchCase: 1 }], // 配置缩进规则, 必须是缩进 2 个空格
+    'max-len': [2, { code: 80 }], // 一行的字符最大长度数限制为 80
+    'operator-linebreak': 0, // 关闭拼接符限制
+
+    // React 相关规则
+    'react/jsx-indent': [2, 2], // JSX 必须缩进 2 个空格
+    'jsx-a11y/alt-text': 0, // 关闭 JSX 的 img 标签必须添加 alt 属性的限制
+    'react/jsx-indent-props': 0, // 关闭 JSX 元素属性换行的限制
+    'jsx-a11y/anchor-is-valid': 0, // 关闭 JSX 的 a 标签的限制
+    'react/state-in-constructor': 0, // 关闭 react 类组件的 state 必须写构造函数内的规则
+    'react/require-default-props': 0, // 关闭 react 对不是必要的属性 props 必须设置默认值的限制
+    'react/jsx-props-no-spreading': 0, // 关闭 JSX 不能使用扩展符的限制
+    'react/jsx-filename-extension': [2, { extensions: ['.tsx', 'ts', '.jsx', '.js'] }], // JSX 文件扩展名的设置
+    'react/prop-types': 0, // 关闭 react 组件属性验证
+    'jsx-a11y/click-events-have-key-events': 0, // 关闭 JSX 的事件必须伴随其它事件的限制
+    'jsx-a11y/no-static-element-interactions': 0, // 关闭 JSX 的事件必须配置角色身份才能使用的限制
+    'jsx-a11y/no-noninteractive-element-interactions': 0, // 关闭不是交互元素不允许绑定事件的限制
+    'react/no-invalid-html-attribute': 0 // 关闭检查标准的HTML rel属性值的限制
   },
   ignorePatterns: ['.eslintrc.js'] // 忽略 ESLint 检查的文件
 };

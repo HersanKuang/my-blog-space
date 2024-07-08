@@ -14,7 +14,7 @@ const {
 function getGitHash() {
   try {
     const gitHash = execSync('git rev-parse HEAD').toString().trim();
-    console.log('构建生成的 Git Hash:', gitHash);
+    console.log('Git Hash:', gitHash);
     return gitHash;
   } catch (error) {
     console.error('获取 Git hash 失败:', error);
