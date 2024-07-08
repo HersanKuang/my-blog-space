@@ -1,4 +1,19 @@
+import { execSync } from 'node:child_process';
 import { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } from 'next/constants.js';
+
+const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME, GIT_HASH } = process.env
+
+function getGitHash() {
+  try {
+    const gitHash = execSync('git rev-parse HEAD').toString().trim();
+    console.log('构建生成的 Git Hash:', gitHash)
+    return gitHash
+  } catch (error) {
+    console.error('获取 Git hash 失败:', error);
+    // 这里直接使用时间戳作为默认值
+    return `build-${Date.now()}`;
+  }
+}
 
 /**
  * @type {import('next').NextConfig}
@@ -12,8 +27,8 @@ const sharedConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '**.hersan.cn'
+        protocol: NEXT_PUBLIC_HOST,
+        hostname: NEXT_PUBLIC_HOSTNAME
       }
     ]
   },
@@ -24,7 +39,7 @@ const sharedConfig = {
       // 允许服务器操作（Next.js 14 的版本默认开启）
       serverActions: true,
       // 运行的跨域源，防止 CSRF 攻击
-      allowedOrigins: ['hersan.cn', '*.hersan.cn'],
+      allowedOrigins: [FILE_VISIT_HOSTNAME, `*.${FILE_VISIT_HOSTNAME}`],
       // 允许的 request body 最大大小为 1MB，以防止在解析大量数据时消耗过多的服务器资源，以及潜在的 DDoS 攻击
       bodySizeLimit: '1mb'
     }
@@ -79,14 +94,14 @@ const config = (phase, { defaultConfig }) => {
       // swc -> speedy web compiler Rust-base -> Babel + Terser
       swcMinify: true, // 默认开启
       // 打包的目录
-      distDir: 'build',
+      distDir: './dist',
       // eslint 报错时依然构建项目
       ignoreDuringBuilds: false,
       // 关闭 source map
       productionBrowserSourceMaps: false,
       // 构建时生成一个 ID，用于识别应用程序版本
       generateBuildId: async () => {
-        return process.env.GIT_HASH
+        return getGitHash()
       },
       typescript: {
         // 禁用类型检查

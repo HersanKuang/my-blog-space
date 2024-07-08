@@ -3,9 +3,14 @@
 
 # 项目的构建后的文件目录
 .next
+dist
 
 # 项目的依赖文件目录
 node_modules
+
+# 忽略本地环境变量文件
+.env.local
+.env.*.local
 
 # 日志文件
 npm-debug.log*
