@@ -4,7 +4,7 @@ import { headerRouteMap } from '@/config/static_route';
 const BizHeadersLayout = () => {
   return (
     <header className="bg-primary-light dark:bg-primary-dark shadow flex-shrink-0">
-      <div className="max-w-8xl mx-auto sm:px-6 lg:px-8 flex justify-between h-16">
+      <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-between h-16">
         <div className="flex items-center space-x-4">
           <Link
             href="/"

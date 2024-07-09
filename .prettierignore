@@ -17,3 +17,4 @@ dist/**
 
 # 忽略版本控制系统目录
 .git/**
+/app/(blog)/blog/@profile/page.tsx

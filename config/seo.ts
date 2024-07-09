@@ -1,6 +1,13 @@
-import type { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 
 const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL, NEXT_PUBLIC_BASE_URL: DOMAIN } = process.env;
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  userScalable: false,
+  viewportFit: 'cover'
+};
 
 export const metadata: Metadata = {
   title: {
@@ -40,6 +47,7 @@ export const metadata: Metadata = {
     statusBarStyle: 'black-translucent'
   },
   other: {
+    // 微软Edge的Chromium版本不再支持
     'msapplication-TileColor': '#da532c' // Windows 设备上将网站固定到开始屏幕时显示的磁贴颜色
   }
 };

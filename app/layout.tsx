@@ -1,20 +1,21 @@
 import React from 'react';
-import { metadata } from '@/config/metadata';
+import ReactDOM from 'react-dom';
+import { metadata, viewport } from '@/config/seo';
 import './globals.css';
 
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL, NEXT_PUBLIC_HOSTNAME: HOSTNAME } = process.env;
+const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL, NEXT_PUBLIC_HOSTNAME } = process.env;
 
-export { metadata };
+// SEO
+export { viewport, metadata };
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
+  ReactDOM.preconnect(`//${NEXT_PUBLIC_HOSTNAME}/`, { crossOrigin: 'anonymous' });
   return (
     <html lang="zh-CN">
-      {/* 预连接，加载一个跨域资源并且并且不会携带任何用户凭据 */}
-      <link rel="preconnect" href={`//${HOSTNAME}/`} crossOrigin="anonymous" />
       {/* 指定iOS设备上添加到主屏幕时显示的图标 */}
       <link
         rel="apple-touch-icon"
