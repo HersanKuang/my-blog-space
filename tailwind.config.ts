@@ -26,6 +26,17 @@ const config: Config = {
       maxWidth: {
         '8xl': '90rem', // 自定义 8xl, 对应 1440px
         '9xl': '96rem' // 自定义 9xl, 对应 1536px
+      },
+      screens: {
+        '2xl': '1230px',
+        xl: '1024px'
+      },
+      spacing: {
+        '74rem': '74rem',
+        '62rem': '62rem'
+      },
+      width: {
+        '94%': '94%'
       }
     }
   },

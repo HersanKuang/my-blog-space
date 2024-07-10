@@ -27,8 +27,6 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
         sizes="180x180"
         href={`${FILE_URL}user/logo/apple-touch-icon-precomposed.png`}
       />
-      <link rel="icon" type="image/png" sizes="32x32" href={`${FILE_URL}user/logo/h-32.png`} />
-      <link rel="icon" type="image/png" sizes="16x16" href={`${FILE_URL}user/logo/h-16.png`} />
       {/* mask-icon标签用于指定一个单色SVG图标，用于Safari浏览器中的网站图标显示 */}
       <link rel="mask-icon" href={`${FILE_URL}user/logo/safari-pinned-tab.svg`} color="#E8343D" />
       <body>{children}</body>

@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.common-box-warp {
+  @apply bg-primary-light dark:bg-primary-dark p-5 shadow-md rounded-lg;
+}
+
+.content-warp {
+  @apply min-h-64 p-6 mb-4 bg-primary-light dark:bg-primary-dark shadow-md rounded-lg;
+}
+
+.col-center-text {
+  @apply flex flex-col items-center text-text-light dark:text-text-dark;
+}

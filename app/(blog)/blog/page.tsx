@@ -11,9 +11,8 @@ export const metadata: Metadata = {
 
 const BlogPage = () => {
   return (
-    <div className="flex flex-col md:flex-row md:justify-between w-full max-w-7xl mx-auto sm:px-10 lg:px-12">
-      {/* Main Content Area */}
-      <div className="flex-1 bg-primary-light dark:bg-primary-dark p-4 shadow-lg rounded-lg mb-4 md:mb-0 h-64">
+    <div className="box-border flex-1 overflow-y-auto">
+      <div className="content-warp">
         <h2 className="text-2xl font-bold mb-4 text-text-light dark:text-text-dark">
           Next.js + tailwindcss实现深色模式及控制器
         </h2>
@@ -25,7 +24,6 @@ const BlogPage = () => {
           相信大家最近都遇到过在服务器，或者在一些我们没有办法连接外网的情况下无法拉取docker镜像。这里介绍三种方法帮你解决
         </p>
       </div>
-      {/* Sidebar */}
     </div>
   );
 };

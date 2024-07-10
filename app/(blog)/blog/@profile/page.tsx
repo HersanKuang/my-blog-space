@@ -1,20 +1,27 @@
+import Image from 'next/image';
+import User from '@/assets/images/profile.jpg'
+
+const options = [
+  { label: '文章', value: 1 },
+  { label: '标签', value: 0 },
+  { label: '分类', value: 0 }
+]
+
 const Profile = () => {
   return (
-    <div className="flex-none bg-primary-light dark:bg-primary-dark p-4 shadow-lg rounded-lg">
-      <div className="flex items-center space-x-4">
-        <div>
-          <h4 className="text-lg font-bold text-text-light dark:text-text-dark">nullcache</h4>
-          <p className="text-text-light dark:text-text-dark">此处应有一句格言</p>
-        </div>
+    <div className="common-box-warp h-64">
+      <div className="flex items-center justify-center flex-col space-y-2">
+        <Image src={User} alt="profile" quality={75} width={75} height={75} className="rounded-full" />
+        <h4 className="text-lg text-text-light dark:text-text-dark">Hersan</h4>
+        <p className="text-sm text-text-light dark:text-text-dark opacity-60">热爱编程，开源社区活跃参与者</p>
       </div>
-      <div className="mt-6">
-        <p className="text-text-light dark:text-text-dark">2 文章数</p>
-        <a href="https://github.com/" className="text-text-light dark:text-text-dark block mt-2">
-          github
-        </a>
-        <a href="https://juejin.cn/" className="text-text-light dark:text-text-dark block mt-2">
-          掘金
-        </a>
+      <div className="flex justify-evenly flex-row mt-4">
+        {options.map(item => (
+          <div key={item.label} className="col-center-text">
+            <span>{item.value}</span>
+            <span>{item.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

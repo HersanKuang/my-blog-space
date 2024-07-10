@@ -47,7 +47,16 @@ const sharedConfig = {
   // 关闭 Next.js 框架的识别
   poweredByHeader: false,
   // 由 next/script 组件生成的所有 <script> 标记中添加 crossOrigin 属性
-  crossOrigin: 'anonymous'
+  crossOrigin: 'anonymous',
+  // webpack 插件
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  }
 };
 
 /**
