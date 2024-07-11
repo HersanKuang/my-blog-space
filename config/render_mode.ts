@@ -10,7 +10,7 @@ type RenderConfig = {
 
 type renderMapKey = 'ssg' | 'ssr' | 'isr';
 
-const shareConfig: Omit<
+const sharedConfig: Omit<
   RenderConfig,
   'dynamic' | 'dynamicParams' | 'revalidate'
 > = {
@@ -26,19 +26,19 @@ const renderMap: Record<renderMapKey, Partial<RenderConfig>> = {
     dynamic: 'force-dynamic',
     dynamicParams: true,
     revalidate: false,
-    ...shareConfig
+    ...sharedConfig
   },
   ssr: {
     dynamic: 'force-static',
     dynamicParams: false,
     revalidate: false,
-    ...shareConfig
+    ...sharedConfig
   },
   isr: {
     dynamic: 'force-static',
     dynamicParams: true,
     revalidate: 600, // 600s 10分钟
-    ...shareConfig
+    ...sharedConfig
   }
 };
 

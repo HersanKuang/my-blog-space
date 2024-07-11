@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { preconnect } from 'react-dom';
 import { metadata, viewport } from '@/config/seo';
 import renderMap from '@/config/render_mode';
 import './globals.css';
@@ -28,7 +28,8 @@ export const {
 } = renderConfig;
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
-  ReactDOM.preconnect(`//${NEXT_PUBLIC_HOSTNAME}/`, {
+  // 进行预连接
+  preconnect(`//${NEXT_PUBLIC_HOSTNAME}/`, {
     crossOrigin: 'anonymous'
   });
   return (
