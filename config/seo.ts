@@ -26,8 +26,7 @@ export const metadata: Metadata = {
   publisher: 'Hersan', // 发布者
   robots: 'index, follow', // 允许搜索引擎索引页面内容，跟踪页面上的所有链接并传递权重
   icons: {
-    icon: `${FILE_URL}user/logo/favicon.ico`, // 默认图标
-    apple: `${FILE_URL}user/logo/h.png` // Apple图标
+    icon: `${FILE_URL}user/logo/favicon.ico` // 默认图标
   },
   formatDetection: {
     telephone: false // 禁用自动检测电话号码
