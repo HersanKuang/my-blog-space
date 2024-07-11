@@ -26,7 +26,10 @@ const SwitchIcons = () => {
   };
   useEffect(() => {
     const theme = localStorage.getItem('theme');
-    if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (
+      theme === 'dark' ||
+      (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
       document.documentElement.classList.add('dark');
       setDarkMode(true);
     }
@@ -40,7 +43,9 @@ const SwitchIcons = () => {
     >
       <div
         className={`w-4 h-4 rounded-full transform transition-transform duration-300 ${
-          darkMode ? 'translate-x-5 bg-primary-dark' : 'translate-x-0 bg-primary-light'
+          darkMode
+            ? 'translate-x-5 bg-primary-dark'
+            : 'translate-x-0 bg-primary-light'
         } flex items-center justify-center`}
       >
         {darkMode ? (

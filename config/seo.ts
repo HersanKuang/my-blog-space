@@ -1,6 +1,7 @@
 import { Metadata, Viewport } from 'next';
 
-const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL, NEXT_PUBLIC_BASE_URL: DOMAIN } = process.env;
+const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL, NEXT_PUBLIC_BASE_URL: DOMAIN } =
+  process.env;
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -14,7 +15,8 @@ export const metadata: Metadata = {
     default: 'Hersan', // 默认标题
     template: '%s | Hersan的个人空间' // 标题模板，%s会被页面标题替换
   },
-  description: '一个分享技术见解、编程技巧和生活感悟的博客，涵盖前端、后端和全栈开发。', // 页面描述
+  description:
+    '一个分享技术见解、编程技巧和生活感悟的博客，涵盖前端、后端和全栈开发。', // 页面描述
   applicationName: 'Hersan的个人空间', // 应用名称
   authors: [{ name: 'Hersan', url: 'https://github.com/HersanKuang' }], // 作者信息
   generator: 'Next.js', // 生成器信息
@@ -30,7 +32,8 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false // 禁用自动检测电话号码
   },
-  abstract: '一个分享技术见解、编程技巧和生活感悟的博客，涵盖前端、后端和全栈开发。', // 页面摘要
+  abstract:
+    '一个分享技术见解、编程技巧和生活感悟的博客，涵盖前端、后端和全栈开发。', // 页面摘要
   category: '技术博客', // 页面类别
   classification: '编程', // 页面分类
   manifest: `${FILE_URL}user/logo/site.webmanifest`, // Web 应用的元数据

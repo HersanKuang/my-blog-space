@@ -11,7 +11,9 @@ const BlogLayout = ({ header, footer, profile, children }: BlogLayoutProps) => {
       {header}
       <div className="flex justify-center center-area mx-auto w-94% py-10 xl:w-[62rem] 2xl:w-[74rem] min-h-screen">
         {children}
-        <div className="w-full md:w-[23.5%] md:ml-5 lg:ml-8 min-w-[14.4rem]">{profile}</div>
+        <div className="w-full md:w-[23.5%] md:ml-5 lg:ml-8 min-w-[14.4rem]">
+          {profile}
+        </div>
       </div>
       {footer}
     </div>

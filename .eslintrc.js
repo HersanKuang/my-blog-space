@@ -18,12 +18,19 @@ module.exports = {
     'eslint:recommended', // 使用 ESLint 的推荐规则
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended', // 使用 TypeScript 插件的推荐规则
-    'plugin:prettier/recommended' // 启用 Prettier 插件，确保代码风格的一致性
+    'plugin:prettier/recommended', // 启用 Prettier 插件，确保代码风格的一致性
+    'prettier' // 覆盖 eslint 的代码格式
   ],
   // 指定解析器
   parser: '@typescript-eslint/parser',
   // 插件配置
-  plugins: ['react', 'jsx-a11y', '@typescript-eslint', 'prettier', 'react-hooks'],
+  plugins: [
+    'react',
+    'jsx-a11y',
+    '@typescript-eslint',
+    'prettier',
+    'react-hooks'
+  ],
   // 规则配置
   rules: {
     'prettier/prettier': 'error', // Prettier 的错误显示为 ESLint 错误
@@ -74,7 +81,10 @@ module.exports = {
     'react/state-in-constructor': 0, // 关闭 react 类组件的 state 必须写构造函数内的规则
     'react/require-default-props': 0, // 关闭 react 对不是必要的属性 props 必须设置默认值的限制
     'react/jsx-props-no-spreading': 0, // 关闭 JSX 不能使用扩展符的限制
-    'react/jsx-filename-extension': [2, { extensions: ['.tsx', 'ts', '.jsx', '.js'] }], // JSX 文件扩展名的设置
+    'react/jsx-filename-extension': [
+      2,
+      { extensions: ['.tsx', 'ts', '.jsx', '.js'] }
+    ], // JSX 文件扩展名的设置
     'react/prop-types': 0, // 关闭 react 组件属性验证
     'jsx-a11y/click-events-have-key-events': 0, // 关闭 JSX 的事件必须伴随其它事件的限制
     'jsx-a11y/no-static-element-interactions': 0, // 关闭 JSX 的事件必须配置角色身份才能使用的限制
