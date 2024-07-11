@@ -17,10 +17,7 @@ const {
 // SEO
 export { viewport, metadata };
 // 配置渲染模式（prod: isr, dev: ssr）
-const renderMode = RENDER_MODE as keyof typeof renderMap;
-
-// 导出对应的配置
-const selectedConfig = renderMap[renderMode];
+const renderConfig = renderMap[RENDER_MODE as keyof typeof renderMap];
 export const {
   dynamic,
   dynamicParams,
@@ -28,7 +25,7 @@ export const {
   fetchCache,
   runtime,
   preferredRegion
-} = selectedConfig;
+} = renderConfig;
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   ReactDOM.preconnect(`//${NEXT_PUBLIC_HOSTNAME}/`, {
