@@ -24,13 +24,7 @@ module.exports = {
   // 指定解析器
   parser: '@typescript-eslint/parser',
   // 插件配置
-  plugins: [
-    'react',
-    'jsx-a11y',
-    '@typescript-eslint',
-    'prettier',
-    'react-hooks'
-  ],
+  plugins: ['react', 'jsx-a11y', '@typescript-eslint', 'prettier', 'react-hooks'],
   // 规则配置
   rules: {
     'prettier/prettier': 'error', // Prettier 的错误显示为 ESLint 错误
@@ -38,7 +32,7 @@ module.exports = {
       'error',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: true }
     ],
-    '@typescript-eslint/no-explicit-any': 'off', // 关闭不能声明 any 类型的警告
+    '@typescript-eslint/no-explicit-any': 0, // 关闭不能声明 any 类型的警告
     '@typescript-eslint/no-inferrable-types': 0, // 关闭可以自动类型推断时, 不用显式声明类型的错误
     '@typescript-eslint/no-non-null-assertion': 0, // 关闭不能使用断言
     '@typescript-eslint/no-shadow': 2, // 开启 TS 全局变量和局部变量同名的报错警告
@@ -68,6 +62,7 @@ module.exports = {
     'import/no-unresolved': 0, // eslint 无法识别检测导入语句中的模块是否存在
     'import/no-extraneous-dependencies': 0, // 关闭 package.json 的 dependencies 无依赖项而不得使用的限制
     'import/prefer-default-export': 0, // 关闭模块文件只有一个元素导出时, 必须使用默认导出的限制
+    'no-underscore-dangle': 0, // 关闭不能使用 '_' 下划线命名的规则
 
     radix: 0, // 关闭 parseInt 需要传入第二参数的限制
     indent: [2, 2, { SwitchCase: 1 }], // 配置缩进规则, 必须是缩进 2 个空格
@@ -81,10 +76,7 @@ module.exports = {
     'react/state-in-constructor': 0, // 关闭 react 类组件的 state 必须写构造函数内的规则
     'react/require-default-props': 0, // 关闭 react 对不是必要的属性 props 必须设置默认值的限制
     'react/jsx-props-no-spreading': 0, // 关闭 JSX 不能使用扩展符的限制
-    'react/jsx-filename-extension': [
-      2,
-      { extensions: ['.tsx', 'ts', '.jsx', '.js'] }
-    ], // JSX 文件扩展名的设置
+    'react/jsx-filename-extension': [2, { extensions: ['.tsx', 'ts', '.jsx', '.js'] }], // JSX 文件扩展名的设置
     'react/prop-types': 0, // 关闭 react 组件属性验证
     'jsx-a11y/click-events-have-key-events': 0, // 关闭 JSX 的事件必须伴随其它事件的限制
     'jsx-a11y/no-static-element-interactions': 0, // 关闭 JSX 的事件必须配置角色身份才能使用的限制

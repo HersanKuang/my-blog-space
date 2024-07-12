@@ -10,10 +10,7 @@ type RenderConfig = {
 
 type renderMapKey = 'ssg' | 'ssr' | 'isr';
 
-const sharedConfig: Omit<
-  RenderConfig,
-  'dynamic' | 'dynamicParams' | 'revalidate'
-> = {
+const sharedConfig: Omit<RenderConfig, 'dynamic' | 'dynamicParams' | 'revalidate'> = {
   fetchCache: 'auto',
   runtime: 'nodejs',
   preferredRegion: 'all',

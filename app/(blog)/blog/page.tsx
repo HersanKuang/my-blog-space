@@ -16,9 +16,7 @@ const BlogPage = () => {
         <h2 className="text-2xl font-bold mb-4 text-text-light dark:text-text-dark">
           Next.js + tailwindcss实现深色模式及控制器
         </h2>
-        <p className="text-text-light dark:text-text-dark">
-          2024-07-06 - 代码分享
-        </p>
+        <p className="text-text-light dark:text-text-dark">2024-07-06 - 代码分享</p>
         <h3 className="text-xl font-semibold mt-6 mb-2 text-text-light dark:text-text-dark">
           三种方法在中国网络环境下使用Docker
         </h3>

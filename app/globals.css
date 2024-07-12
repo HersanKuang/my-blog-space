@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.light [data-hide-on-theme="dark"],
+.dark [data-hide-on-theme="light"] {
+  display: none;
+}
+
 .common-box-warp {
   @apply bg-primary-light dark:bg-primary-dark p-5 shadow-md rounded-lg;
 }
