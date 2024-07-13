@@ -32,6 +32,19 @@
   const i = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
   m(i);
 
+  const updateTheme = e => {
+    if (e.matches) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  const q = window.matchMedia('(prefers-color-scheme: dark)');
+  q.addEventListener('change', updateTheme);
+
   window.addEventListener('storage', function (e) {
     if (e.key === null) {
       const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
