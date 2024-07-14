@@ -3,15 +3,19 @@
 @tailwind utilities;
 
 .common-box-warp {
-  @apply bg-sec-bgc-light dark:bg-sec-bgc-dark p-5 shadow-md rounded-lg;
+  @apply bg-thr-bgc-light dark:bg-thr-bgc-dark p-5 shadow-md rounded-lg;
 }
 
 .content-warp {
-  @apply min-h-64 p-6 mb-10 bg-sec-bgc-light dark:bg-sec-bgc-dark shadow-md rounded-lg;
+  @apply min-h-64 p-6 mb-10 bg-thr-bgc-light dark:bg-thr-bgc-dark shadow-md rounded-lg;
 }
 
 .col-center-text {
   @apply flex flex-col items-center text-text-light dark:text-text-dark;
+}
+
+.widget-author-avatar {
+  @apply absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2;
 }
 
 .copy-button {

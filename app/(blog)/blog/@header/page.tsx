@@ -14,7 +14,7 @@ const mediaMap: Record<HeaderMediaLinkName, ReactNode> = {
 
 const HeaderSection = () => {
   return (
-    <div className="flex justify-between items-center h-16 max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-16 max-w-7.5xl mx-auto sm:px-6 lg:px-8">
       <div className="flex items-center space-x-4 h-full">
         <Link
           href="/"
