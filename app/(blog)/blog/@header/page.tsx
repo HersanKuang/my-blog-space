@@ -2,8 +2,8 @@ import React, { type ReactNode } from 'react';
 import Link from 'next/link';
 import { headerRouteLinks, headerMediaLinks } from '@/config/route_links';
 import SwitchIcons from '@/app/(blog)/blog/@header/switch_icons';
-import Github from '@/assets/svgs/github.svg';
-import Juejin from '@/assets/svgs/juejin.svg';
+import Github from '@/public/assets/svgs/github.svg';
+import Juejin from '@/public/assets/svgs/juejin.svg';
 
 type HeaderMediaLinkName = (typeof headerMediaLinks)[number]['name'];
 

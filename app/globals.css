@@ -2,19 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-.light [data-hide-on-theme="dark"],
-.dark [data-hide-on-theme="light"] {
-  display: none;
-}
-
 .common-box-warp {
-  @apply bg-primary-light dark:bg-primary-dark p-5 shadow-md rounded-lg;
+  @apply bg-sec-bgc-light dark:bg-sec-bgc-dark p-5 shadow-md rounded-lg;
 }
 
 .content-warp {
-  @apply min-h-64 p-6 mb-4 bg-primary-light dark:bg-primary-dark shadow-md rounded-lg;
+  @apply min-h-64 p-6 mb-10 bg-sec-bgc-light dark:bg-sec-bgc-dark shadow-md rounded-lg;
 }
 
 .col-center-text {
   @apply flex flex-col items-center text-text-light dark:text-text-dark;
 }
+
+.copy-button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  width: 40px;
+  min-height: 40px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 0.4s;
+}
+
+.copy-button.animate-scale {
+  animation: scale 0.5s ease-in-out 0.1s;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .content-warp > .markdown-body {
+    padding: 20px !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .content-warp > .markdown-body {
+    padding: 20px !important;
+  }
+}
+
+#theme-toggle-icon.translate-theme {
+  transform: translateX(1.25rem);
+}
+
+.content-warp > .markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+  transition:
+    padding 0.5s ease,
+    background-color 0.5s ease,
+    box-shadow 0.5s ease,
+    border 0.5s ease;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px !important;
+  }
+}
+
+/* 轻主题样式 */
+/*.light .content-warp > .markdown-body {*/
+/*  padding: 20px !important;*/
+/*}*/
+
+/* 暗主题样式 */
+/*.dark .content-warp > .markdown-body {*/
+/*  background-color: #333333;*/
+/*  padding: 20px !important;*/
+/*}*/

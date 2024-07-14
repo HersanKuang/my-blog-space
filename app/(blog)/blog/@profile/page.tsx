@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import User from '@/assets/images/profile.jpg'
+import User from '@/public/assets/images/profile.jpg'
 
 const options = [
   { label: '文章', value: 1 },
