@@ -15,8 +15,12 @@ const config: Config = {
           dark: '#3e4b5e' // 深色主题字体背景的颜色
         },
         background: {
-          light: '#f2f5f8',
-          dark: '#181c27'
+          light: '#f6f6fa',
+          dark: '#171819'
+        },
+        'sec-bgc': {
+          light: '#ffffff',
+          dark: '#000000'
         },
         text: {
           light: '#475c6e',
@@ -37,9 +41,19 @@ const config: Config = {
       },
       width: {
         '94%': '94%'
+      },
+      keyframes: {
+        bounce: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-25%)' }
+        }
+      },
+      animation: {
+        bounce: 'bounce 1s infinite'
       }
     }
   },
   plugins: []
 };
+
 export default config;

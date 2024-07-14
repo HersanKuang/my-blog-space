@@ -8,9 +8,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/success', request.url));
   }
 
-  // 博客页面的路由进行重定向
+  // 对博客页面的路由进行重写
   if (pathname === '/') {
-    return NextResponse.redirect(new URL('/blog', request.url));
+    return NextResponse.rewrite(new URL('/blog', request.url));
   }
 
   // 对于其他路径，匹配成功

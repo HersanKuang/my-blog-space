@@ -1,7 +1,13 @@
 import { execSync } from 'node:child_process';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } from 'next/constants.js';
 
-const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME } = process.env;
+const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME, NEXT_OUTPUT_DIR } =
+  process.env;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function getGitHash() {
   try {
@@ -49,7 +55,8 @@ const sharedConfig = {
   // 由 next/script 组件生成的所有 <script> 标记中添加 crossOrigin 属性
   crossOrigin: 'anonymous',
   // webpack 插件
-  webpack(config) {
+  webpack(config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) {
+    // 添加处理 .svg 文件的规则
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack']
@@ -60,14 +67,15 @@ const sharedConfig = {
 };
 
 /**
- * Next.js 配置函数，用于根据不同的阶段返回不同的配置选项。
- * @param {string} phase - 当前阶段。可以是以下之一：
- *   - PHASE_DEVELOPMENT_SERVER：用于标识开发服务器阶段。
- *   - PHASE_PRODUCTION_BUILD：用于标识生产构建阶段。
- *   - PHASE_PRODUCTION_SERVER：用于标识生产服务器运行阶段。
- *   - PHASE_EXPORT：用于标识静态导出阶段。
- * @param {Object} defaultConfig - 默认配置对象。
- * @returns {Object} 返回根据当前阶段合并后的配置对象。
+
+ •	Next.js 配置函数，用于根据不同的阶段返回不同的配置选项。
+ •	@param {string} phase - 当前阶段。可以是以下之一：
+ •		•	PHASE_DEVELOPMENT_SERVER：用于标识开发服务器阶段。
+ •		•	PHASE_PRODUCTION_BUILD：用于标识生产构建阶段。
+ •		•	PHASE_PRODUCTION_SERVER：用于标识生产服务器运行阶段。
+ •		•	PHASE_EXPORT：用于标识静态导出阶段。
+ •	@param {Object} defaultConfig - 默认配置对象。
+ •	@returns {Object} 返回根据当前阶段合并后的配置对象。
  */
 const config = (phase, { defaultConfig }) => {
   // 仅用于开发的配置选项
@@ -107,9 +115,7 @@ const config = (phase, { defaultConfig }) => {
   }
 
   // 其他阶段的配置选项
-  return {
-    ...sharedConfig
-  };
+  return { ...sharedConfig };
 };
 
 export default config;

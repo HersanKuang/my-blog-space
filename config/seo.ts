@@ -11,7 +11,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'Hersan', // 默认标题
+    default: 'Hersan的个人空间', // 默认标题
     template: '%s | Hersan的个人空间' // 标题模板，%s会被页面标题替换
   },
   description: '一个分享技术见解、编程技巧和生活感悟的博客，涵盖前端、后端和全栈开发。', // 页面描述
@@ -32,7 +32,6 @@ export const metadata: Metadata = {
   abstract: '一个分享技术见解、编程技巧和生活感悟的博客，涵盖前端、后端和全栈开发。', // 页面摘要
   category: '技术博客', // 页面类别
   classification: '编程', // 页面分类
-  manifest: `${FILE_URL}user/logo/site.webmanifest`, // Web 应用的元数据
   alternates: {
     // 搜索引擎会将此URL视为此页面的标准地址，从而避免内容重复导致的SEO问题
     canonical: DOMAIN
@@ -44,6 +43,25 @@ export const metadata: Metadata = {
     title: 'Hersan的个人空间',
     // 设置状态栏的样式为黑色半透明，提升应用的视觉效果，尤其是在顶部状态栏区域与应用背景颜色搭配时
     statusBarStyle: 'black-translucent'
+  },
+  openGraph: {
+    url: DOMAIN,
+    type: 'website',
+    title: 'Hersan的个人空间',
+    description: '一个分享技术见解、编程技巧和生活感悟的博客，涵盖前端、后端和全栈开发。',
+    images: [
+      {
+        url: `${FILE_URL}user/logo/favicon.ico`,
+        alt: 'Hersan'
+      }
+    ]
+  },
+  twitter: {
+    site: '@HersanKuang',
+    card: 'summary',
+    title: 'Hersan的个人空间',
+    description: '一个分享技术见解、编程技巧和生活感悟的博客，涵盖前端、后端和全栈开发。',
+    images: `${FILE_URL}user/logo/favicon.ico`
   },
   other: {
     // 微软Edge的Chromium版本不再支持
