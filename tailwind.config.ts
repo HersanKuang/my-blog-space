@@ -1,4 +1,6 @@
+/* eslint-disable func-names */
 import type { Config } from 'tailwindcss';
+import { PluginAPI } from 'tailwindcss/types/config';
 
 const config: Config = {
   darkMode: 'class', // 启用深色模式
@@ -29,10 +31,21 @@ const config: Config = {
         text: {
           light: '#424a57',
           dark: '#f3f3f4'
+        },
+        'sec-text': {
+          light: '#20232b',
+          dark: '#f7f7fb'
         }
       },
+      fontSize: {
+        '0.9': '0.9rem',
+        md: '1.125rem'
+      },
+      minHeight: {
+        'blog-body': 'calc(100vh - 3rem - 24px)'
+      },
       maxWidth: {
-        '7.5xl': '86rem',
+        '7.5xl': '87rem',
         '8xl': '90rem', // 自定义 8xl, 对应 1440px
         '9xl': '96rem' // 自定义 9xl, 对应 1536px
       },
@@ -43,16 +56,23 @@ const config: Config = {
       spacing: {
         '74rem': '74rem',
         '62rem': '62rem'
-      },
-      keyframes: {
-        bounce: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-25%)' }
-        }
       }
     }
   },
-  plugins: []
+  plugins: [
+    function ({ addUtilities }: PluginAPI) {
+      addUtilities({
+        '.line-clamp-2': {
+          overflow: 'hidden',
+          display: '-webkit-box',
+          '-webkit-box-orient': 'vertical',
+          '-webkit-line-clamp': '2',
+          'text-overflow': 'ellipsis',
+          'white-space': 'normal'
+        }
+      });
+    }
+  ]
 };
 
 export default config;

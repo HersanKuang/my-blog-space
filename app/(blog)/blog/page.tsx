@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import BizBlogContent from '@/components/biz_blog_content';
 
 const { NEXT_PUBLIC_BASE_URL } = process.env;
 
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
 
 const BlogPage = () => {
   return (
-    <div className="box-border flex-1 overflow-y-auto">
-      <div className="content-warp">sssss</div>
+    <div className="box-border flex-1">
+      <BizBlogContent />
     </div>
   );
 };

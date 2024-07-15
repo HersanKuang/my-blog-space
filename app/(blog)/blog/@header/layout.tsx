@@ -7,9 +7,7 @@ interface BlogHeaderLayoutProps {
 const BlogHeaderLayout = ({ children }: BlogHeaderLayoutProps) => {
   return (
     <>
-      <header className="bg-sec-bgc-light dark:bg-sec-bgc-dark shadow flex-shrink-0">
-        {children}
-      </header>
+      {children}
       <Script rel="preload" src="/assets/js/theme.js" strategy="beforeInteractive" />
     </>
   );

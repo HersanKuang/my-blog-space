@@ -6,7 +6,14 @@
   const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
   // 如果设置的主题为 auto 则返回系统主题，否则返回用户设置的主题
   const c = t === 'auto' ? (d ? 'dark' : 'light') : t;
+  if (t === 'auto') localStorage.setItem('user-theme', 'auto');
   const i = document.querySelector('#theme-toggle-icon');
+
+  // 如果当前主题是深色，添加 'dark' 类
+  if (c === 'dark') {
+    i.classList.add('translate-theme');
+    document.documentElement.classList.add('dark');
+  }
 
   // 设置主题函数
   function st(theme) {
@@ -38,12 +45,6 @@
     m(theme);
   }
 
-  // 如果当前主题是深色，添加 'dark' 类
-  if (c === 'dark') {
-    i.classList.add('translate-theme');
-    document.documentElement.classList.add('dark');
-  }
-
   // 处理主题切换函数
   function h() {
     const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
@@ -64,13 +65,13 @@
     }
   }
 
-  // 为主题切换按钮添加点击事件监听器
-  document.getElementById('theme-toggle-button').addEventListener('click', h);
-
   // 监听系统主题变化并更新主题
   const u = e => {
     st('auto');
   };
+
+  // 为主题切换按钮添加点击事件监听器
+  document.getElementById('theme-toggle-button').addEventListener('click', h);
 
   // 创建媒体查询对象并添加事件监听器
   const q = window.matchMedia('(prefers-color-scheme: dark)');

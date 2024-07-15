@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import 'highlight.js/styles/default.css';
 import CopySVG from '@/public/assets/svgs/copy.svg';
 import CopiedSVG from '@/public/assets/svgs/copied.svg';
-import markdownToHtml from '@/utils/markdown';
+import markdownToHtml from '@/utils/markdown_parser';
 
 const markdownContent = `
 
@@ -203,26 +203,26 @@ const MarkdownPage = () => {
   // }, []);
 
   useEffect(() => {
-    const themes = [
-      'https://blog.hersan.cn/md/theme/notion-light-classic.css',
-      'https://blog.hersan.cn/md/theme/vue.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css'
-    ];
-    let currentThemeIndex = 0;
-
-    const toggleButton = document.getElementById('toggle-theme');
-    const themeLink = document.getElementById('theme-css') as HTMLElement;
-
-    const toggleTheme = () => {
-      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-      themeLink.setAttribute('href', themes[currentThemeIndex]);
-    };
-
-    if (toggleButton) {
-      // 添加事件监听器
-      toggleButton.addEventListener('click', toggleTheme);
-    }
+    // const themes = [
+    //   'https://blog.hersan.cn/md/theme/notion-light-classic.css',
+    //   'https://blog.hersan.cn/md/theme/vue.css',
+    //   'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css',
+    //   'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css'
+    // ];
+    // let currentThemeIndex = 0;
+    //
+    // const toggleButton = document.getElementById('toggle-theme');
+    // const themeLink = document.getElementById('theme-css') as HTMLElement;
+    //
+    // const toggleTheme = () => {
+    //   currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    //   themeLink.setAttribute('href', themes[currentThemeIndex]);
+    // };
+    //
+    // if (toggleButton) {
+    //   // 添加事件监听器
+    //   toggleButton.addEventListener('click', toggleTheme);
+    // }
 
     // 创建一个MutationObserver实例
     const observer = new MutationObserver(() => {
@@ -244,9 +244,9 @@ const MarkdownPage = () => {
 
     // 清理函数，用于移除事件监听器和停止观察
     return () => {
-      if (toggleButton) {
-        toggleButton.removeEventListener('click', toggleTheme);
-      }
+      // if (toggleButton) {
+      //   toggleButton.removeEventListener('click', toggleTheme);
+      // }
       observer.disconnect();
     };
   }, []);
@@ -256,12 +256,12 @@ const MarkdownPage = () => {
       className="content-warp"
       // ref={contentRef}
     >
-      <button
-        id="toggle-theme"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        切换 markdown 主题
-      </button>
+      {/* <button */}
+      {/*  id="toggle-theme" */}
+      {/*  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" */}
+      {/* > */}
+      {/*  切换 markdown 主题 */}
+      {/* </button> */}
       <div dangerouslySetInnerHTML={{ __html: content }} className="markdown-body" />
       {/* {preElements.map(pre => ( */}
       {/*  <CopyButton key={pre.className} preElement={pre} copied={copied} setCopied={setCopied} /> */}

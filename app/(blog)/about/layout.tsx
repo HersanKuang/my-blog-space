@@ -4,7 +4,7 @@ interface BlogLayoutProps {
 
 const BlogLayout = ({ children }: BlogLayoutProps) => {
   return (
-    <div className="bg-primary text-slate-700 dark:text-slate-300 relative min-w-[280px]">
+    <div className="bg-primary text-text-light dark:text-text-dark relative min-w-[280px]">
       <div>BlogLayout</div>
       <div>{children}</div>
     </div>

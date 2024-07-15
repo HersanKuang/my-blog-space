@@ -19,5 +19,5 @@ export function middleware(request: NextRequest) {
 
 // 指定应用中间件的路由路径
 export const config = {
-  matcher: ['/((?!_next/static|api|favicon.ico).*)']
+  matcher: ['/((?!_next/static|assets|api|favicon.ico).*)']
 };

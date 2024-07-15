@@ -63,6 +63,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0, // 关闭 package.json 的 dependencies 无依赖项而不得使用的限制
     'import/prefer-default-export': 0, // 关闭模块文件只有一个元素导出时, 必须使用默认导出的限制
     'no-underscore-dangle': 0, // 关闭不能使用 '_' 下划线命名的规则
+    'no-restricted-exports': 0, // 关闭不能使用 default 作为导出名
 
     radix: 0, // 关闭 parseInt 需要传入第二参数的限制
     indent: [2, 2, { SwitchCase: 1 }], // 配置缩进规则, 必须是缩进 2 个空格

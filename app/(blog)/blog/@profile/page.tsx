@@ -9,8 +9,9 @@ const options = [
 
 const coverImage = [
   '0960',
-  '6163',
-  '7069'
+  '9232',
+  '7069',
+  '3542'
 ]
 
 const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL } = process.env;
