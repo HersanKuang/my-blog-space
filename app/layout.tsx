@@ -38,6 +38,12 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       {/* mask-icon标签用于指定一个单色SVG图标，用于Safari浏览器中的网站图标显示 */}
       <link rel="mask-icon" href={`${FILE_URL}user/logo/safari-pinned-tab.svg`} color="#E8343D" />
       {/* 资源加载提示 */}
+      <link
+        rel="prefetch stylesheet"
+        href={`${FILE_URL}md/theme/github-markdown-light.css`}
+        id="theme-style"
+        as="style"
+      />
 
       <body>{children}</body>
     </html>

@@ -72,11 +72,6 @@
   max-width: 980px;
   margin: 0 auto;
   padding: 45px;
-  transition:
-    padding 0.5s ease,
-    background-color 0.5s ease,
-    box-shadow 0.5s ease,
-    border 0.5s ease;
 }
 
 @media (max-width: 767px) {
@@ -84,17 +79,6 @@
     padding: 15px !important;
   }
 }
-
-/* 轻主题样式 */
-/*.light .content-warp > .markdown-body {*/
-/*  padding: 20px !important;*/
-/*}*/
-
-/* 暗主题样式 */
-/*.dark .content-warp > .markdown-body {*/
-/*  background-color: #333333;*/
-/*  padding: 20px !important;*/
-/*}*/
 
 /*  overflow-y-auto no-scrollbar overflow-auto */
 

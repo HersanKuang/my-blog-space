@@ -1,11 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars,react/no-danger */
-
 'use client';
 
 import { useEffect } from 'react';
 import 'highlight.js/styles/default.css';
-import CopySVG from '@/public/assets/svgs/copy.svg';
-import CopiedSVG from '@/public/assets/svgs/copied.svg';
 import markdownToHtml from '@/utils/markdown_parser';
 
 const markdownContent = `
@@ -159,113 +155,63 @@ chmod +x 是什么意思
 
 `;
 
-const copySvg =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2'/%3E%3C/svg%3E";
-
-const copiedSvg =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4'/%3E%3C/svg%3E";
-
-const CopyButton = ({ preElement, copied, setCopied }: any) => {
-  const handleCopy = () => {
-    const codeText = preElement.querySelector('code')?.textContent || '';
-    navigator.clipboard.writeText(codeText);
-    setTimeout(() => {
-      setCopied(preElement);
-    }, 200);
-    setTimeout(() => {
-      setCopied(null);
-    }, 2000);
-  };
-
-  return (
-    <div
-      className={`copy-button ${copied === preElement ? 'animate-scale' : ''}`}
-      // className={`copy-button`}
-      onClick={handleCopy}
-    >
-      {copied === preElement ? <CopiedSVG /> : <CopySVG />}
-    </div>
-  );
-};
-
 const MarkdownPage = () => {
-  // const contentRef = useRef<HTMLDivElement>(null);
-  // const [copied, setCopied] = useState<HTMLElement | null>(null);
-  // const [preElements, setPreElements] = useState<HTMLElement[]>([]);
   const content = markdownToHtml(markdownContent);
 
-  // useEffect(() => {
-  //
-  //   if (contentRef.current) {
-  //     const preElements = Array.from(contentRef.current.querySelectorAll('code'));
-  //     setPreElements(preElements as HTMLElement[]);
-  //   }
-  // }, []);
+  const changeStyleSheet = (theme: any) => {
+    let linkElement = document.getElementById('theme-style') as HTMLLinkElement;
+    if (!linkElement) {
+      // 创建 link 元素
+      linkElement = document.createElement('link');
+      linkElement.rel = 'stylesheet';
+      linkElement.id = 'theme-style';
+      document.head.appendChild(linkElement);
+    }
+    linkElement.href = `/assets/css/github-markdown-${theme}.css`;
+  };
 
   useEffect(() => {
-    // const themes = [
-    //   'https://blog.hersan.cn/md/theme/notion-light-classic.css',
-    //   'https://blog.hersan.cn/md/theme/vue.css',
-    //   'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css',
-    //   'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css'
-    // ];
-    // let currentThemeIndex = 0;
-    //
-    // const toggleButton = document.getElementById('toggle-theme');
-    // const themeLink = document.getElementById('theme-css') as HTMLElement;
-    //
-    // const toggleTheme = () => {
-    //   currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-    //   themeLink.setAttribute('href', themes[currentThemeIndex]);
-    // };
-    //
-    // if (toggleButton) {
-    //   // 添加事件监听器
-    //   toggleButton.addEventListener('click', toggleTheme);
-    // }
+    const htmlElement = document.documentElement;
 
-    // 创建一个MutationObserver实例
-    const observer = new MutationObserver(() => {
-      if (document.documentElement.classList.contains('dark')) {
-        console.log('dark class has been added');
-      } else {
-        console.log('dark class has been removed');
+    // 创建 MutationObserver 实例
+    const observer = new MutationObserver(mutationsList => {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const mutation of mutationsList) {
+        if (mutation.attributeName === 'class') {
+          // 检查是否包含 'dark' class
+          if (htmlElement.classList.contains('dark')) {
+            // 切换到 dark.css
+            changeStyleSheet('dark');
+          } else {
+            // 切换到 light.css
+            changeStyleSheet('light');
+          }
+        }
       }
     });
 
-    // 配置要观察的变动类型
-    const config = {
-      attributes: true,
-      attributeFilter: ['class']
-    };
+    // 配置 MutationObserver 监听的目标和选项
+    observer.observe(htmlElement, {
+      attributes: true
+    });
 
-    // 开始观察目标节点
-    observer.observe(document.documentElement, config);
+    // 初始样式表加载
+    if (htmlElement.classList.contains('dark')) {
+      changeStyleSheet('dark');
+    } else {
+      changeStyleSheet('light');
+    }
 
-    // 清理函数，用于移除事件监听器和停止观察
     return () => {
-      // if (toggleButton) {
-      //   toggleButton.removeEventListener('click', toggleTheme);
-      // }
+      // 清除 observer
       observer.disconnect();
     };
   }, []);
 
   return (
-    <div
-      className="content-warp"
-      // ref={contentRef}
-    >
-      {/* <button */}
-      {/*  id="toggle-theme" */}
-      {/*  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" */}
-      {/* > */}
-      {/*  切换 markdown 主题 */}
-      {/* </button> */}
+    <div className="content-warp">
+      {/* eslint-disable-next-line react/no-danger */}
       <div dangerouslySetInnerHTML={{ __html: content }} className="markdown-body" />
-      {/* {preElements.map(pre => ( */}
-      {/*  <CopyButton key={pre.className} preElement={pre} copied={copied} setCopied={setCopied} /> */}
-      {/* ))} */}
     </div>
   );
 };
