@@ -7,14 +7,14 @@ import Sun from '@/public/assets/svgs/sun.svg';
 
 const themeConfigMap = {
   dark: {
-    background: 'bg-gray-600',
+    background: 'bg-theme-icon-dark',
     afterTransform: 'translate-x-5 bg-primary-dark',
-    icon: <Moon className="w-3 h-3 fill-text-dark" />
+    icon: <Moon className="w-3 h-3 vt-switch-appearance-moon" />
   },
   light: {
-    background: 'bg-gray-200',
+    background: 'bg-theme-icon-light',
     afterTransform: 'translate-x-0 bg-primary-light',
-    icon: <Sun className="w-3 h-3 fill-text-light" />
+    icon: <Sun className="w-3 h-3 vt-switch-appearance-sun" />
   }
 };
 
@@ -43,7 +43,7 @@ const SwitchIcons = () => {
 
   return (
     <div
-      className={`w-10 h-5 flex items-center rounded-full px-0.5 cursor-pointer transition-colors duration-300 ${currentThemeConfig.background}`}
+      className={`w-10 h-5 flex items-center rounded-full px-0.5 cursor-pointer transition-colors duration-300 border border-gray-300 border-opacity-50 ${currentThemeConfig.background}`}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       <div

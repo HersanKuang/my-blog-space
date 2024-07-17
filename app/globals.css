@@ -76,6 +76,13 @@
   transform: translateX(1.25rem);
 }
 
+.vt-switch-appearance-sun {
+  fill: #292929;
+}
+.vt-switch-appearance-moon {
+  fill: #efefef;
+}
+
 .content-warp > .markdown-body {
   box-sizing: border-box;
   min-width: 200px;

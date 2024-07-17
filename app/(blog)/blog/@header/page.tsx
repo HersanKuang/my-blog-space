@@ -8,8 +8,8 @@ import Juejin from '@/public/assets/svgs/juejin.svg';
 type HeaderMediaLinkName = (typeof headerMediaLinks)[number]['name'];
 
 const mediaMap: Record<HeaderMediaLinkName, ReactNode> = {
-  juejin: <Juejin className="w-5 h-5" />,
-  github: <Github className="w-5 h-5" />
+  juejin: <Juejin className="w-4.5 h-4.5 !fill-text-light dark:!fill-text-dark" />,
+  github: <Github className="w-4.5 h-4.5 !fill-text-light dark:!fill-text-dark" />
 };
 
 const HeaderSection = () => {

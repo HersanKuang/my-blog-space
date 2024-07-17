@@ -41,6 +41,10 @@ const config: Config = {
         '0.9': '0.9rem',
         md: '1.125rem'
       },
+      fill: {
+        'text-light': '#424a57',
+        'text-dark': '#f3f3f4'
+      },
       minHeight: {
         'blog-body': 'calc(100vh - 3rem - 24px)'
       },
@@ -54,6 +58,7 @@ const config: Config = {
         xl: '1024px'
       },
       spacing: {
+        '4.5': '1.125rem',
         '74rem': '74rem',
         '62rem': '62rem'
       }
