@@ -10,6 +10,7 @@
     "format": "cross-env-shell prettier --write ."
   },
   "dependencies": {
+    "atom-one-dark.css": "link:highlight.js/styles/atom-one-dark.css",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
     "highlight.js": "^11.10.0",

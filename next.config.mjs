@@ -67,7 +67,6 @@ const sharedConfig = {
 };
 
 /**
-
  •	Next.js 配置函数，用于根据不同的阶段返回不同的配置选项。
  •	@param {string} phase - 当前阶段。可以是以下之一：
  •		•	PHASE_DEVELOPMENT_SERVER：用于标识开发服务器阶段。
@@ -110,7 +109,11 @@ const config = (phase, { defaultConfig }) => {
       typescript: {
         // 禁用类型检查
         ignoreBuildErrors: false
-      }
+      },
+      // eslint: {
+      //   // 禁用 ESLint
+      //   ignoreDuringBuilds: true,
+      // }
     };
   }
 
