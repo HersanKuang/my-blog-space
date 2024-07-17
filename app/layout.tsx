@@ -1,5 +1,6 @@
 import React from 'react';
 import { preconnect } from 'react-dom';
+import { ThemeProvider } from 'next-themes';
 import { metadata, viewport } from '@/config/seo';
 import renderMap from '@/config/render_mode';
 import './globals.css';
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     crossOrigin: 'anonymous'
   });
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       {/* 指定iOS设备上添加到主屏幕时显示的图标 */}
       <link
         rel="apple-touch-icon"
@@ -39,7 +40,9 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       <link rel="mask-icon" href={`${FILE_URL}user/logo/safari-pinned-tab.svg`} color="#E8343D" />
       {/* 资源加载提示 */}
 
-      <body>{children}</body>
+      <body>
+        <ThemeProvider attribute="class">{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
