@@ -9,14 +9,25 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/success', url));
   }
 
-  // 将原来的 /blog 重写到 404
-  if (pathname === '/blog') {
+  // 定义需要重写的路径映射
+  const rewritePaths: { [key: string]: string } = {
+    '/': '/blog',
+    '/archive': '/blog/archive',
+    '/tags': '/blog/tags',
+    '/about': '/blog/about'
+  };
+
+  // 处理特定的博客页面路由
+  if (rewritePaths[pathname]) {
+    return NextResponse.rewrite(new URL(rewritePaths[pathname], url));
+  }
+
+  // 处理 /blog 路由及其子路由的重写到 404
+  const blogPaths = ['/blog', '/blog/archive', '/blog/tags', '/blog/about'];
+  if (blogPaths.includes(pathname)) {
     return NextResponse.rewrite(new URL('/not-found', url));
   }
-  // 对博客页面的路由进行重写
-  if (pathname === '/') {
-    return NextResponse.rewrite(new URL('/blog', url));
-  }
+
   // 匹配 /post/[id] 路由
   const postMatch = pathname.match(/^\/post\/(\d{18})$/);
   if (postMatch) {
