@@ -20,26 +20,23 @@ const themeConfigMap = {
 
 const SwitchIcons = () => {
   const { theme, setTheme } = useTheme();
-  // 确保组件在客户端渲染时才显示内容
   const [mounted, setMounted] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-
-  const currentThemeConfig =
-    themeConfigMap[
-      // eslint-disable-next-line no-nested-ternary
-      (theme === 'system' || theme === undefined
-        ? isDark
-          ? 'dark'
-          : 'light'
-        : theme) as keyof typeof themeConfigMap
-    ];
 
   useEffect(() => {
     setMounted(true);
-    setIsDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
   }, []);
 
   if (!mounted) return null;
+
+  const currentTheme =
+    // eslint-disable-next-line no-nested-ternary
+    theme === 'system' || theme === undefined
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
+      : theme;
+
+  const currentThemeConfig = themeConfigMap[currentTheme as keyof typeof themeConfigMap];
 
   return (
     <div
