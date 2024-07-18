@@ -7,12 +7,12 @@ import Sun from '@/public/assets/svgs/sun.svg';
 
 const themeConfigMap = {
   dark: {
-    background: 'bg-theme-icon-dark',
-    afterTransform: 'translate-x-5 bg-primary-dark',
+    background: 'bg-theme-btn-dark',
+    afterTransform: 'translate-x-5 bg-sec-bgc-dark',
     icon: <Moon className="w-3 h-3 vt-switch-appearance-moon" />
   },
   light: {
-    background: 'bg-theme-icon-light',
+    background: 'bg-theme-btn-light',
     afterTransform: 'translate-x-0 bg-primary-light',
     icon: <Sun className="w-3 h-3 vt-switch-appearance-sun" />
   }

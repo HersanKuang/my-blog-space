@@ -6,7 +6,7 @@ const BizBlogContent = () => {
   return (
     <div className="flex justify-between content-warp">
       <div className="flex flex-col flex-1 justify-between space-y-2 mr-4">
-        <Link href="/blog/post" className="cursor-pointer">
+        <Link href="/post/572839401826453617" className="cursor-pointer">
           <h2 className="text-md line-clamp-2 font-bold text-sec-text-light dark:text-sec-text-dark">
             {mockArticleData.data.title}
           </h2>

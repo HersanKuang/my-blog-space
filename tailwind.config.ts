@@ -35,6 +35,10 @@ const config: Config = {
         'sec-text': {
           light: '#20232b',
           dark: '#f7f7fb'
+        },
+        'theme-btn': {
+          light: '#f1f1f1',
+          dark: '#2f2f2f'
         }
       },
       fontSize: {
