@@ -1,0 +1,27 @@
+# 忽略 node_modules 目录，因为在 Docker 镜像中会重新安装依赖
+node_modules
+
+# 忽略日志文件
+*.log
+
+# 忽略构建输出目录
+.next
+
+# 忽略 TypeScript 编译输出（如果使用 TypeScript）
+dist
+*.tsbuildinfo
+
+# 忽略测试覆盖率报告
+coverage
+
+# 忽略本地配置文件
+.vscode
+.idea
+
+# 忽略操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 忽略 Git 目录
+.git
+.gitignore
