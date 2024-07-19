@@ -1,12 +1,16 @@
-import '@/public/assets/css/github-markdown-light.css';
+import React from 'react';
 
 interface MarkdownContentProps {
   htmlContent: string;
 }
 
 const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
-  // eslint-disable-next-line react/no-danger
-  return <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="markdown-body" />;
+  return (
+    <>
+      {/* eslint-disable-next-line react/no-danger */}
+      <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="markdown-body" />
+    </>
+  );
 };
 
 export default MarkdownContent;
