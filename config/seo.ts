@@ -5,7 +5,6 @@ const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL, NEXT_PUBLIC_BASE_URL: DOMAIN } = p
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  userScalable: false,
   viewportFit: 'cover'
 };
 

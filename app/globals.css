@@ -107,3 +107,16 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.markdown-body div[class^="language-"] {
+  position: relative;
+  overflow-x: auto;
+}
+
+.markdown-body div[class^="language-"] > span.lang {
+  @apply absolute top-7 right-2 text-gray-500 opacity-75 text-xs font-medium transition-colors duration-300;
+}
+
+.dark .markdown-body div[class^="language-"] > span.lang {
+  @apply text-gray-400;
+}

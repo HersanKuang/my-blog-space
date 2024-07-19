@@ -1,20 +1,73 @@
 import { marked, Renderer, Tokens } from 'marked';
 import DOMPurify from 'isomorphic-dompurify';
-import hljs from 'highlight.js';
+import { createHighlighterCore } from 'shiki/core';
+import getWasm from 'shiki/wasm';
+
+const highlighter = await createHighlighterCore({
+  themes: [import('shiki/themes/one-light.mjs'), import('shiki/themes/one-dark-pro.mjs')],
+  langs: [
+    import('shiki/langs/typescript.mjs'),
+    import('shiki/langs/javascript.mjs'),
+    import('shiki/langs/tsx.mjs'),
+    import('shiki/langs/jsx.mjs'),
+    import('shiki/langs/sh.mjs'),
+    import('shiki/langs/bash.mjs'),
+    import('shiki/langs/json.mjs'),
+    import('shiki/langs/c.mjs'),
+    import('shiki/langs/cmd.mjs'),
+    import('shiki/langs/css.mjs'),
+    import('shiki/langs/docker.mjs'),
+    import('shiki/langs/git-commit.mjs'),
+    import('shiki/langs/go.mjs'),
+    import('shiki/langs/html.mjs'),
+    import('shiki/langs/http.mjs'),
+    import('shiki/langs/java.mjs'),
+    import('shiki/langs/less.mjs'),
+    import('shiki/langs/markdown.mjs'),
+    import('shiki/langs/md.mjs'),
+    import('shiki/langs/nginx.mjs'),
+    import('shiki/langs/postcss.mjs'),
+    import('shiki/langs/regexp.mjs'),
+    import('shiki/langs/py.mjs'),
+    import('shiki/langs/python.mjs'),
+    import('shiki/langs/sass.mjs'),
+    import('shiki/langs/scss.mjs'),
+    import('shiki/langs/shell.mjs'),
+    import('shiki/langs/sql.mjs'),
+    import('shiki/langs/ssh-config.mjs'),
+    import('shiki/langs/zsh.mjs'),
+    import('shiki/langs/vue.mjs'),
+    import('shiki/langs/ts.mjs'),
+    import('shiki/langs/cpp.mjs')
+  ],
+  loadWasm: getWasm
+});
 
 // 自定义渲染器扩展
 const renderer: Partial<Renderer> = {
   code({ text, lang }: Tokens.Code): string {
     // 获取语言，默认使用'plaintext'
-    const language = (lang || '').trim();
-    // 检查语言是否支持，如果不支持则使用'plaintext'
-    const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
-    // 返回高亮后的代码
-    const highlighted = hljs.highlight(text, {
-      language: validLanguage,
-      ignoreIllegals: true
-    }).value;
-    return `<pre><code class="hljs lg-${validLanguage}">${highlighted}</code></pre>`;
+    let language = (lang || '').trim();
+    // 对shiki内部没有支持的语法转化
+    if (language === 'react') language = 'tsx';
+    if (language === 'mysql') language = 'sql';
+    if (language === 'env') language = 'plaintext';
+    // 使用 shiki 生成高亮代码的 HTML，在 node 上运行建议用 codeToHtml
+    const highlightedCode = highlighter.codeToHtml(text, {
+      lang: language,
+      themes: {
+        light: 'one-light',
+        dark: 'one-dark-pro'
+      }
+    });
+
+    return `
+      <div class="language-${language}">
+        <button title="Copy Code" class="copy"></button>
+        <span class="lang">${language}</span>
+        ${highlightedCode}
+      </div>
+    `;
   }
 };
 

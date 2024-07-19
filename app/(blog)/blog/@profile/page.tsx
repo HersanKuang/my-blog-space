@@ -32,9 +32,9 @@ const Profile = () => {
       </div>
       <div className="common-box-warp relative h-52 !rounded-t-none">
         <div className="flex items-center justify-center flex-col mt-4 space-y-2.5">
-          <Image src={User} alt="profile" quality={75} width={75} height={75} className="widget-author-avatar rounded-full" />
-          <h4 className="text-lg text-text-light dark:text-text-dark">Hersan</h4>
-          <p className="text-sm text-text-light dark:text-text-dark opacity-60">热爱编程，开源社区活跃参与者</p>
+          <Image src={User} alt="profile" quality={50} width={75} height={75} className="widget-author-avatar rounded-full" />
+          <span className="text-lg font-medium text-text-light dark:text-text-dark">Hersan</span>
+          <p className="text-sm text-[#6a7485] dark:text-[#cfcfd1]">热爱编程，开源社区活跃参与者</p>
         </div>
         <div className="flex justify-evenly flex-row mt-8">
           {options.map(item => (

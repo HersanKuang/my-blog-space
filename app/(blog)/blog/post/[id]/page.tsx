@@ -1,12 +1,12 @@
-import MarkdownContent from './markdown_content';
+import MarkdownContent from './content';
 import markdownToHtml from '@/utils/markdown_parser';
 import readMdFile from '@/utils/read_md_file';
 
 const MarkdownPage = () => {
-  const content = markdownToHtml(readMdFile('./public/assets/md/Volta常用命令.md'));
+  const content = markdownToHtml(readMdFile('./public/assets/md/Node服务器部署.md'));
   return (
     <div className="content-warp box-border flex-1">
-      <MarkdownContent content={content} />
+      <MarkdownContent htmlContent={content} />
     </div>
   );
 };

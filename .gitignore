@@ -8,6 +8,9 @@ dist
 # 项目的依赖文件目录
 node_modules
 
+# markdown 文件
+public/assets/**/*.md
+
 # 忽略本地环境变量文件
 .env.local
 .env.*.local

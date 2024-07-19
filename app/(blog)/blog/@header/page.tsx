@@ -23,7 +23,7 @@ const HeaderSection = () => {
           >
             Hersan Space
           </Link>
-          <div className="hidden sm:flex pl-8 space-x-2 h-full">
+          <nav className="hidden sm:flex pl-8 space-x-2 h-full">
             {headerRouteLinks.map(route => (
               <Link
                 href={route.path}
@@ -33,12 +33,12 @@ const HeaderSection = () => {
                 {route.name}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
         <div className="flex items-center space-x-4 mr-6 h-full">
           <SwitchIcons />
           {headerMediaLinks.map(item => (
-            <Link key={item.path} href={item.path}>
+            <Link key={item.path} href={item.path} aria-label={item.ariaLabel}>
               {mediaMap[item.name]}
             </Link>
           ))}
