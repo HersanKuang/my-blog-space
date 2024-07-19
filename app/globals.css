@@ -12,6 +12,13 @@
   --foreground: white;
 }
 
+/* shiki 暗色主题的样式，使用过 js 加到元素的内联样式中的，这里是直接获取，实际运行并不会有问题 */
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
 .common-box-warp {
   @apply bg-thr-bgc-light dark:bg-thr-bgc-dark p-5 shadow-md rounded-lg;
 }
