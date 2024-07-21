@@ -1,17 +1,24 @@
 # 使用 Node.js 20 版本的官方镜像
 FROM node:20
 
+# 设置构建参数
+ARG NPM_REGISTRY
+ENV NPM_CONFIG_REGISTRY=${NPM_REGISTRY}
+
 # 设置工作目录
 WORKDIR /app
 
-# 安装 pnpm
-RUN npm config set registry https://registry.npmmirror.com
-RUN npm install -g pnpm
-RUN pnpm config set registry https://registry.npmmirror.com
+# 配置 npm 和安装 pnpm 和 pm2
+RUN npm config set registry ${NPM_CONFIG_REGISTRY} \
+    && echo "npm registry:" \
+    && npm config get registry \
+    && npm install -g pnpm pm2 \
+    && pnpm config set registry ${NPM_CONFIG_REGISTRY} \
+    && echo "pnpm registry:" \
+    && pnpm config get registry
 
 # 复制 package.json 和 pnpm-lock.yaml
-COPY package.json ./
-COPY pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml ./
 
 # 安装依赖
 RUN pnpm install
@@ -23,7 +30,7 @@ COPY . .
 RUN pnpm build
 
 # 暴露端口
-EXPOSE 3000
+EXPOSE 9090
 
 # 启动 Next.js 应用
 CMD ["pnpm", "start"]
