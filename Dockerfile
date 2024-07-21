@@ -12,7 +12,7 @@ WORKDIR /app
 RUN npm config set registry ${NPM_CONFIG_REGISTRY} \
     && echo "npm registry:" \
     && npm config get registry \
-    && npm install -g pnpm pm2 \
+    && npm install -g pnpm \
     && pnpm config set registry ${NPM_CONFIG_REGISTRY} \
     && echo "pnpm registry:" \
     && pnpm config get registry

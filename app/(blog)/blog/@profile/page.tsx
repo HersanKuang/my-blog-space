@@ -7,7 +7,7 @@ const options = [
   { label: '分类', value: 0 }
 ]
 
-const coverImage = [
+const albumImage = [
   '0960',
   '9232',
   '7069',
@@ -17,15 +17,21 @@ const coverImage = [
 const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL } = process.env;
 
 const Profile = () => {
-  const randomIndex = Math.floor(Math.random() * coverImage.length);
+  // 获取当前日期的时间戳
+  const date = new Date();
+  const currentDate = date.toISOString().split('T')[0]; // 只保留日期部分
+  const seed = Number(currentDate.split('-').join('')); // 将日期部分转换为数字
+
+  // 使用固定的随机数来选择图片
+  const selectedImage = albumImage[seed % albumImage.length];
   return (
     <>
       <div className="common-box-warp relative h-52 overflow-hidden !rounded-b-none">
         <Image
-          src={`${FILE_URL}user/image/IMG_${coverImage[randomIndex]}.webp`}
+          src={`${FILE_URL}user/image/IMG_${selectedImage}.webp`}
           sizes="(max-width: 600px) 100vw, (min-width: 768px) 24rem, 14.4rem"
           quality="20"
-          alt="cover"
+          alt="album"
           priority
           fill
         />

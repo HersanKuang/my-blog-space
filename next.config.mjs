@@ -36,7 +36,8 @@ const sharedConfig = {
         protocol: NEXT_PUBLIC_HOST,
         hostname: NEXT_PUBLIC_HOSTNAME
       }
-    ]
+    ],
+    minimumCacheTTL: 600 // 设置图片的缓存时间为 600 秒
   },
   experimental: {
     // 只会加载实际使用的模块
