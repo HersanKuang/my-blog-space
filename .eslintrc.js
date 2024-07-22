@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 0, // 关闭不能使用断言
     '@typescript-eslint/no-shadow': 2, // 开启 TS 全局变量和局部变量同名的报错警告
     '@typescript-eslint/explicit-module-boundary-types': 0, // 关闭 TS 必须书写函数返回值类型的警告
+    'class-methods-use-this': 0,
 
     'no-console': 0, // 关闭 console 警告
     'no-debugger': process.env.NODE_ENV === 'production' ? 1 : 0, // debugger 的设置

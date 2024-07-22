@@ -8,7 +8,7 @@ ENV NPM_CONFIG_REGISTRY=${NPM_REGISTRY}
 # 设置工作目录
 WORKDIR /app
 
-# 配置 npm 和安装 pnpm 和 pm2
+# 配置 npm 和安装 pnpm
 RUN npm config set registry ${NPM_CONFIG_REGISTRY} \
     && echo "npm registry:" \
     && npm config get registry \
