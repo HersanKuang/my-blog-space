@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import MarkdownContent from './content';
 import markdownToHtml from '@/utils/markdown_parser';
 import readMdFile from '@/utils/read_md_file';
-import { BlogListData, blogListData } from '@/components/biz_blog_content';
 import { getBlogList } from '@/api/blog';
+import { blogListData, BlogListData } from '@/app/(blog)/blog/page';
 
 interface MarkdownPageProps {
   params: { id: string };
@@ -12,7 +12,6 @@ interface MarkdownPageProps {
 const { NEXT_PUBLIC_BASE_URL, ADMIN_ID } = process.env;
 
 export const dynamicParams = false;
-
 export const metadata: Metadata = {
   title: '',
   alternates: {
@@ -20,6 +19,7 @@ export const metadata: Metadata = {
   }
 };
 
+// 生成静态id参数
 export async function generateStaticParams() {
   const { data } = await getBlogList<BlogListData>(ADMIN_ID!);
   return (data?.list || []).map(item => ({
@@ -29,6 +29,7 @@ export async function generateStaticParams() {
 
 const MarkdownPage = ({ params }: MarkdownPageProps) => {
   const { id } = params;
+  // TODO: 根据id获取后端返回的md数据
   const pageContent = (blogListData?.list || []).find(item => item.id === id);
   metadata.title = pageContent.title;
   metadata.alternates!.canonical = `${NEXT_PUBLIC_BASE_URL}post/${id}`;

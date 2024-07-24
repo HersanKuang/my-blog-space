@@ -1,7 +1,14 @@
 import { Metadata } from 'next';
-import BizBlogContent from '@/components/biz_blog_content';
+import * as process from 'node:process';
+import { getBlogList } from '@/api/blog';
+import BizBlogCard from '@/components/biz_blog_card';
 
-const { NEXT_PUBLIC_BASE_URL } = process.env;
+export interface BlogListData {
+  list: Array<any>;
+  totalCount: number;
+}
+
+const { NEXT_PUBLIC_BASE_URL, ADMIN_ID } = process.env;
 
 export const metadata: Metadata = {
   title: '首页',
@@ -10,10 +17,15 @@ export const metadata: Metadata = {
   }
 };
 
+export const { data: blogListData } = await getBlogList<BlogListData>(ADMIN_ID!, {
+  offset: 0,
+  size: 20
+});
+
 const BlogPage = () => {
   return (
     <div className="box-border flex-1">
-      <BizBlogContent />
+      {blogListData && blogListData.list.map(blog => <BizBlogCard blog={blog} key={blog.id} />)}
     </div>
   );
 };
