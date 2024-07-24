@@ -28,13 +28,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.rewrite(new URL('/not-found', url));
   }
 
-  // 匹配 /post/[id] 路由
-  const postMatch = pathname.match(/^\/post\/(\d{18})$/);
-  if (postMatch) {
-    const blogId = postMatch[1];
-    return NextResponse.rewrite(new URL(`/blog/post/${blogId}`, url));
-  }
-
   // 其他路径放行
   return NextResponse.next();
 }

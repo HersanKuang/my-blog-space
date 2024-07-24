@@ -6,7 +6,7 @@ const { NEXT_PUBLIC_BASE_URL } = process.env;
 export const metadata: Metadata = {
   title: '首页',
   alternates: {
-    canonical: `${NEXT_PUBLIC_BASE_URL}blog`
+    canonical: `${NEXT_PUBLIC_BASE_URL}`
   }
 };
 

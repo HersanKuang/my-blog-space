@@ -3,7 +3,7 @@ import Link from 'next/link';
 import * as process from 'node:process';
 import { getBlogList } from '@/api/blog';
 
-interface BlogListData {
+export interface BlogListData {
   list: Array<any>;
   totalCount: number;
 }
@@ -21,7 +21,7 @@ const BizBlogContent = () => {
     blogListData.list.map(blog => (
       <div key={blog.id} className="flex justify-between content-warp">
         <div className="flex flex-col flex-1 justify-between space-y-2 mr-4">
-          <Link href={`/post/${blog.id}`} className="cursor-pointer">
+          <Link href={`/blog/post/${blog.id}`} className="cursor-pointer">
             <h2 className="text-md line-clamp-2 font-bold text-sec-text-light dark:text-sec-text-dark">
               {blog.title}
             </h2>
