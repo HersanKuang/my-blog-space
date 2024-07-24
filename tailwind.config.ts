@@ -62,6 +62,7 @@ const config: Config = {
         xl: '1024px'
       },
       spacing: {
+        '0.05': '0.05rem',
         '4.5': '1.125rem',
         '74rem': '74rem',
         '62rem': '62rem'

@@ -40,7 +40,7 @@ const SwitchIcons = () => {
 
   return (
     <div
-      className={`w-10 h-5 flex items-center rounded-full px-0.5 cursor-pointer transition-colors duration-300 border border-gray-300 border-opacity-50 ${currentThemeConfig.background}`}
+      className={`w-10 h-5 flex items-center rounded-full px-0.05 cursor-pointer transition-colors duration-300 border border-gray-300 border-opacity-50 ${currentThemeConfig.background}`}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       <div
