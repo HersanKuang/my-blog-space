@@ -4,20 +4,21 @@ import * as process from 'node:process';
 import { getBlogList } from '@/api/blog';
 
 interface BlogListData {
-  list: Array<Record<string, any>>;
+  list: Array<any>;
   totalCount: number;
 }
 
 const { ADMIN_ID: userId } = process.env;
 
-const BizBlogContent = async () => {
-  const { data } = await getBlogList<BlogListData>(userId!, {
-    offset: 0,
-    size: 20
-  });
+export const { data: blogListData } = await getBlogList<BlogListData>(userId!, {
+  offset: 0,
+  size: 20
+});
+
+const BizBlogContent = () => {
   return (
-    data &&
-    data.list.map(blog => (
+    blogListData &&
+    blogListData.list.map(blog => (
       <div key={blog.id} className="flex justify-between content-warp">
         <div className="flex flex-col flex-1 justify-between space-y-2 mr-4">
           <Link href={`/post/${blog.id}`} className="cursor-pointer">

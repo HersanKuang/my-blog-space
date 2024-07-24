@@ -1,11 +1,6 @@
 import Image from 'next/image';
 import User from '@/public/assets/images/profile.jpg'
-
-const options = [
-  { label: '文章', value: 1 },
-  { label: '标签', value: 0 },
-  { label: '分类', value: 0 }
-]
+import { blogListData } from '@/components/biz_blog_content';
 
 const albumImage = [
   '0960',
@@ -23,6 +18,13 @@ const Profile = () => {
 
   // 使用固定的随机数来选择图片
   const selectedImage = albumImage[seed % albumImage.length];
+
+  const options = [
+    { label: '文章', value: blogListData?.totalCount },
+    { label: '标签', value: 0 },
+    { label: '分类', value: 0 }
+  ]
+
   return (
     <>
       <div className="common-box-warp relative h-52 overflow-hidden !rounded-b-none">
