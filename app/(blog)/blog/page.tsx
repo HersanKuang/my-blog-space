@@ -3,11 +3,6 @@ import * as process from 'node:process';
 import { getBlogList } from '@/api/blog';
 import BizBlogCard from '@/components/biz_blog_card';
 
-export interface BlogListData {
-  list: Array<any>;
-  totalCount: number;
-}
-
 const { NEXT_PUBLIC_BASE_URL, ADMIN_ID } = process.env;
 
 export const metadata: Metadata = {

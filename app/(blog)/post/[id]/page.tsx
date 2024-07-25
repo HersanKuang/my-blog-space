@@ -1,9 +1,6 @@
 import { Metadata } from 'next';
-import MarkdownContent from './content';
 import markdownToHtml from '@/utils/markdown_parser';
-import readMdFile from '@/utils/read_md_file';
-import { getBlogList } from '@/api/blog';
-import { blogListData, BlogListData } from '@/app/(blog)/blog/page';
+import { getBlogDetail, getBlogList } from '@/api/blog';
 
 interface MarkdownPageProps {
   params: { id: string };
@@ -11,7 +8,9 @@ interface MarkdownPageProps {
 
 const { NEXT_PUBLIC_BASE_URL, ADMIN_ID } = process.env;
 
+// 校验所有动态路由参数：id
 export const dynamicParams = false;
+// 设置页面的静态元数据
 export const metadata: Metadata = {
   title: '',
   alternates: {
@@ -27,17 +26,17 @@ export async function generateStaticParams() {
   }));
 }
 
-const MarkdownPage = ({ params }: MarkdownPageProps) => {
+const MarkdownPage = async ({ params }: MarkdownPageProps) => {
   const { id } = params;
-  // TODO: 根据id获取后端返回的md数据
-  const pageContent = (blogListData?.list || []).find(item => item.id === id);
-  metadata.title = pageContent.title;
+  const { data } = await getBlogDetail<BlogDetailData>(id);
+  metadata.title = data?.title;
   metadata.alternates!.canonical = `${NEXT_PUBLIC_BASE_URL}post/${id}`;
 
-  const content = markdownToHtml(readMdFile('./public/assets/md/Volta常用命令.md'));
+  const htmlContent = markdownToHtml(data!.content);
   return (
     <div className="content-warp box-border flex-1">
-      <MarkdownContent htmlContent={content} />
+      {/* eslint-disable-next-line react/no-danger */}
+      <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="markdown-body" />
     </div>
   );
 };

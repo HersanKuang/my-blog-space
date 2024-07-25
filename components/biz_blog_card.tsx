@@ -23,7 +23,7 @@ const BizBlogCard = ({ blog }: BizBlogCardProps) => {
           <div className="text-sm text-[#606060] dark:text-[#b0b0b0]">{blog.createAt}</div>
         </div>
       </div>
-      <Image src={blog.ablum} width="200" height="128" quality={100} alt="cover" />
+      <Image src={blog.album} width="200" height="128" quality={100} alt="album" />
     </div>
   );
 };
