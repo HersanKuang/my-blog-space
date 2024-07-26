@@ -10,7 +10,7 @@ const config = {
         cssDeclarationSorter: true,
         // 尽可能减少CSS calc 表达式
         calc: true,
-        // 最小化字体属性
+        // 在hex，hsl，rgb和CSS关键字之间进行转换，以产生最小的等效颜色值
         colormin: true,
         // 等效转化压缩长度、时间和角度
         convertValues: true,

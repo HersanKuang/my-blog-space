@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss';
 import { PluginAPI } from 'tailwindcss/types/config';
 
 const config: Config = {
-  darkMode: 'class', // 启用深色模式
+  darkMode: 'class',
   content: ['./components/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {

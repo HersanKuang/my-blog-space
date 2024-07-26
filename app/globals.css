@@ -84,10 +84,10 @@ html.dark .shiki span {
 }
 
 .vt-switch-appearance-sun {
-  fill: #292929;
+  fill: rgba(60, 60, 60, .7);
 }
 .vt-switch-appearance-moon {
-  fill: #efefef;
+  fill: rgba(255, 255, 255, .87);;
 }
 
 .content-warp > .markdown-body {

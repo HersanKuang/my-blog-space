@@ -37,8 +37,8 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 0, // 关闭不能使用断言
     '@typescript-eslint/no-shadow': 2, // 开启 TS 全局变量和局部变量同名的报错警告
     '@typescript-eslint/explicit-module-boundary-types': 0, // 关闭 TS 必须书写函数返回值类型的警告
-    'class-methods-use-this': 0,
-
+    'class-methods-use-this': 0, // 确保类方法在使用 this 关键字时才被定义
+    'no-empty': 0, // 关闭使用空作用域
     'no-console': 0, // 关闭 console 警告
     'no-debugger': process.env.NODE_ENV === 'production' ? 1 : 0, // debugger 的设置
     'no-bitwise': 0, // 关闭不能使用位运算
@@ -65,10 +65,10 @@ module.exports = {
     'import/prefer-default-export': 0, // 关闭模块文件只有一个元素导出时, 必须使用默认导出的限制
     'no-underscore-dangle': 0, // 关闭不能使用 '_' 下划线命名的规则
     'no-restricted-exports': 0, // 关闭不能使用 default 作为导出名
-
     radix: 0, // 关闭 parseInt 需要传入第二参数的限制
     indent: [2, 2, { SwitchCase: 1 }], // 配置缩进规则, 必须是缩进 2 个空格
     'operator-linebreak': 0, // 关闭拼接符限制
+    'jsx-a11y/control-has-associated-label': 0, // 关闭可交互控件相关联标签
 
     // React 相关规则
     'react/jsx-indent': [2, 2], // JSX 必须缩进 2 个空格
@@ -86,7 +86,7 @@ module.exports = {
     'react/no-invalid-html-attribute': 0, // 关闭检查标准的HTML rel属性值的限制
     'react/button-has-type': 0, // 关闭按钮的类型检查
     'react/react-in-jsx-scope': 0, // 关闭必须引入的 React 的 jsx 作用域
-    'react/function-component-definition': 0
+    'react/function-component-definition': 0 // 关闭统一函数组件的定义方式
   },
   ignorePatterns: ['.eslintrc.js'] // 忽略 ESLint 检查的文件
 };

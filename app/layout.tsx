@@ -1,6 +1,6 @@
 import React from 'react';
 import { preconnect } from 'react-dom';
-import { ThemeProvider } from 'next-themes';
+import Script from 'next/script';
 import { metadata, viewport } from '@/config/seo';
 import renderMap from '@/config/render_mode';
 import './globals.css';
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     crossOrigin: 'anonymous'
   });
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
+    <html lang="zh-CN" dir="ltr">
       {/* 指定iOS设备上添加到主屏幕时显示的图标 */}
       <link
         rel="apple-touch-icon"
@@ -41,7 +41,8 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       {/* 资源加载提示 */}
 
       <body>
-        <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <Script src="/assets/js/theme.js" strategy="afterInteractive" />
+        {children}
         <link rel="stylesheet" href="/assets/css/github-markdown.css" />
       </body>
     </html>

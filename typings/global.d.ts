@@ -1,3 +1,11 @@
+type Theme = 'dark' | 'light';
+
+// 扩展全局 Window 接口
+interface Window {
+  __theme: Theme;
+  __setPreferredTheme: (theme: Theme) => void;
+}
+
 declare interface BlogDetailData {
   id: string;
   userId: string;

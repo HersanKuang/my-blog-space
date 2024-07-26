@@ -16,7 +16,7 @@ export const headerMediaLinks = [
   },
   {
     name: 'github',
-    ariaLabel: '点击前往Github',
+    ariaLabel: '点击前往GitHub',
     path: 'https://github.com/HersanKuang'
   }
 ];
