@@ -42,6 +42,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 
       <body>
         <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <link rel="stylesheet" href="/assets/css/github-markdown.css" />
       </body>
     </html>
   );

@@ -18,7 +18,7 @@ const themeConfigMap = {
   }
 };
 
-const SwitchIcons = () => {
+const ThemeIcons = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -52,4 +52,4 @@ const SwitchIcons = () => {
   );
 };
 
-export default SwitchIcons;
+export default ThemeIcons;

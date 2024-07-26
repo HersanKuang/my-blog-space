@@ -104,17 +104,6 @@ html.dark .shiki span {
   }
 }
 
-/*  overflow-y-auto no-scrollbar overflow-auto */
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
 .markdown-body div[class^="language-"] {
   position: relative;
   overflow-x: auto;
