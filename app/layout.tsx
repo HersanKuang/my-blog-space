@@ -1,8 +1,8 @@
-/* eslint-disable react/no-danger */
 import React from 'react';
 import { preconnect } from 'react-dom';
 import { metadata, viewport } from '@/config/seo';
 import renderMap from '@/config/render_mode';
+import ThemeProvider from '@/config/theme_provider';
 import './globals.css';
 
 interface RootLayoutProps {
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     crossOrigin: 'anonymous'
   });
   return (
-    <html lang="zh-CN" dir="ltr">
+    <html lang="zh-hans" dir="ltr">
       {/* 指定iOS设备上添加到主屏幕时显示的图标 */}
       <link
         rel="apple-touch-icon"
@@ -41,55 +41,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       {/* 资源加载提示 */}
 
       <body>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function () {
-                function setTheme(newTheme) {
-                  window.__theme = newTheme;
-                  if (newTheme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                  } else if (newTheme === 'light') {
-                    document.documentElement.classList.remove('dark');
-                  }
-                }
-
-                let preferredTheme;
-                try {
-                  preferredTheme = localStorage.getItem('theme');
-                } catch (err) {}
-
-                window.__setPreferredTheme = function (newTheme) {
-                  preferredTheme = newTheme;
-                  setTheme(newTheme);
-                  try {
-                    localStorage.setItem('theme', newTheme);
-                  } catch (err) {}
-                };
-
-                let initialTheme = preferredTheme;
-                const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-                if (!initialTheme) {
-                  initialTheme = darkQuery.matches ? 'dark' : 'light';
-                }
-                setTheme(initialTheme);
-
-                darkQuery.addEventListener('change', function (e) {
-                  if (!preferredTheme) {
-                    setTheme(e.matches ? 'dark' : 'light');
-                  }
-                });
-
-                document.documentElement.classList.add(
-                  window.navigator.platform.includes('Mac') ? 'platform-mac' : 'platform-win'
-                );
-              })();
-            `
-          }}
-        />
-        {children}
-        <link rel="stylesheet" href="/assets/css/github-markdown.css" />
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
