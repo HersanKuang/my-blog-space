@@ -12,7 +12,7 @@ const ThemeIcons = () => {
   return (
     <button
       type="button"
-      aria-label="切换浅色模式"
+      aria-label="切换深色模式"
       onClick={onClick}
       className="w-10 h-5 flex items-center rounded-full px-0.05 cursor-pointer transition-colors duration-250 border border-gray-300 border-opacity-50 bg-theme-btn-light dark:bg-theme-btn-dark"
     >

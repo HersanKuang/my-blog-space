@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: white;
-  --foreground: black;
-}
-
-[data-theme='dark'] {
-  --background: black;
-  --foreground: white;
-}
-
 /* shiki 暗色主题的样式，使用过 js 加到元素的内联样式中的，这里是直接获取，实际运行并不会有问题 */
 html.dark .shiki,
 html.dark .shiki span {
@@ -77,10 +67,6 @@ html.dark .shiki span {
   .content-warp > .markdown-body {
     padding: 20px !important;
   }
-}
-
-#theme-toggle-icon.translate-theme {
-  transform: translateX(1.25rem);
 }
 
 .vt-switch-appearance-sun {
