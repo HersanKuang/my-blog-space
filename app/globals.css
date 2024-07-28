@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 /* shiki 暗色主题的样式，使用过 js 加到元素的内联样式中的，这里是直接获取，实际运行并不会有问题 */
 html.dark .shiki,
 html.dark .shiki span {

@@ -5,10 +5,11 @@ interface ThemeProviderProps {
   children: React.ReactNode;
 }
 
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
+const Provider = ({ children }: ThemeProviderProps) => {
   return (
     <>
       <script
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: `
           (function () {
@@ -55,10 +56,10 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
          `
         }}
       />
-      {children}
       <link rel="stylesheet" href="/assets/css/github-markdown.css" />
+      {children}
     </>
   );
 };
 
-export default ThemeProvider;
+export default Provider;

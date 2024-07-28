@@ -24,7 +24,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     crossOrigin: 'anonymous'
   });
   return (
-    <html lang="zh-hans" dir="ltr">
+    <html lang="zh-hans" dir="ltr" suppressHydrationWarning>
       {/* 指定iOS设备上添加到主屏幕时显示的图标 */}
       <link
         rel="apple-touch-icon"
