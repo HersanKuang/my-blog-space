@@ -104,9 +104,17 @@ html.dark .shiki span {
 }
 
 .markdown-body div[class^="language-"] > span.lang {
-  @apply absolute top-7 right-2 text-gray-500 opacity-75 text-xs font-medium transition-colors duration-300;
+  @apply absolute top-1 right-2 text-gray-500 opacity-75 text-xs font-medium transition-colors duration-300;
 }
 
 .dark .markdown-body div[class^="language-"] > span.lang {
   @apply text-gray-400;
+}
+
+.markdown-body ul {
+  list-style-type: disc;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
 }

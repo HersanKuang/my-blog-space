@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { Metadata } from 'next';
 import markdownToHtml from '@/utils/markdown_parser';
 import { getBlogDetail, getBlogList } from '@/api/blog';
@@ -40,7 +41,6 @@ const MarkdownPage = async ({ params }: MarkdownPageProps) => {
   const htmlContent = markdownToHtml(data!.content);
   return (
     <div className="content-warp box-border flex-1">
-      {/* eslint-disable-next-line react/no-danger */}
       <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="markdown-body" />
     </div>
   );
