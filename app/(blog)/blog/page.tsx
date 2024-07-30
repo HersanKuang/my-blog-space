@@ -1,18 +1,16 @@
 import { Metadata } from 'next';
-import * as process from 'node:process';
 import { getBlogList } from '@/api/blog';
 import BizBlogCard from '@/components/biz_blog_card';
-
-const { NEXT_PUBLIC_BASE_URL, ADMIN_ID } = process.env;
+import { _ADMIN_ID, DOMAIN } from '@/config/next.env';
 
 export const metadata: Metadata = {
   title: '首页',
   alternates: {
-    canonical: `${NEXT_PUBLIC_BASE_URL}`
+    canonical: `${DOMAIN}`
   }
 };
 
-export const { data: blogListData } = await getBlogList<BlogListData>(ADMIN_ID!, {
+export const { data: blogListData } = await getBlogList<BlogListData>(_ADMIN_ID!, {
   offset: 0,
   size: 20
 });

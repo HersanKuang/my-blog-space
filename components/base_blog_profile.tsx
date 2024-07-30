@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import User from '@/public/assets/images/profile.jpg';
 import { blogListData } from '@/app/(blog)/blog/page';
+import { FILE_URL } from '@/config/next.env';
 
 const albumImage = ['0960', '9232', '7069', '3542'];
-
-const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL } = process.env;
 
 const BaseBlogProfile = () => {
   // 获取当前日期的时间戳

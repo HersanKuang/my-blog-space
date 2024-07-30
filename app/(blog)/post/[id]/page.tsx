@@ -2,6 +2,7 @@
 import { Metadata } from 'next';
 import markdownToHtml from '@/utils/markdown_parser';
 import { getBlogDetail, getBlogList } from '@/api/blog';
+import { _ADMIN_ID, DOMAIN } from '@/config/next.env';
 
 interface MarkdownPageProps {
   params: { id: string };
@@ -9,8 +10,6 @@ interface MarkdownPageProps {
 interface GenerateMetadata {
   params: { id: string };
 }
-
-const { NEXT_PUBLIC_BASE_URL, ADMIN_ID } = process.env;
 
 // 校验所有动态路由参数：id
 export const dynamicParams = false;
@@ -21,14 +20,14 @@ export async function generateMetadata({ params }: GenerateMetadata): Promise<Me
   return {
     title: data?.title,
     alternates: {
-      canonical: `${NEXT_PUBLIC_BASE_URL}post/${blogId}`
+      canonical: `${DOMAIN}post/${blogId}`
     }
   };
 }
 
 // 生成静态id参数
 export async function generateStaticParams() {
-  const { data } = await getBlogList<BlogListData>(ADMIN_ID!);
+  const { data } = await getBlogList<BlogListData>(_ADMIN_ID!);
   return (data?.list || []).map(item => ({
     id: item.id
   }));

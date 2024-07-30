@@ -1,6 +1,4 @@
-import * as process from 'node:process';
+import { _SERVER_URL } from '@/config/next.env';
 
-const { SERVER_URL } = process.env;
-
-export const BASE_URL = `${SERVER_URL}:9000`;
+export const BASE_URL = `${_SERVER_URL}:9000`;
 export const TIME_OUT = 1000 * 60;

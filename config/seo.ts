@@ -1,6 +1,5 @@
 import { Metadata, Viewport } from 'next';
-
-const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL, NEXT_PUBLIC_BASE_URL: DOMAIN } = process.env;
+import { DOMAIN, FILE_URL } from './next.env';
 
 export const viewport: Viewport = {
   width: 'device-width',

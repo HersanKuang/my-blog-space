@@ -3,24 +3,23 @@ import { preconnect } from 'react-dom';
 import { metadata, viewport } from '@/config/seo';
 import renderMap from '@/config/render_mode';
 import ThemeProvider from '@/config/theme_provider';
+import { _RENDER_MODE, FILE_URL, HOSTNAME } from '@/config/next.env';
 import './globals.css';
 
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-const { NEXT_PUBLIC_FILE_VISIT_URL: FILE_URL, NEXT_PUBLIC_HOSTNAME, RENDER_MODE } = process.env;
-
 // SEO
 export { viewport, metadata };
 // 配置渲染模式（prod: isr, dev: ssr）
-const renderConfig = renderMap[RENDER_MODE as keyof typeof renderMap];
+const renderConfig = renderMap[_RENDER_MODE as keyof typeof renderMap];
 export const { dynamic, dynamicParams, revalidate, fetchCache, runtime, preferredRegion } =
   renderConfig;
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   // 进行预连接
-  preconnect(`//${NEXT_PUBLIC_HOSTNAME}/`, {
+  preconnect(`//${HOSTNAME}/`, {
     crossOrigin: 'anonymous'
   });
   return (
