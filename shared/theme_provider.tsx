@@ -56,7 +56,7 @@ const Provider = ({ children }: ThemeProviderProps) => {
          `
         }}
       />
-      <link rel="stylesheet" href="/assets/css/github-markdown.css" />
+      <link rel="stylesheet" href="/assets/css/as84e1ea77rfpdky.css" />
       {children}
     </>
   );

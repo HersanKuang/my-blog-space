@@ -14,7 +14,8 @@ html.dark {
 html.dark .shiki,
 html.dark .shiki span {
   color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
+  /*background-color: var(--shiki-dark-bg) !important;*/
+  background-color: #1e1e1e !important;
 }
 
 .common-box-warp {
@@ -65,16 +66,8 @@ html.dark .shiki span {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  .content-warp > .markdown-body {
-    padding: 20px !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .content-warp > .markdown-body {
-    padding: 20px !important;
-  }
+.content-warp > .markdown-body {
+  @apply !p-5;
 }
 
 .vt-switch-appearance-sun {
@@ -89,7 +82,6 @@ html.dark .shiki span {
   min-width: 200px;
   max-width: 980px;
   margin: 0 auto;
-  padding: 45px;
 }
 
 @media (max-width: 767px) {
@@ -104,11 +96,41 @@ html.dark .shiki span {
 }
 
 .markdown-body div[class^="language-"] > span.lang {
-  @apply absolute top-1 right-2 text-gray-500 opacity-75 text-xs font-medium transition-colors duration-300;
+  @apply absolute top-1 right-2 z-10 text-gray-500 opacity-75 text-xs font-medium transition-colors duration-300;
 }
 
 .dark .markdown-body div[class^="language-"] > span.lang {
   @apply text-gray-400;
+}
+
+.markdown-body div[class^="language-"] > button.copy {
+  @apply absolute top-1 right-1 z-20 block w-10 h-10 opacity-0 rounded cursor-pointer bg-center bg-[#292c33] bg-[length:20px] bg-no-repeat transition-opacity duration-300;
+}
+
+.markdown-body div[class^="language-"]:hover > button.copy {
+  @apply opacity-100 bg-[url('/assets/svgs/copy.svg')];
+}
+
+.markdown-body div[class^="language-"]:hover > button.copy,
+.markdown-body div[class^="language-"] > button.copy.copied {
+  @apply bg-[#343848];
+}
+
+.markdown-body div[class^="language-"] > button.copy:focus {
+  opacity: 1;
+}
+
+.markdown-body div[class^="language-"] > button.copy:focus+span.lang {
+  @apply opacity-0;
+}
+
+.markdown-body div[class^="language-"] > button.copy.copied {
+  @apply rounded-tr-md rounded-br-md rounded-tl-none rounded-bl-none bg-[url('/assets/svgs/copied.svg')];
+}
+
+.markdown-body div[class^="language-"] > button.copy.copied:before {
+  content: 'Copied';
+  @apply relative -left-16 flex items-center justify-center rounded-tl-md rounded-bl-md w-16 h-10 text-[#a2a3a9] text-center text-[12px] font-medium whitespace-nowrap bg-[#343848];
 }
 
 .markdown-body ul {

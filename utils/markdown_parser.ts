@@ -45,13 +45,17 @@ const highlighter = await createHighlighterCore({
 
 // 自定义渲染器扩展
 const renderer: Partial<Renderer> = {
+  codespan({ text }: Tokens.Codespan): string {
+    return `<code class="codespan">${text}</code>`;
+  },
   code({ text, lang }: Tokens.Code): string {
     // 获取语言，默认使用'plaintext'
     let language = (lang || '').trim();
     // 对shiki内部没有支持的语法转化
     if (language === 'react') language = 'tsx';
-    if (language === 'mysql') language = 'sql';
-    if (language === 'env') language = 'plaintext';
+    else if (language === 'mysql') language = 'sql';
+    else if (language === 'ejs') language = 'js';
+    else if (language === 'env') language = 'plaintext';
     // 使用 shiki 生成高亮代码的 HTML，在 node 上运行建议用 codeToHtml
     const highlightedCode = highlighter.codeToHtml(text, {
       lang: language,
@@ -62,7 +66,7 @@ const renderer: Partial<Renderer> = {
     });
     return `
       <div class="language-${language}">
-      <!-- <button title="Copy Code" class="copy"></button>-->
+        <!-- <button title="Copy Code" class="copy"></button> -->
         <span class="lang">${language}</span>
         ${highlightedCode}
       </div>
