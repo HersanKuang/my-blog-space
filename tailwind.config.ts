@@ -66,6 +66,9 @@ const config: Config = {
         '4.5': '1.125rem',
         '74rem': '74rem',
         '62rem': '62rem'
+      },
+      transitionDuration: {
+        '400': '400ms'
       }
     }
   },

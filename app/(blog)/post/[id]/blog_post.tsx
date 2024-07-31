@@ -42,14 +42,15 @@ const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
         try {
           document.execCommand('copy');
           button.classList.add('copied');
+          button.focus();
           setTimeout(() => {
             button.classList.remove('copied');
             button.blur();
+            document.body.removeChild(textArea);
           }, 2000);
         } catch (err) {
-          console.error('Unable to copy using document.execCommand', err);
+          document.body.removeChild(textArea);
         }
-        document.body.removeChild(textArea);
       }
     };
 

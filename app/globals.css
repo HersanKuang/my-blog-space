@@ -105,7 +105,7 @@ html.dark .shiki span {
 
 /* 代码块的复制按钮 */
 .markdown-body div[class^="language-"] > button.copy {
-  @apply absolute top-1 right-1 z-20 block w-10 h-10 opacity-0 rounded cursor-pointer bg-center bg-[#fafafa] dark:bg-[#1e1e1e] bg-[length:20px] bg-no-repeat transition-opacity duration-300;
+  @apply absolute top-1 right-1 z-20 block w-10 h-10 opacity-0 rounded cursor-pointer bg-center bg-[#fafafa] dark:bg-[#1e1e1e] bg-[length:20px] bg-no-repeat transition-opacity duration-400;
 }
 
 .markdown-body div[class^="language-"]:hover > button.copy {
