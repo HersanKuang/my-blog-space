@@ -66,7 +66,7 @@ const renderer: Partial<Renderer> = {
     });
     return `
       <div class="language-${language}">
-        <!-- <button title="Copy Code" class="copy"></button> -->
+        <button title="Copy Code" class="copy"></button>
         <span class="lang">${language}</span>
         ${highlightedCode}
       </div>

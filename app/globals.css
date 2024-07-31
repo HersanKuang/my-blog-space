@@ -103,17 +103,18 @@ html.dark .shiki span {
   @apply text-gray-400;
 }
 
+/* 代码块的复制按钮 */
 .markdown-body div[class^="language-"] > button.copy {
-  @apply absolute top-1 right-1 z-20 block w-10 h-10 opacity-0 rounded cursor-pointer bg-center bg-[#292c33] bg-[length:20px] bg-no-repeat transition-opacity duration-300;
+  @apply absolute top-1 right-1 z-20 block w-10 h-10 opacity-0 rounded cursor-pointer bg-center bg-[#fafafa] dark:bg-[#1e1e1e] bg-[length:20px] bg-no-repeat transition-opacity duration-300;
 }
 
 .markdown-body div[class^="language-"]:hover > button.copy {
   @apply opacity-100 bg-[url('/assets/svgs/copy.svg')];
 }
 
-.markdown-body div[class^="language-"]:hover > button.copy,
+.markdown-body div[class^="language-"] > button.copy:hover,
 .markdown-body div[class^="language-"] > button.copy.copied {
-  @apply bg-[#343848];
+  @apply bg-[#eeeeee] dark:bg-[#2a2a2b];
 }
 
 .markdown-body div[class^="language-"] > button.copy:focus {
@@ -130,13 +131,5 @@ html.dark .shiki span {
 
 .markdown-body div[class^="language-"] > button.copy.copied:before {
   content: 'Copied';
-  @apply relative -left-16 flex items-center justify-center rounded-tl-md rounded-bl-md w-16 h-10 text-[#a2a3a9] text-center text-[12px] font-medium whitespace-nowrap bg-[#343848];
-}
-
-.markdown-body ul {
-  list-style-type: disc;
-}
-
-.markdown-body ol {
-  list-style-type: decimal;
+  @apply relative -left-16 flex items-center justify-center rounded-tl-md rounded-bl-md w-16 h-10 text-[#a2a3a9] text-center text-[12px] font-medium whitespace-nowrap bg-[#eeeeee] dark:bg-[#2a2a2b];
 }
