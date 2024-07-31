@@ -19,16 +19,38 @@ const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
       const codeElement = button.nextElementSibling?.nextElementSibling as HTMLElement;
       const codeText = codeElement?.innerText;
 
-      navigator.clipboard
-        .writeText(codeText)
-        .then(() => {
+      // 判断是否 https 模式下，使用 navigator.clipboard
+      if (navigator.clipboard) {
+        navigator.clipboard
+          .writeText(codeText)
+          .then(() => {
+            button.classList.add('copied');
+            setTimeout(() => {
+              button.classList.remove('copied');
+              button.blur();
+            }, 2000);
+          })
+          .catch(err => {
+            console.error('Unable to copy using navigator.clipboard', err);
+          });
+      } else {
+        // 否则使用废弃的 document.execCommand API
+        const textArea = document.createElement('textarea');
+        textArea.value = codeText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
           button.classList.add('copied');
           setTimeout(() => {
             button.classList.remove('copied');
             button.blur();
           }, 2000);
-        })
-        .catch(() => {});
+        } catch (err) {
+          console.error('Unable to copy using document.execCommand', err);
+        }
+        document.body.removeChild(textArea);
+      }
     };
 
     for (let i = 0; i < copyButtons.length; i++) {
@@ -41,6 +63,7 @@ const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
       }
     };
   }, []);
+
   return <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="markdown-body" />;
 };
 
