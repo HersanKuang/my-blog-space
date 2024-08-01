@@ -30,7 +30,7 @@ const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
               button.blur();
             }, 2000);
           })
-          .catch();
+          .catch(() => {});
       } else {
         // 否则使用废弃的 document.execCommand API
         const textArea = document.createElement('textarea');
