@@ -10,10 +10,7 @@ export const metadata: Metadata = {
   }
 };
 
-export const { data: blogListData } = await getBlogList<BlogListData>(_ADMIN_ID!, {
-  offset: 0,
-  size: 20
-});
+export const { data: blogListData } = await getBlogList<BlogListData>(_ADMIN_ID!);
 
 const BlogPage = () => {
   return (

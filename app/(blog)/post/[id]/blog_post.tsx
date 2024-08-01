@@ -30,9 +30,7 @@ const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
               button.blur();
             }, 2000);
           })
-          .catch(err => {
-            console.error('Unable to copy using navigator.clipboard', err);
-          });
+          .catch();
       } else {
         // 否则使用废弃的 document.execCommand API
         const textArea = document.createElement('textarea');
@@ -48,9 +46,7 @@ const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
             button.blur();
             document.body.removeChild(textArea);
           }, 2000);
-        } catch (err) {
-          document.body.removeChild(textArea);
-        }
+        } catch (err) {}
       }
     };
 
