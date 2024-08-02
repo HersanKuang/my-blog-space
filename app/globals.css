@@ -67,7 +67,7 @@ html.dark .shiki span {
 }
 
 .markdown-body div[class^="language-"]:hover > button.copy {
-  @apply opacity-100 bg-[url('/assets/svgs/copy.svg')];
+  @apply opacity-100 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgc3Ryb2tlPSJyZ2JhKDEyOCwxMjgsMTI4LDEpIiBzdHJva2Utd2lkdGg9IjIiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOSA1SDdhMiAyIDAgMCAwLTIgMnYxMmEyIDIgMCAwIDAgMiAyaDEwYTIgMiAwIDAgMCAyLTJWN2EyIDIgMCAwIDAtMi0yaC0yTTkgNWEyIDIgMCAwIDAgMiAyaDJhMiAyIDAgMCAwIDItMk05IDVhMiAyIDAgMCAxIDItMmgyYTIgMiAwIDAgMSAyIDIiLz48L3N2Zz4K')];
 }
 
 .markdown-body div[class^="language-"] > button.copy:hover,
@@ -84,7 +84,7 @@ html.dark .shiki span {
 }
 
 .markdown-body div[class^="language-"] > button.copy.copied {
-  @apply rounded-tr-md rounded-br-md rounded-tl-none rounded-bl-none bg-[url('/assets/svgs/copied.svg')];
+  @apply rounded-tr-md rounded-br-md rounded-tl-none rounded-bl-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgc3Ryb2tlPSJyZ2JhKDEyOCwxMjgsMTI4LDEpIiBzdHJva2Utd2lkdGg9IjIiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOSA1SDdhMiAyIDAgMCAwLTIgMnYxMmEyIDIgMCAwIDAgMiAyaDEwYTIgMiAwIDAgMCAyLTJWN2EyIDIgMCAwIDAtMi0yaC0yTTkgNWEyIDIgMCAwIDAgMiAyaDJhMiAyIDAgMCAwIDItMk05IDVhMiAyIDAgMCAxIDItMmgyYTIgMiAwIDAgMSAyIDJtLTYgOSAyIDIgNC00Ii8+PC9zdmc+Cg==')];
 }
 
 .markdown-body div[class^="language-"] > button.copy.copied:before {
