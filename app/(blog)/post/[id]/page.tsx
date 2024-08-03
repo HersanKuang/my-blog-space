@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import markdownToHtml from '@/utils/markdown_parser';
 import { getBlogDetail } from '@/api/blog';
 import { DOMAIN } from '@/config/next.env';
-import MarkdownContent from './blog_post';
+import MarkdownContent from '@/components/base_markdown_content';
 
 interface MarkdownPageProps {
   params: { id: string };

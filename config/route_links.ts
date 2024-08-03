@@ -2,10 +2,10 @@ export const headerRouteLinks = [
   { name: '首页', path: '/' },
   { name: '归档', path: '/' },
   { name: '标签', path: '/' },
-  { name: '关于', path: '/' }
+  // { name: '关于', path: '/' }
   // { name: '归档', path: '/archive' },
   // { name: '标签', path: '/tags' },
-  // { name: '关于', path: '/about' }
+  { name: '关于', path: '/about' }
 ];
 
 export const headerMediaLinks = [

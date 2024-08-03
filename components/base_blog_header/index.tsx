@@ -15,7 +15,7 @@ const mediaMap: Record<HeaderMediaLinkName, ReactNode> = {
 const BaseBlogHeader = () => {
   return (
     <header className="bg-sec-bgc-light dark:bg-sec-bgc-dark shadow flex-shrink-0">
-      <div className="flex justify-between items-center h-16 max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div className="flex justify-between items-center h-16 max-w-7.5xl mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center space-x-4 h-full">
           <Link
             href="/"
