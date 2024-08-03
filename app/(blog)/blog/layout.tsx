@@ -1,3 +1,1 @@
-import BaseBlogLayout from '@/components/base_blog_layout';
-
-export default BaseBlogLayout;
+export { default } from '@/components/base_blog_layout';

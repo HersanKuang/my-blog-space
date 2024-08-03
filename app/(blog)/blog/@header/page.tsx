@@ -1,3 +1,1 @@
-import BaseBlogHeader from '@/components/base_blog_header';
-
-export default BaseBlogHeader;
+export { default } from '@/components/base_blog_header';
