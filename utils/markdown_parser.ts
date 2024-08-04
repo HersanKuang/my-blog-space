@@ -43,11 +43,8 @@ const highlighter = await createHighlighterCore({
   loadWasm: getWasm
 });
 
-// 自定义渲染器扩展
+// 自定义渲染器
 const renderer: Partial<Renderer> = {
-  codespan({ text }: Tokens.Codespan): string {
-    return `<code class="codespan">${text}</code>`;
-  },
   code({ text, lang }: Tokens.Code): string {
     // 获取语言，默认使用'plaintext'
     let language = (lang || '').trim();
@@ -71,6 +68,9 @@ const renderer: Partial<Renderer> = {
         ${highlightedCode}
       </div>
     `;
+  },
+  codespan({ text }: Tokens.Codespan): string {
+    return `<code class="codespan">${text}</code>`;
   }
 };
 

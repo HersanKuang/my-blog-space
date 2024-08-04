@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getBlogList } from '@/api/blog';
+import { getBlogList } from '@/api/blog/blog';
 import BizBlogCard from '@/components/biz_blog_card';
 import { _ADMIN_ID, DOMAIN } from '@/config/next.env';
 

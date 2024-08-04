@@ -1,9 +1,11 @@
 import React, { type ReactNode } from 'react';
 import Link from 'next/link';
-import { headerRouteLinks, headerMediaLinks } from '@/config/route_links';
 import ThemeIcons from './theme_icons';
 import Github from '@/public/assets/svgs/github.svg';
 import Juejin from '@/public/assets/svgs/juejin.svg';
+import { getBlogMenuList } from '@/api/blog/menu';
+import { headerMediaLinks } from '@/config/route_links';
+import { _ADMIN_ID } from '@/config/next.env';
 
 type HeaderMediaLinkName = (typeof headerMediaLinks)[number]['name'];
 
@@ -12,7 +14,9 @@ const mediaMap: Record<HeaderMediaLinkName, ReactNode> = {
   github: <Github className="w-4.5 h-4.5 !fill-text-light dark:!fill-text-dark" />
 };
 
-const BaseBlogHeader = () => {
+const BaseBlogHeader = async () => {
+  // 获取博客的导航列表的路由
+  const { data: headerRouteLinks = [] } = await getBlogMenuList<Array<any>>(_ADMIN_ID!);
   return (
     <header className="bg-sec-bgc-light dark:bg-sec-bgc-dark shadow flex-shrink-0">
       <div className="flex justify-between items-center h-16 max-w-7.5xl mx-auto sm:px-6 lg:px-8">
@@ -27,10 +31,10 @@ const BaseBlogHeader = () => {
             {headerRouteLinks.map(route => (
               <Link
                 href={route.path}
-                key={route.name}
+                key={route.menu}
                 className="inline-flex items-center px-4 pt-1 border-b-2 border-transparent text-sm font-medium text-text-light dark:text-text-dark hover:border-secondary-light dark:hover:border-secondary-dark hover:bg-secondary-light dark:hover:bg-secondary-dark"
               >
-                {route.name}
+                {route.menu}
               </Link>
             ))}
           </nav>

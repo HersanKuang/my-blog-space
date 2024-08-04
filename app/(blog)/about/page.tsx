@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import markdownToHtml from '@/utils/markdown_parser';
 import { DOMAIN } from '@/config/next.env';
 import MarkdownContent from '@/components/base_markdown_content';
+import { getMenuDetail } from '@/api/blog/menu';
 
 export const metadata: Metadata = {
   title: '关于',
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 };
 
 const AboutPage = async () => {
-  const htmlContent = markdownToHtml('正在建设中...');
+  const { data } = await getMenuDetail('about');
+  const htmlContent = markdownToHtml(data?.content || '');
   return (
     <div className="content-warp box-border flex-1">
       <MarkdownContent htmlContent={htmlContent} />

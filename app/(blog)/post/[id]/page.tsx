@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import markdownToHtml from '@/utils/markdown_parser';
-import { getBlogDetail } from '@/api/blog';
+import { getBlogDetail } from '@/api/blog/blog';
 import { DOMAIN } from '@/config/next.env';
 import MarkdownContent from '@/components/base_markdown_content';
 
@@ -25,8 +25,7 @@ export async function generateMetadata({ params }: GenerateMetadata): Promise<Me
 }
 
 const MarkdownPage = async ({ params }: MarkdownPageProps) => {
-  const { id } = params;
-  const { data } = await getBlogDetail<BlogDetailData>(id);
+  const { data } = await getBlogDetail<BlogDetailData>(params.id);
 
   const htmlContent = markdownToHtml(data!.content);
   return (

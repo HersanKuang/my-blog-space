@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getPostById } from '@/api/post';
+import { getPostById } from '@/api/blog/post';
 
 export async function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
