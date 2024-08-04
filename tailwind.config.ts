@@ -50,7 +50,7 @@ const config: Config = {
         'text-dark': '#f3f3f4'
       },
       minHeight: {
-        'blog-body': 'calc(100vh - 3rem - 24px)'
+        'blog-body': 'calc(100vh - 26px - 3rem - 4rem)'
       },
       maxWidth: {
         '7.5xl': '87rem',

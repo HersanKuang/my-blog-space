@@ -1,6 +1,6 @@
 import React from 'react';
 import { preconnect } from 'react-dom';
-import { metadata, viewport } from '@/config/seo';
+import { metadata, viewport } from '@/config/seo.config';
 import renderMap from '@/config/render_mode';
 import ThemeProvider from '@/shared/theme_provider';
 import { _RENDER_MODE, FILE_URL, HOSTNAME } from '@/config/next.env';

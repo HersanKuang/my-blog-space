@@ -19,7 +19,7 @@ const BaseBlogHeader = () => {
         <div className="flex items-center space-x-4 h-full">
           <Link
             href="/"
-            className="flex items-center h-full text-lg font-semibold text-text-light dark:text-text-dark px-5 hover:bg-secondary-light dark:hover:bg-secondary-dark"
+            className="flex items-center h-full text-lg font-semibold cursor-pointer text-text-light dark:text-text-dark px-5"
           >
             Hersan Space
           </Link>
