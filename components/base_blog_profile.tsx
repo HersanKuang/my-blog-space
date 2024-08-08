@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import User from '@/public/assets/images/profile.jpg';
-import { blogListData } from '@/app/(blog)/blog/page';
 import { FILE_URL } from '@/config/next.env';
+import { blogListData } from '@/service/modules/blog_service';
 
 const albumImage = ['0960', '9232', '7069', '3542'];
 

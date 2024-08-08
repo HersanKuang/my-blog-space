@@ -2,6 +2,8 @@
 import type { Config } from 'tailwindcss';
 import { PluginAPI } from 'tailwindcss/types/config';
 
+const blogBodyHeight = 'calc(100vh - 4.7rem - 4rem)';
+
 const config: Config = {
   darkMode: 'class',
   content: ['./components/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}'],
@@ -49,8 +51,14 @@ const config: Config = {
         'text-light': '#424a57',
         'text-dark': '#f3f3f4'
       },
+      height: {
+        'blog-body': blogBodyHeight
+      },
       minHeight: {
-        'blog-body': 'calc(100vh - 26px - 3rem - 4rem)'
+        'blog-body': blogBodyHeight
+      },
+      maxHeight: {
+        'blog-body': blogBodyHeight
       },
       maxWidth: {
         '7.5xl': '87rem',

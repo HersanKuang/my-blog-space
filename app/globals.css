@@ -23,7 +23,7 @@ html.dark .shiki span {
 }
 
 .content-warp {
-  @apply min-h-40 p-4 mb-10 bg-thr-bgc-light dark:bg-thr-bgc-dark shadow rounded-lg;
+  @apply min-h-40 p-4 bg-thr-bgc-light dark:bg-thr-bgc-dark shadow rounded-lg;
 }
 
 .col-center-text {
@@ -90,4 +90,9 @@ html.dark .shiki span {
 .markdown-body div[class^="language-"] > button.copy.copied:before {
   content: 'Copied';
   @apply relative -left-16 flex items-center justify-center rounded-tl-md rounded-bl-md w-16 h-10 text-[#a2a3a9] text-center text-[12px] font-medium whitespace-nowrap bg-[#eeeeee] dark:bg-[#2a2a2b];
+}
+
+/* 覆盖归档页面的样式 */
+.vertical-timeline.vertical-timeline--animate.vertical-timeline--one-column-right::before {
+  right: 4.6rem;
 }
