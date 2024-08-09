@@ -94,5 +94,34 @@ html.dark .shiki span {
 
 /* 覆盖归档页面的样式 */
 .vertical-timeline.vertical-timeline--animate.vertical-timeline--one-column-right::before {
-  right: 4.6rem;
+  right: 3.6rem;
+}
+html.dark .vertical-timeline--one-column-right::before {
+  @apply dark:bg-sec-bgc-dark;
+}
+html.dark .vertical-timeline-element-icon {
+  box-shadow: 0 0 0 4px #3d3d3d, inset 0 2px 0 rgba(0, 0, 0, .08), 0 3px 0 4px rgba(0, 0, 0, .05);
+}
+html.dark .vertical-timeline-element-content-arrow {
+  border-left-color: #212121;
+}
+html.dark .vertical-timeline-element-content {
+  @apply dark:bg-thr-bgc-dark;
+  box-shadow: 0 3px 0 #000;
+}
+
+/* 针对Webkit内核的浏览器（如Chrome、Safari） */
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;  /* 隐藏垂直滚动条 */
+  height: 0;  /* 隐藏水平滚动条 */
+}
+
+/* 针对Firefox */
+.hide-scrollbar {
+  scrollbar-width: none;  /* 隐藏滚动条 */
+}
+
+/* 针对IE和Edge */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* 隐藏滚动条 */
 }
