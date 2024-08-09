@@ -1,4 +1,5 @@
-import useSWRInfinite, { SWRInfiniteKeyLoader } from 'swr/infinite';
+/* eslint-disable default-param-last */
+import useSWRInfinite, { SWRInfiniteConfiguration, SWRInfiniteKeyLoader } from 'swr/infinite';
 
 // 定义hook的返回类型
 interface UseInfiniteScrollResult<T> {
@@ -10,15 +11,24 @@ interface UseInfiniteScrollResult<T> {
   isReachingEnd: boolean;
 }
 
-// 定义hook，用于处理分页加载
+/**
+ * 缓存无限滚动的 Hook。
+ * @template T - 数据类型
+ * @param {SWRInfiniteKeyLoader<T[], Parameters<(args: any) => Promise<T[]>>[0]>} getKey - 用于生成每页请求的 key 的函数。
+ * @param {(params: Parameters<(args: any) => Promise<T[]>>[0]) => Promise<T[]>} fetcher - 用于获取数据的函数。
+ * @param {number} [initialSize=10] - 初始加载的页面数量。
+ * @param {SWRInfiniteConfiguration<T[], any>} [options] - 传递给 useSWRInfinite 的配置选项。
+ * @returns {UseInfiniteScrollResult<T>} - 返回包含分页数据、加载状态及其他控制方法的对象。
+ */
 const useInfiniteScroll = <T = any>(
   getKey: SWRInfiniteKeyLoader<T[], Parameters<(args: any) => Promise<T[]>>[0]>,
   fetcher: (params: Parameters<(args: any) => Promise<T[]>>[0]) => Promise<T[]>,
-  initialSize = 10
+  initialSize: number = 10,
+  options?: SWRInfiniteConfiguration<T[], any>
 ): UseInfiniteScrollResult<T> => {
   const { data, error, size, setSize } = useSWRInfinite<T[], any>(getKey, fetcher, {
-    revalidateOnFocus: false,
-    dedupingInterval: 600 * 1000 // 600秒
+    revalidateFirstPage: false, // 取消始终尝试重新验证第一页，因为默认是启用的，会在每次请求下一页的时候多请求一次第一页
+    ...options
   });
 
   const isLoadingInitialData = !data && !error;
