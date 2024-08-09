@@ -46,12 +46,7 @@ const borderTopStyle: CSSProperties = {
 };
 
 const TimelineItem: FC<ListChildComponentProps> = ({ index, style, data }) => {
-  const currentTheme = window.__theme;
   const blog = data[index];
-  useEffect(() => {
-    console.log(currentTheme);
-    console.log(window.matchMedia('(prefers-color-scheme: dark)').matches);
-  }, [currentTheme]);
   return (
     <div style={style}>
       <VerticalTimelineElement
