@@ -83,6 +83,10 @@ const config = (phase, { defaultConfig }) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       ...sharedConfig,
+      images: {
+        ...sharedConfig.images,
+        minimumCacheTTL: 0
+      },
       // App Router 中，严格模式默认开启
       reactStrictMode: true,
       // source map，开发环境默认开启
