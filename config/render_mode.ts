@@ -1,3 +1,5 @@
+import { _SERVER_REVALIDATE } from './next.env';
+
 type RenderConfig = {
   dynamic: 'force-dynamic' | 'force-static';
   dynamicParams: boolean;
@@ -34,7 +36,7 @@ const renderMap: Record<renderMapKey, Partial<RenderConfig>> = {
   isr: {
     dynamic: 'force-static',
     dynamicParams: true,
-    revalidate: 600, // 600s 10分钟
+    revalidate: _SERVER_REVALIDATE, // 600s 10分钟
     ...sharedConfig
   }
 };

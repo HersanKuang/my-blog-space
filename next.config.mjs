@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } from 'next/constants.js';
 
-const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME, NEXT_OUTPUT_DIR } =
+const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME, NEXT_OUTPUT_DIR, SERVER_REVALIDATE } =
   process.env;
 
 const __filename = fileURLToPath(import.meta.url);
@@ -37,7 +37,7 @@ const sharedConfig = {
         hostname: NEXT_PUBLIC_HOSTNAME
       }
     ],
-    minimumCacheTTL: 600 // 设置图片的缓存时间为 600 秒
+    minimumCacheTTL: Number(SERVER_REVALIDATE) // 设置图片的缓存时间为 600 秒
   },
   experimental: {
     // 只会加载实际使用的模块
