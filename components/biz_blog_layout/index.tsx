@@ -1,11 +1,11 @@
-interface BaseBlogLayoutProps {
+interface BizBlogLayoutProps {
   children: React.ReactNode;
   header: React.ReactNode;
   footer: React.ReactNode;
   profile: React.ReactNode;
 }
 
-const BaseBlogLayout = ({ header, footer, profile, children }: BaseBlogLayoutProps) => {
+const BizBlogLayout = ({ header, footer, profile, children }: BizBlogLayoutProps) => {
   return (
     <div className="w-full text-text-light dark:text-text-dark relative min-w-[280px] bg-background-light dark:bg-background-dark">
       {header}
@@ -18,4 +18,4 @@ const BaseBlogLayout = ({ header, footer, profile, children }: BaseBlogLayoutPro
   );
 };
 
-export default BaseBlogLayout;
+export default BizBlogLayout;

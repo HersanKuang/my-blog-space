@@ -5,7 +5,7 @@ import { blogListData } from '@/service/modules/blog_service';
 
 const albumImage = ['0960', '9232', '7069', '3542'];
 
-const BaseBlogProfile = () => {
+const BizBlogProfile = () => {
   // 获取当前日期的时间戳
   const currentDate = new Date().toISOString().split('T')[0]; // 只保留日期部分
   const seed = Number(currentDate.split('-').join('')); // 将日期部分转换为数字
@@ -57,4 +57,4 @@ const BaseBlogProfile = () => {
   );
 };
 
-export default BaseBlogProfile;
+export default BizBlogProfile;

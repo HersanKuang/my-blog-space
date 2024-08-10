@@ -14,7 +14,7 @@ const mediaMap: Record<HeaderMediaLinkName, ReactNode> = {
   github: <Github className="w-4.5 h-4.5 !fill-text-light dark:!fill-text-dark" />
 };
 
-const BaseBlogHeader = async () => {
+const BizBlogHeader = async () => {
   // 获取博客的导航列表的路由
   const { data: headerRouteLinks = [] } = await getBlogMenuList<Array<any>>(_ADMIN_ID!);
   return (
@@ -52,4 +52,4 @@ const BaseBlogHeader = async () => {
   );
 };
 
-export default BaseBlogHeader;
+export default BizBlogHeader;
