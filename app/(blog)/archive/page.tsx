@@ -7,6 +7,8 @@ import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import 'react-vertical-timeline-component/style.min.css';
+import BaseEmpty from '@/components/base_empty';
+import BaseLoader from '@/components/base_loader';
 
 // 定义fetcher函数，用于数据请求
 const fetcher = async ({ url, offset, size }: { url: string; offset: number; size: number }) => {
@@ -91,8 +93,10 @@ const ArchivePage = () => {
     };
   }, []);
 
-  if (error) return <div>Failed to load data</div>;
-  if (!data) return <div>Loading...</div>;
+  // 暂无数据
+  if (error) return <BaseEmpty />;
+  // 数据加载中
+  if (!data) return <BaseLoader />;
 
   const previousYear: string[] = [];
   for (let i = 0; i < data.length; i++) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { preconnect } from 'react-dom';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { metadata, viewport } from '@/config/seo.config';
 import renderMap from '@/config/render_mode';
 import ThemeProvider from '@/shared/theme_provider';
@@ -40,7 +41,9 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       {/* 资源加载提示 */}
 
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <AntdRegistry>{children}</AntdRegistry>
+        </ThemeProvider>
       </body>
     </html>
   );

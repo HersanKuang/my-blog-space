@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import markdownToHtml from '@/utils/markdown_parser';
 import { DOMAIN } from '@/config/next.env';
-import MarkdownContent from '@/components/base_markdown_content';
+import MarkdownContent from '@/components/base_markdown_render';
 import { getMenuDetail } from '@/api/blog/menu';
 
 export const metadata: Metadata = {

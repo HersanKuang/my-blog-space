@@ -6,7 +6,7 @@ const BaseBlogFooter = () => {
       <div className="max-w-7.5xl mx-auto sm:px-6 lg:px-8 flex justify-start items-center">
         <p className="text-text-light dark:text-text-dark space-x-2.5 px-5">
           <span>Copyright © 2024</span>
-          <Link href="/">Hersan Space</Link>
+          <Link href="/public">Hersan Space</Link>
         </p>
       </div>
     </footer>

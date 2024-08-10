@@ -1,1 +1,1 @@
-export { default } from '@/components/base_blog_profile';
+export { default } from '@/components/biz_blog_profile';
