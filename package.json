@@ -10,7 +10,10 @@
     "format": "cross-env-shell prettier --write ."
   },
   "dependencies": {
+    "@ant-design/icons": "^5.4.0",
+    "@ant-design/nextjs-registry": "^1.0.1",
     "@svgr/webpack": "^8.1.0",
+    "antd": "^5.20.0",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
