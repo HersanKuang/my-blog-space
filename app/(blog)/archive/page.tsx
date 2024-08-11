@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import classNames from 'classnames';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import 'react-vertical-timeline-component/style.min.css';
 import BaseEmpty from '@/components/base_empty';
@@ -52,6 +53,7 @@ const TimelineItem: FC<ListChildComponentProps> = ({ index, style, data }) => {
   return (
     <div style={style}>
       <VerticalTimelineElement
+        id={blog.isNewYear ? blog.createAt.slice(0, 4) : undefined}
         className="flex justify-around !mt-4"
         date={blog.createAt}
         contentStyle={

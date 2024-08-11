@@ -6,6 +6,7 @@ interface Window {
   __setPreferredTheme: (theme: Theme) => void;
 }
 
+// 博客详情数据
 declare interface BlogDetailData {
   id: string;
   userId: string;
@@ -17,7 +18,14 @@ declare interface BlogDetailData {
   updatedAt: string;
 }
 
+// 博客列表数据
 declare interface BlogListData {
   list: Array<any>;
   totalCount: number;
+}
+
+// 博客导航列表
+interface BlogMenuList {
+  menu: string;
+  path: string;
 }

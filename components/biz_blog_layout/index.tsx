@@ -3,15 +3,19 @@ interface BizBlogLayoutProps {
   header: React.ReactNode;
   footer: React.ReactNode;
   profile: React.ReactNode;
+  archive: React.ReactNode;
 }
 
-const BizBlogLayout = ({ header, footer, profile, children }: BizBlogLayoutProps) => {
+const BizBlogLayout = ({ header, footer, profile, archive, children }: BizBlogLayoutProps) => {
   return (
     <div className="w-full text-text-light dark:text-text-dark relative min-w-[280px] bg-background-light dark:bg-background-dark">
       {header}
       <main className="flex justify-center mx-auto py-10 xl:w-[62rem] 2xl:w-[80.5rem] min-h-blog-body">
         {children}
-        <div className="w-full md:w-[23.5rem] ml-4 min-w-[14.4rem]">{profile}</div>
+        <div className="w-full md:w-[23.5rem] ml-4 min-w-[14.4rem]">
+          {profile}
+          {archive}
+        </div>
       </main>
       {footer}
     </div>

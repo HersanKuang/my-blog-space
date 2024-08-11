@@ -19,7 +19,7 @@ html.dark .shiki span {
 }
 
 .common-box-warp {
-  @apply bg-thr-bgc-light dark:bg-thr-bgc-dark p-5 shadow-md rounded-lg;
+  @apply bg-thr-bgc-light dark:bg-thr-bgc-dark p-5 shadow-sm rounded-lg;
 }
 
 .content-warp {
@@ -124,4 +124,9 @@ html.dark .vertical-timeline-element-content {
 /* 针对IE和Edge */
 .hide-scrollbar {
   -ms-overflow-style: none;  /* 隐藏滚动条 */
+}
+
+/* 首页归档卡片的的样式 */
+.archive-transition-bg {
+  @apply transition-colors duration-200 ease-in-out;
 }
