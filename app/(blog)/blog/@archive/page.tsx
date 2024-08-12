@@ -17,7 +17,7 @@ const HomeArchiveCard = () => {
     if (years.has(year)) {
       years.set(year, { ...item, total: years.get(year)!.total + 1 });
     }
-    years.set(year, { ...item, total: 10 });
+    years.set(year, { ...item, total: 1 });
   });
   return (
     <div className="content-warp mt-8">

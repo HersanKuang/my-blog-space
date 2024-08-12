@@ -3,7 +3,7 @@ interface BizBlogLayoutProps {
   header: React.ReactNode;
   footer: React.ReactNode;
   profile: React.ReactNode;
-  archive: React.ReactNode;
+  archive?: React.ReactNode;
 }
 
 const BizBlogLayout = ({ header, footer, profile, archive, children }: BizBlogLayoutProps) => {

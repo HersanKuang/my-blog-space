@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import classNames from 'classnames';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import 'react-vertical-timeline-component/style.min.css';
 import BaseEmpty from '@/components/base_empty';
