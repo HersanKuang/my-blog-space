@@ -14,8 +14,8 @@ declare interface BlogDetailData {
   summary: string;
   album: string;
   content: string;
-  createdAt: string;
-  updatedAt: string;
+  createAt: string;
+  updateAt: string;
 }
 
 // 博客列表数据

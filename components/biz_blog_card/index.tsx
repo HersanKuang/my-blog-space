@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { getTimeDifference } from '@/utils/tools';
 
 interface BizBlogCardProps {
-  blog: Record<string, any>;
+  blog: BlogDetailData;
 }
 
-const BizBlogCard = ({ blog = {} }: BizBlogCardProps) => {
+const BizBlogCard = ({ blog }: BizBlogCardProps) => {
   return (
     <div className="flex justify-between content-warp">
       <div className="flex flex-col flex-1 justify-between space-y-2 mr-4">
