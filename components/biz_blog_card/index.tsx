@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getTimeDifference } from '@/utils/tools';
 
 interface BizBlogCardProps {
   blog: Record<string, any>;
@@ -20,7 +21,9 @@ const BizBlogCard = ({ blog = {} }: BizBlogCardProps) => {
           {/* <span>-</span> */}
           {/* <div className="">标签</div> */}
           <span />
-          <div className="text-sm text-[#606060] dark:text-[#b0b0b0]">{blog.createAt}</div>
+          <div className="text-sm text-[#707070] dark:text-[#a0a0a0]">
+            <span>{getTimeDifference(blog.updateAt)}</span>
+          </div>
         </div>
       </div>
       <Image src={blog.album} width="200" height="128" quality={75} alt="album" />
