@@ -4,9 +4,17 @@ interface BizBlogLayoutProps {
   footer: React.ReactNode;
   profile: React.ReactNode;
   archive?: React.ReactNode;
+  category?: React.ReactNode;
 }
 
-const BizBlogLayout = ({ header, footer, profile, archive, children }: BizBlogLayoutProps) => {
+const BizBlogLayout = ({
+  header,
+  footer,
+  profile,
+  archive,
+  category,
+  children
+}: BizBlogLayoutProps) => {
   return (
     <div className="w-full text-text-light dark:text-text-dark relative min-w-[280px] bg-background-light dark:bg-background-dark">
       {header}
@@ -14,6 +22,7 @@ const BizBlogLayout = ({ header, footer, profile, archive, children }: BizBlogLa
         {children}
         <div className="w-full md:w-[23.5rem] ml-4 min-w-[14.4rem]">
           {profile}
+          {category}
           {archive}
         </div>
       </main>

@@ -6,12 +6,19 @@ interface BlogLayoutProps {
   header: ReactNode;
   footer: ReactNode;
   profile: ReactNode;
+  category: ReactNode;
   archive: ReactNode;
 }
 
-const BlogLayout = ({ children, header, footer, profile, archive }: BlogLayoutProps) => {
+const BlogLayout = ({ children, header, footer, profile, category, archive }: BlogLayoutProps) => {
   return (
-    <BizBlogLayout header={header} footer={footer} profile={profile} archive={archive}>
+    <BizBlogLayout
+      header={header}
+      footer={footer}
+      profile={profile}
+      category={category}
+      archive={archive}
+    >
       {children}
     </BizBlogLayout>
   );
