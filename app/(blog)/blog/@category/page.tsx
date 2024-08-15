@@ -21,7 +21,7 @@ const HomeCategoryCard = () => {
         分类
       </h3>
       {categories.map(item => (
-        <Link key={item} href={`/categorie/${item}`}>
+        <Link key={item} href={`/category/${item}`}>
           <div className="flex justify-between align-center mt-2 py-1 cursor-pointer hover:bg-secondary-light dark:hover:bg-secondary-dark rounded-sm overflow-hidden archive-transition-bg">
             <span className="inline-block pl-2 text-[0.9rem] leading-[1.6rem] text-text-light dark:text-text-dark">
               {item}
