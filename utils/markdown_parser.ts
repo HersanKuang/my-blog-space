@@ -38,7 +38,8 @@ const highlighter = await createHighlighterCore({
     import('shiki/langs/zsh.mjs'),
     import('shiki/langs/vue.mjs'),
     import('shiki/langs/ts.mjs'),
-    import('shiki/langs/cpp.mjs')
+    import('shiki/langs/cpp.mjs'),
+    import('shiki/langs/yaml.mjs')
   ],
   loadWasm: getWasm
 });
