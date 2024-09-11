@@ -4,11 +4,12 @@ import { getTimeDifference } from '@/utils/tools';
 
 interface BizBlogCardProps {
   blog: BlogDetailData;
+  className?: string;
 }
 
-const BizBlogCard = ({ blog }: BizBlogCardProps) => {
+const BizBlogCard = ({ blog, className }: BizBlogCardProps) => {
   return (
-    <div className="flex justify-between content-warp">
+    <div className={`flex justify-between content-warp ${className}`}>
       <div className="flex flex-col flex-1 justify-between space-y-2 mr-4">
         <Link href={`/post/${blog.id}`} className="cursor-pointer">
           <h2 className="text-md line-clamp-2 font-bold text-sec-text-light dark:text-sec-text-dark">

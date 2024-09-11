@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 const BlogPage = () => {
   return (
     <div className="box-border flex-1">
-      {blogListData && blogListData.list.map(blog => <BizBlogCard blog={blog} key={blog.id} />)}
+      {blogListData &&
+        blogListData.list.map(blog => <BizBlogCard key={blog.id} blog={blog} className="mb-4" />)}
     </div>
   );
 };
