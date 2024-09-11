@@ -62,6 +62,8 @@ export const metadata: Metadata = {
     images: `${FILE_URL}user/logo/favicon.ico`
   },
   other: {
+    // 添加自定义的 mobile-web-app-capable 元数据，解决 apple-mobile-web-app-capable 的warning，并保持兼容性
+    'mobile-web-app-capable': 'yes',
     // 微软Edge的Chromium版本不再支持
     'msapplication-TileColor': '#da532c' // Windows 设备上将网站固定到开始屏幕时显示的磁贴颜色
   }

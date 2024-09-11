@@ -14,7 +14,7 @@ const BlogPage = () => {
   return (
     <div className="box-border flex-1">
       {blogListData &&
-        blogListData.list.map(blog => <BizBlogCard key={blog.id} blog={blog} className="mb-4" />)}
+        blogListData.list.map(blog => <BizBlogCard key={blog.id} blog={blog} className="mb-6" />)}
     </div>
   );
 };

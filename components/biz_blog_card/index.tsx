@@ -27,7 +27,15 @@ const BizBlogCard = ({ blog, className }: BizBlogCardProps) => {
           </div>
         </div>
       </div>
-      <Image src={blog.album} width="200" height="128" quality={75} alt="album" />
+      <Image
+        src={blog.album}
+        width="0"
+        height="0"
+        className="w-52 h-auto max-w-full"
+        sizes="100vw"
+        quality={75}
+        alt="album"
+      />
     </div>
   );
 };
