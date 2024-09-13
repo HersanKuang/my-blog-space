@@ -54,6 +54,7 @@ const TimelineItem: FC<ListChildComponentProps> = ({ index, style, data }) => {
       <VerticalTimelineElement
         id={blog.isNewYear ? blog.createAt.slice(0, 4) : undefined}
         className="flex justify-around !mt-4"
+        dateClassName="!py-0"
         date={blog.createAt}
         contentStyle={
           blog.isNewYear || index === 0 ? { ...contentStyle, ...borderTopStyle } : contentStyle
@@ -62,7 +63,7 @@ const TimelineItem: FC<ListChildComponentProps> = ({ index, style, data }) => {
         iconStyle={iconStyle}
         visible
       >
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <div className="flex flex-col flex-1 justify-between space-y-2 mr-4">
             <Link href={`/post/${blog.id}`} className="cursor-pointer" prefetch={false}>
               <h2 className="text-md line-clamp-2 font-bold text-sec-text-light dark:text-sec-text-dark">
@@ -73,7 +74,17 @@ const TimelineItem: FC<ListChildComponentProps> = ({ index, style, data }) => {
               {blog.summary}
             </div>
           </div>
-          <Image src={blog.album} width="200" height="128" priority quality={75} alt="album" />
+          <Image
+            src={blog.album}
+            width="0"
+            height="0"
+            className="w-52 h-auto max-w-full"
+            style={{ aspectRatio: '208/106' }}
+            sizes="100vw"
+            priority
+            quality={75}
+            alt="album"
+          />
         </div>
       </VerticalTimelineElement>
     </div>

@@ -23,7 +23,7 @@ const BizBlogCard = ({ blog, className }: BizBlogCardProps) => {
           {/* <div className="">标签</div> */}
           <span />
           <div className="text-sm text-[#707070] dark:text-[#a0a0a0]">
-            <span>{getTimeDifference(blog.updateAt)}</span>
+            <span>{getTimeDifference(blog.updateTimestamp)}</span>
           </div>
         </div>
       </div>
@@ -32,6 +32,7 @@ const BizBlogCard = ({ blog, className }: BizBlogCardProps) => {
         width="0"
         height="0"
         className="w-52 h-auto max-w-full"
+        style={{ aspectRatio: '208/106' }}
         sizes="100vw"
         quality={75}
         alt="album"

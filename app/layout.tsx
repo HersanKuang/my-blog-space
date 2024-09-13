@@ -1,15 +1,25 @@
 import React from 'react';
 import { preconnect } from 'react-dom';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import quarter from 'dayjs/plugin/quarterOfYear';
+import duration from 'dayjs/plugin/duration';
 import { metadata, viewport } from '@/config/seo.config';
 import renderMap from '@/config/render_mode';
 import ThemeProvider from '@/shared/theme_provider';
-import { _RENDER_MODE, FILE_URL, HOSTNAME } from '@/config/next.env';
+import { _OSS_HOSTNAME, _RENDER_MODE, FILE_URL, HOSTNAME } from '@/config/next.env';
 import './globals.css';
 
 interface RootLayoutProps {
   children: React.ReactNode;
 }
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(quarter);
+dayjs.extend(duration);
 
 // SEO
 export { viewport, metadata };
@@ -19,8 +29,11 @@ export const { dynamic, dynamicParams, revalidate, fetchCache, runtime, preferre
   renderConfig;
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
-  // 进行预连接
+  // 预连接
   preconnect(`//${HOSTNAME}/`, {
+    crossOrigin: 'anonymous'
+  });
+  preconnect(`//${_OSS_HOSTNAME}/`, {
     crossOrigin: 'anonymous'
   });
   return (

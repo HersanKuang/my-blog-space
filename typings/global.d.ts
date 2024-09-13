@@ -16,6 +16,8 @@ declare interface BlogDetailData {
   content: string;
   createAt: string;
   updateAt: string;
+  createTimestamp: number;
+  updateTimestamp: number;
 }
 
 // 博客列表数据
