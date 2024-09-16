@@ -2,12 +2,13 @@ import Image from 'next/image';
 import User from '@/public/assets/images/profile.jpg';
 import { FILE_URL } from '@/config/next.env';
 import { blogListData } from '@/service/modules/blog_service';
+import { localizedDayjs } from '@/utils/tools';
 
 const albumImage = ['0960', '9232', '7069', '3542'];
 
 const BizBlogProfile = () => {
   // 获取当前日期的时间戳
-  const currentDate = new Date().toISOString().split('T')[0]; // 只保留日期部分
+  const currentDate = localizedDayjs().format('YYYY-MM-DD'); // 获取当前日期
   const seed = Number(currentDate.split('-').join('')); // 将日期部分转换为数字
 
   // 使用固定的随机数来选择图片
