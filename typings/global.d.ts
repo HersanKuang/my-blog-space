@@ -31,3 +31,17 @@ interface BlogMenuList {
   menu: string;
   path: string;
 }
+
+type CategoryField = {
+  id: string;
+  userId: string;
+  name: string;
+  createAt: string;
+  updateAt: string;
+};
+
+// 博客分类列表
+interface CategoryListData {
+  list: Array<CategoryField>;
+  totalCount: number;
+}
