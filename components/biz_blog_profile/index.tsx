@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import User from '@/public/assets/images/profile.jpg';
 import { FILE_URL } from '@/config/next.env';
-import { blogListData } from '@/service/modules/blog_service';
+import { blogListData, categoryListData } from '@/service/modules/blog_service';
 import { localizedDayjs } from '@/utils/tools';
 
 const albumImage = ['0960', '9232', '7069', '3542'];
@@ -17,7 +17,7 @@ const BizBlogProfile = () => {
   const options = [
     { label: '文章', value: blogListData?.totalCount },
     { label: '标签', value: 0 },
-    { label: '分类', value: 0 }
+    { label: '分类', value: categoryListData?.totalCount }
   ];
 
   return (

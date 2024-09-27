@@ -5,3 +5,12 @@ import { ResponseData } from '@/service/request';
 export const getBlogCategoryList = <T = any>(id: string): Promise<ResponseData<T>> => {
   return request.get<T>(`/blog/category/list/${id}`);
 };
+
+// 根据分类id过滤博客列表
+export const getBlogListByCategory = <T = any>(categoryId: string): Promise<ResponseData<T>> => {
+  return request.get<T>('/blog/category/blog-category-list', {
+    params: {
+      categoryId
+    }
+  });
+};

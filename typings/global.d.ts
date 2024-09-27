@@ -16,6 +16,7 @@ declare interface BlogDetailData {
   content: string;
   createAt: string;
   updateAt: string;
+  categoryId: string;
   createTimestamp: number;
   updateTimestamp: number;
 }
@@ -38,6 +39,7 @@ type CategoryField = {
   name: string;
   createAt: string;
   updateAt: string;
+  blogCount: number;
 };
 
 // 博客分类列表
