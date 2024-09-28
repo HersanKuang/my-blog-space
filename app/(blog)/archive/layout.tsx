@@ -1,8 +1,18 @@
+import { Metadata } from 'next';
+import { DOMAIN } from '@/config/next.env';
+
 interface ArchiveLayoutProps {
   children: React.ReactNode;
   header: React.ReactNode;
   footer: React.ReactNode;
 }
+
+export const metadata: Metadata = {
+  title: '归档',
+  alternates: {
+    canonical: `${DOMAIN}`
+  }
+};
 
 const ArchiveLayout = ({ header, footer, children }: ArchiveLayoutProps) => {
   return (

@@ -30,7 +30,7 @@ const HomeArchiveCard = () => {
             <span className="inline-block pl-2 text-[0.9rem] leading-[1.6rem] text-text-light dark:text-text-dark">
               {year}
             </span>
-            <span className="flex align-center mr-2 justify-center px-[0.75rem] py-[0.1rem] text-[0.9rem] text-text-light dark:text-text-dark opacity-75 bg-secondary-light dark:bg-secondary-dark rounded-md">
+            <span className="flex align-center justify-center w-8 mr-1.5 px-[0.75rem] py-[0.1rem] text-[0.9rem] text-text-light dark:text-text-dark opacity-75 bg-secondary-light dark:bg-secondary-dark rounded-md">
               {total}
             </span>
           </div>
