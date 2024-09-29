@@ -16,7 +16,9 @@ const BizBlogCard = ({ blog, className }: BizBlogCardProps) => {
             {blog.title}
           </h2>
         </Link>
-        <div className="line-clamp-2 text-0.9 font-normal color-scheme-light">{blog.summary}</div>
+        <div title={blog.summary} className="line-clamp-2 text-0.9 font-normal color-scheme-light">
+          {blog.summary}
+        </div>
         <div className="flex justify-between">
           {/* <div className="">分类</div> */}
           {/* <span>-</span> */}
