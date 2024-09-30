@@ -1,5 +1,6 @@
 import { BASE_URL, TIME_OUT } from './config';
 import Request from './request';
+import fetchData from './fetcher';
 
 const request = new Request({
   headers: {
@@ -14,4 +15,4 @@ const request = new Request({
   }
 });
 
-export default request;
+export { fetchData, request };

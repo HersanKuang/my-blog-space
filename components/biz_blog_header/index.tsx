@@ -4,7 +4,7 @@ import ThemeIcons from './theme_icons';
 import Github from '@/public/assets/svgs/github.svg';
 import Juejin from '@/public/assets/svgs/juejin.svg';
 import { headerMediaLinks } from '@/config/route_links';
-import { headerRouteLinks } from '@/service/modules/blog_service';
+import { getBlogMenuList } from '@/api/blog/menu';
 
 type HeaderMediaLinkName = (typeof headerMediaLinks)[number]['name'];
 
@@ -14,6 +14,7 @@ const mediaMap: Record<HeaderMediaLinkName, ReactNode> = {
 };
 
 const BizBlogHeader = async () => {
+  const headerRouteLinks = await getBlogMenuList();
   return (
     <header className="bg-sec-bgc-light dark:bg-sec-bgc-dark shadow flex-shrink-0">
       <div className="flex justify-between items-center h-16 max-w-7.5xl mx-auto sm:px-6 lg:px-8">
@@ -25,7 +26,7 @@ const BizBlogHeader = async () => {
             Hersan Space
           </Link>
           <nav className="hidden sm:flex pl-8 space-x-2 h-full">
-            {(headerRouteLinks as BlogMenuList[]).map(route => (
+            {(headerRouteLinks || []).map(route => (
               <Link
                 href={route.path}
                 key={route.menu}

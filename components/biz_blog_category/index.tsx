@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import classNames from 'classnames';
-import { categoryListData } from '@/service/modules/blog_service';
+import { getBlogCategoryList } from '@/api/blog/category';
 
 interface BizBlogCategoryProps {
   params?: {
@@ -8,8 +8,8 @@ interface BizBlogCategoryProps {
   };
 }
 
-const BizBlogCategory = ({ params }: BizBlogCategoryProps) => {
-  const listData = categoryListData!.list;
+const BizBlogCategory = async ({ params }: BizBlogCategoryProps) => {
+  const { list: listData } = await getBlogCategoryList();
   const { id } = params || {};
 
   return (

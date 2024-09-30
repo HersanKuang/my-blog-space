@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { blogListData } from '@/service/modules/blog_service';
+import { getBlogList } from '@/api/blog/home';
 
 interface BlogEntry {
   id: string;
@@ -10,7 +10,8 @@ interface BlogEntry {
   total: number;
 }
 
-const HomeArchiveCard = () => {
+const HomeArchiveCard = async () => {
+  const blogListData = await getBlogList();
   const years = new Map<string, BlogEntry>();
   blogListData?.list.forEach(item => {
     const year = item.createAt.slice(0, 4);

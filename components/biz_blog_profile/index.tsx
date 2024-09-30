@@ -1,12 +1,15 @@
 import Image from 'next/image';
 import User from '@/public/assets/images/profile.jpg';
 import { FILE_URL } from '@/config/next.env';
-import { blogListData, categoryListData } from '@/service/modules/blog_service';
 import { localizedDayjs } from '@/utils/tools';
+import { getBlogList } from '@/api/blog/home';
+import { getBlogCategoryList } from '@/api/blog/category';
 
 const albumImage = ['0960', '9232', '7069', '3542'];
 
-const BizBlogProfile = () => {
+const BizBlogProfile = async () => {
+  const blogListData = await getBlogList();
+  const categoryListData = await getBlogCategoryList();
   // 获取当前日期的时间戳
   const currentDate = localizedDayjs().format('YYYY-MM-DD'); // 获取当前日期
   const seed = Number(currentDate.split('-').join('')); // 将日期部分转换为数字
