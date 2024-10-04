@@ -17,6 +17,11 @@ interface FetchOptions<T> {
   timeout?: number;
 }
 
+function createQueryString(params: Record<string, any>): string {
+  const queryString = new URLSearchParams(params).toString();
+  return queryString ? `?${queryString}` : '';
+}
+
 export default async function fetchData<T, B = undefined>(
   url: string,
   options: FetchOptions<B> = {}
@@ -37,6 +42,8 @@ export default async function fetchData<T, B = undefined>(
   }, timeout);
 
   try {
+    let fetchUrl: RequestInfo = BASE_URL + url;
+
     const fetchOptions: RequestInit = {
       method,
       headers,
@@ -44,11 +51,12 @@ export default async function fetchData<T, B = undefined>(
     };
 
     // 处理请求体
-    if (body && method !== 'GET') {
+    if (method === 'GET' && typeof body === 'object') {
+      const queryString = createQueryString(body as Record<string, any>);
+      fetchUrl += queryString;
+    } else if (body && method !== 'GET') {
       fetchOptions.body = JSON.stringify(body);
     }
-
-    const fetchUrl: RequestInfo = BASE_URL + url;
 
     const res = await fetch(fetchUrl, {
       ...fetchOptions,

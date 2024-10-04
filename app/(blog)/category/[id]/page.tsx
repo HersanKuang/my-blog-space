@@ -9,8 +9,8 @@ interface CategoryPageProps {
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const { data } = await getBlogListByCategory<CategoryListData>(params.id);
-  const listData = Array.isArray(data?.list) ? data?.list : [];
+  const data = await getBlogListByCategory<CategoryListData>(params.id);
+  const listData = Array.isArray(data?.list) ? data!.list : [];
 
   return (
     <div className="box-border flex-1">

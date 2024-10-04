@@ -1,5 +1,4 @@
-import { ResponseData } from '@/service/request';
-import { request, fetchData } from '@/service';
+import { fetchData } from '@/service';
 import { _ADMIN_ID } from '@/config/next.env';
 
 // 根据用户id获取博客列表
@@ -12,11 +11,14 @@ export async function getBlogList<T = BlogListData>(userId: string = _ADMIN_ID!)
   if (response.code !== 0) {
     throw new Error(response.message);
   }
-
   return response.data;
 }
 
 // 根据博客id查看博客详情
-export const getBlogDetail = <T = BlogDetailData>(blogId: string): Promise<ResponseData<T>> => {
-  return request.get(`/blog/detail/${blogId}`);
-};
+export async function getBlogDetail<T = BlogDetailData>(blogId: string): Promise<T> {
+  const response = await fetchData<T>(`/blog/detail/${blogId}`);
+  if (response.code !== 0) {
+    throw new Error(response.message);
+  }
+  return response.data;
+}
