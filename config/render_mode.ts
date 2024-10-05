@@ -3,14 +3,14 @@ import { _SERVER_REVALIDATE } from './next.env';
 type RenderConfig = {
   dynamic: 'force-dynamic' | 'force-static';
   dynamicParams: boolean;
-  revalidate: boolean | number;
+  revalidate: false | number;
   fetchCache: 'auto';
   runtime: 'nodejs';
   preferredRegion: 'all' | 'auto';
   maxDuration: number;
 };
 
-type renderMapKey = 'ssg' | 'ssr' | 'isr';
+export type renderMapKey = 'ssg' | 'ssr' | 'isr';
 
 const sharedConfig: Omit<RenderConfig, 'dynamic' | 'dynamicParams' | 'revalidate'> = {
   fetchCache: 'auto',
