@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { execSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } from 'next/constants.js';
 
-const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME, NEXT_OUTPUT_DIR, SERVER_REVALIDATE } =
+const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME, SERVER_REVALIDATE } =
   process.env;
 
 const __filename = fileURLToPath(import.meta.url);
@@ -115,7 +116,7 @@ const config = (phase, { defaultConfig }) => {
       typescript: {
         // 禁用类型检查
         ignoreBuildErrors: false
-      },
+      }
       // eslint: {
       //   // 禁用 ESLint
       //   ignoreDuringBuilds: true,
