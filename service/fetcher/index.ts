@@ -42,9 +42,9 @@ export default async function fetchData<T, B = undefined>(
     controller.abort();
   }, timeout);
 
-  try {
-    let fetchUrl: RequestInfo = BASE_URL + url;
+  let fetchUrl: RequestInfo = BASE_URL + url;
 
+  try {
     const fetchOptions: RequestInit = {
       method,
       headers,
@@ -66,27 +66,34 @@ export default async function fetchData<T, B = undefined>(
 
     clearTimeout(timer);
 
-    if (!res.ok) {
-      let errorMessage = `请求失败，状态码: ${res.status}`;
-      try {
-        const errorData = await res.json();
-        errorMessage += `，信息: ${errorData.message || res.statusText}`;
-      } catch {
-        const errorText = await res.text();
-        errorMessage += `，信息: ${errorText || res.statusText}`;
-      }
-      console.error(`${url} 接口请求失败: ${errorMessage}`);
+    let responseData: ApiResponse<T> | null = null;
+    let responseText: string | null = null;
+
+    try {
+      responseData = await res.json();
+    } catch {
+      responseText = await res.text();
     }
 
-    const json: ApiResponse<T> = await res.json();
+    if (!res.ok) {
+      const errorMessage = responseData?.message || responseText || res.statusText;
+      console.error(`${fetchUrl} 接口请求失败，状态码: ${res.status}，信息: ${errorMessage}`);
+    }
 
-    return json;
+    // 返回 JSON 数据，如果 message 为 null，则将其转为 undefined
+    return (
+      responseData || {
+        code: res.status,
+        data: {} as T,
+        message: responseText || undefined
+      }
+    );
   } catch (error: any) {
     if (error.name === 'AbortError') {
-      console.error(`请求超时: ${url}`);
+      console.error(`请求超时: ${fetchUrl}`);
       throw new Error(`请求超时，超时时间为 ${timeout}ms`);
     }
-    console.error(`fetch 失败 ${url}:`, error);
+    console.error(`fetch 失败 ${fetchUrl}:`, error);
     throw error;
   }
 }
