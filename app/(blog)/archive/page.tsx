@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties, FC, useEffect } from 'react';
+import { CSSProperties, FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
@@ -63,7 +63,7 @@ const TimelineItem: FC<ListChildComponentProps> = ({ index, style, data }) => {
         iconStyle={iconStyle}
         visible
       >
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-start">
           <div className="flex flex-col flex-1 justify-between space-y-2 mr-4">
             <Link href={`/post/${blog.id}`} className="cursor-pointer" prefetch={false}>
               <h2 className="text-md line-clamp-2 font-bold text-sec-text-light dark:text-sec-text-dark">
@@ -92,6 +92,7 @@ const TimelineItem: FC<ListChildComponentProps> = ({ index, style, data }) => {
 };
 
 const ArchivePage = () => {
+  const [windowHeight, setWindowHeight] = useState(0);
   const { data, error, isLoadingMore, size, setSize, isReachingEnd } = useInfiniteScroll(
     getKey,
     fetcher,
@@ -99,7 +100,15 @@ const ArchivePage = () => {
   );
 
   useEffect(() => {
+    // 监听浏览器窗口高度
+    const updateWindowHeight = () => {
+      setWindowHeight(window.innerHeight);
+    };
+    updateWindowHeight();
+    window.addEventListener('resize', updateWindowHeight);
+
     return () => {
+      window.removeEventListener('resize', updateWindowHeight);
       // 页面组件卸载时移除 VerticalTimelineComponent 这个库给 html 标签添加的 style
       document.documentElement.removeAttribute('style');
     };
@@ -123,7 +132,7 @@ const ArchivePage = () => {
   return (
     <VerticalTimeline layout="1-column-right" className="!w-full !max-w-full">
       <List
-        height={620} // 设定显示区域的高度
+        height={windowHeight - 200} // 设定显示区域的高度
         itemCount={data.length}
         itemSize={220} // 每个时间线元素的高度
         width="100%"
