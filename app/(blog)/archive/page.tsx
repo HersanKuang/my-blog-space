@@ -1,14 +1,13 @@
 'use client';
 
-import { CSSProperties, FC, useEffect, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import { useEffect, useState } from 'react';
+import { FixedSizeList as List } from 'react-window';
+import { VerticalTimeline } from 'react-vertical-timeline-component';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import 'react-vertical-timeline-component/style.min.css';
 import BaseEmpty from '@/components/base_empty';
 import BaseLoader from '@/components/base_loader';
+import BizTimelineItem from '@/components/biz_timeline_item';
 
 // 定义fetcher函数，用于数据请求
 const fetcher = async ({ url, offset, size }: { url: string; offset: number; size: number }) => {
@@ -31,64 +30,6 @@ const getKey = (pageIndex: number, previousPageData: any[] | null) => {
   const size = 10;
   const offset = pageIndex * size;
   return { url, offset, size };
-};
-
-const iconStyle: CSSProperties = {
-  background: 'rgb(33, 150, 243)',
-  color: '#fff'
-};
-
-const contentStyle: CSSProperties = {
-  boxSizing: 'border-box',
-  width: '88%',
-  marginRight: '1rem'
-};
-const borderTopStyle: CSSProperties = {
-  borderTop: '3px solid #2196f3'
-};
-
-const TimelineItem: FC<ListChildComponentProps> = ({ index, style, data }) => {
-  const blog = data[index];
-  return (
-    <div style={style}>
-      <VerticalTimelineElement
-        id={blog.isNewYear ? blog.createAt.slice(0, 4) : undefined}
-        className="flex justify-around !mt-4"
-        dateClassName="!py-0"
-        date={blog.createAt}
-        contentStyle={
-          blog.isNewYear || index === 0 ? { ...contentStyle, ...borderTopStyle } : contentStyle
-        }
-        iconClassName="!right-10"
-        iconStyle={iconStyle}
-        visible
-      >
-        <div className="flex justify-between items-start">
-          <div className="flex flex-col flex-1 justify-between space-y-2 mr-4">
-            <Link href={`/post/${blog.id}`} className="cursor-pointer" prefetch={false}>
-              <h2 className="text-md line-clamp-2 font-bold text-sec-text-light dark:text-sec-text-dark">
-                {blog.title}
-              </h2>
-            </Link>
-            <div className="line-clamp-2 text-0.9 font-normal color-scheme-light">
-              {blog.summary}
-            </div>
-          </div>
-          <Image
-            src={blog.album}
-            width="0"
-            height="0"
-            className="w-52 h-auto max-w-full"
-            style={{ aspectRatio: '208/106' }}
-            sizes="100vw"
-            priority
-            quality={75}
-            alt="album"
-          />
-        </div>
-      </VerticalTimelineElement>
-    </div>
-  );
 };
 
 const ArchivePage = () => {
@@ -145,7 +86,7 @@ const ArchivePage = () => {
           }
         }}
       >
-        {TimelineItem}
+        {BizTimelineItem}
       </List>
     </VerticalTimeline>
   );
