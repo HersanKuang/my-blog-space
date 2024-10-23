@@ -10,6 +10,7 @@ interface MarkdownContentProps {
 
 const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
   useEffect(() => {
+    // 处理代码块的复杂按钮
     const copyButtons = document.getElementsByClassName(
       'copy'
     ) as HTMLCollectionOf<HTMLButtonElement>;
