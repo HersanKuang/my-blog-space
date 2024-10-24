@@ -8,7 +8,7 @@ interface MarkdownContentProps {
   htmlContent: string;
 }
 
-const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
+const BaseMarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
   useEffect(() => {
     // 处理代码块的复杂按钮
     const copyButtons = document.getElementsByClassName(
@@ -65,4 +65,4 @@ const MarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
   return <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="markdown-body" />;
 };
 
-export default MarkdownContent;
+export default BaseMarkdownContent;

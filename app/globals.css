@@ -34,10 +34,6 @@ html.dark .shiki span {
   @apply absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2;
 }
 
-.content-warp > .markdown-body {
-  @apply !p-5;
-}
-
 .vt-switch-appearance-sun {
   fill: rgba(60, 60, 60, .7);
 }
@@ -46,7 +42,16 @@ html.dark .shiki span {
 }
 
 .content-warp > .markdown-body {
-  @apply box-border min-w-[12.5rem] max-w-[61.25rem] mx-auto;
+  @apply !p-5;
+}
+
+.content-warp > .markdown-body {
+  @apply box-border min-w-[12.5rem] max-w-[54rem] mx-auto;
+}
+
+.content-warp > .markdown-body pre {
+  white-space: pre;
+  overflow-x: auto;
 }
 
 .markdown-body div[class^="language-"] {

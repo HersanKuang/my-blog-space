@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
+import BaseMarkdownContent from 'components/base_markdown_content';
 import markdownToHtml from '@/utils/markdown_parser';
 import { DOMAIN } from '@/config/next.env';
-import MarkdownContent from '@/components/base_markdown_render';
 import { getBlogDetail } from '@/api/blog/home';
 
 interface MarkdownPageProps {
@@ -29,7 +29,7 @@ const MarkdownPage = async ({ params }: MarkdownPageProps) => {
   const htmlContent = markdownToHtml(res!.content);
   return (
     <div className="content-warp box-border flex-1">
-      <MarkdownContent htmlContent={htmlContent} />
+      <BaseMarkdownContent htmlContent={htmlContent} />
     </div>
   );
 };
