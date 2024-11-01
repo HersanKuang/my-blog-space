@@ -22,7 +22,7 @@ const HomeArchiveCard = async () => {
     }
   });
   return (
-    <div className="content-warp mt-6">
+    <div className="content-warp mt-4">
       <h3 className="pl-2 pt-1 font-bold text-[0.9rem] text-text-light dark:text-text-dark">
         归档
       </h3>
