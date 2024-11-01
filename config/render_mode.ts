@@ -1,7 +1,7 @@
 import { _SERVER_REVALIDATE } from './next.env';
 
 type RenderConfig = {
-  dynamic: 'force-dynamic' | 'force-static';
+  dynamic: 'auto' | 'force-dynamic' | 'error' | 'force-static';
   dynamicParams: boolean;
   revalidate: false | number;
   fetchCache: 'auto';
@@ -28,13 +28,13 @@ const renderMap: Record<renderMapKey, Partial<RenderConfig>> = {
     ...sharedConfig
   },
   ssr: {
-    dynamic: 'force-static',
+    dynamic: 'force-dynamic',
     dynamicParams: false,
-    revalidate: false,
+    revalidate: false, // 此选项不会覆盖由各个fetch请求设置的revalidate值
     ...sharedConfig
   },
   isr: {
-    dynamic: 'force-static',
+    dynamic: 'auto',
     dynamicParams: true,
     revalidate: _SERVER_REVALIDATE, // 600s 10分钟
     ...sharedConfig

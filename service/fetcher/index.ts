@@ -37,7 +37,9 @@ export default async function fetchData<T, B = undefined>(
     timeout = TIME_OUT
   } = options;
 
+  // 创建一个新的 AbortController 实例，用于控制请求的取消
   const controller = new AbortController();
+  // 设置一个定时器，当请求时间超过 timeout 时自动调用 controller.abort() 取消请求
   const timer = setTimeout(() => {
     controller.abort();
   }, timeout);
@@ -48,7 +50,7 @@ export default async function fetchData<T, B = undefined>(
     const fetchOptions: RequestInit = {
       method,
       headers,
-      signal: controller.signal
+      signal: controller.signal // 将中止信号传递给 fetch 请求，以便在需要时可以中止请求
     };
 
     // 处理请求体
@@ -64,6 +66,7 @@ export default async function fetchData<T, B = undefined>(
       next: { revalidate: revalidateSeconds }
     });
 
+    // 请求成功后清除定时器，防止内存泄漏
     clearTimeout(timer);
 
     let responseData: ApiResponse<T> | null = null;
