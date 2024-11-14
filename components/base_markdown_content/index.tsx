@@ -3,6 +3,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { FloatButton } from 'antd';
 
 interface MarkdownContentProps {
   htmlContent: string;
@@ -62,7 +63,12 @@ const BaseMarkdownContent = ({ htmlContent }: MarkdownContentProps) => {
     };
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="markdown-body" />;
+  return (
+    <>
+      <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="markdown-body" />
+      <FloatButton.BackTop />
+    </>
+  );
 };
 
 export default BaseMarkdownContent;

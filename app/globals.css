@@ -127,22 +127,6 @@ html.dark .vertical-timeline-element-content {
   box-shadow: 0 3px 0 #000;
 }
 
-/* 针对Webkit内核的浏览器（如Chrome、Safari） */
-.hide-scrollbar::-webkit-scrollbar {
-  width: 0;  /* 隐藏垂直滚动条 */
-  height: 0;  /* 隐藏水平滚动条 */
-}
-
-/* 针对Firefox */
-.hide-scrollbar {
-  scrollbar-width: none;  /* 隐藏滚动条 */
-}
-
-/* 针对IE和Edge */
-.hide-scrollbar {
-  -ms-overflow-style: none;  /* 隐藏滚动条 */
-}
-
 /* 首页归档卡片的的样式 */
 .archive-transition-bg {
   @apply transition-colors duration-200 ease-in-out;
