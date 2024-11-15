@@ -1,8 +1,9 @@
-import { ConfigProvider, Spin } from 'antd';
+import { Spin } from 'antd';
+import BaseConfigProvider from '@/components/base_config_provider';
 
 const BaseLoader = () => {
   return (
-    <ConfigProvider
+    <BaseConfigProvider
       theme={{
         token: {
           colorPrimary: 'rgba(107,114,128,0.85)'
@@ -10,7 +11,7 @@ const BaseLoader = () => {
       }}
     >
       <Spin style={{ transform: 'translateY(2rem)' }} size="large" />
-    </ConfigProvider>
+    </BaseConfigProvider>
   );
 };
 
