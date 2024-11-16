@@ -1,6 +1,4 @@
-import { _RENDER_MODE } from '@/config/next.env';
 import { BASE_URL, TIME_OUT } from '@/service/config';
-import renderMap, { renderMapKey } from '@/config/render_mode';
 
 export interface ApiResponse<T> {
   code: number;
@@ -33,7 +31,7 @@ export default async function fetchData<T, B = undefined>(
       'Content-Type': 'application/json'
     },
     body,
-    revalidateSeconds = renderMap[_RENDER_MODE as renderMapKey].revalidate || 0,
+    revalidateSeconds = 0,
     timeout = TIME_OUT
   } = options;
 
