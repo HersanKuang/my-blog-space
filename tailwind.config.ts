@@ -83,6 +83,7 @@ const config: Config = {
   plugins: [
     function ({ addUtilities }: PluginAPI) {
       addUtilities({
+        // 限制文本显示为 两行，多余部分以省略号显示
         '.line-clamp-2': {
           overflow: 'hidden',
           display: '-webkit-box',
@@ -90,6 +91,14 @@ const config: Config = {
           '-webkit-line-clamp': '2',
           'text-overflow': 'ellipsis',
           'white-space': 'normal'
+        },
+        '.hide-scrollbar': {
+          /* 隐藏滚动条但保留滚动功能 */
+          '-ms-overflow-style': 'none' /* 针对 IE 和 Edge */,
+          'scrollbar-width': 'none' /* 针对 Firefox */
+        },
+        '.hide-scrollbar::-webkit-scrollbar': {
+          display: 'none' /* 针对 Chrome, Safari 和 Edge */
         }
       });
     }
