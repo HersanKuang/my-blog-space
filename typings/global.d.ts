@@ -7,7 +7,7 @@ interface Window {
 }
 
 // 博客详情数据
-declare interface BlogDetailData {
+declare interface BlogEntity {
   id: string;
   userId: string;
   title: string;
@@ -33,7 +33,7 @@ interface BlogMenuList {
   path: string;
 }
 
-type CategoryField = {
+type CategoryEntity = {
   id: string;
   userId: string;
   name: string;
@@ -44,6 +44,6 @@ type CategoryField = {
 
 // 博客分类列表
 interface CategoryListData {
-  list: Array<CategoryField>;
+  list: Array<CategoryEntity>;
   totalCount: number;
 }

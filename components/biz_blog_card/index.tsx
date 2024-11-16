@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getTimeDifference } from '@/utils/tools';
 
 interface BizBlogCardProps {
-  blog: BlogDetailData;
+  blog: BlogEntity;
   className?: string;
 }
 

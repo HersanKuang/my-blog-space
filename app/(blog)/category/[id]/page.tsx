@@ -9,12 +9,11 @@ interface CategoryPageProps {
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const data = await getBlogListByCategory<CategoryListData>(params.id);
-  const listData = Array.isArray(data?.list) ? data!.list : [];
+  const { list: listData } = await getBlogListByCategory<CategoryListData>(params.id);
 
   return (
     <div className="box-border flex-1">
-      {listData?.length > 0 ? (
+      {listData.length > 0 ? (
         listData.map((blog: any) => <BizBlogCard blog={blog} key={blog.id} className="mb-6" />)
       ) : (
         <BaseEmpty className="relative top-1/4" />

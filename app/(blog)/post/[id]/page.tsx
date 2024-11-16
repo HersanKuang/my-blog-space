@@ -15,7 +15,7 @@ export const dynamicParams = false;
 // 设置页面的静态元数据
 export async function generateMetadata({ params }: GenerateMetadata): Promise<Metadata> {
   const blogId = params.id;
-  const data = await getBlogDetail<BlogDetailData>(blogId);
+  const data = await getBlogDetail<BlogEntity>(blogId);
   return {
     title: data?.title,
     alternates: {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: GenerateMetadata): Promise<Me
 }
 
 const MarkdownPage = async ({ params }: MarkdownPageProps) => {
-  const res = await getBlogDetail<BlogDetailData>(params.id);
+  const res = await getBlogDetail<BlogEntity>(params.id);
   const htmlContent = markdownToHtml(res!.content);
   return (
     <div className="content-warp box-border flex-1">
