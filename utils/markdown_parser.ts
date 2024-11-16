@@ -94,7 +94,7 @@ marked.use({
  */
 function markdownToHtml(markdown: string): string {
   // 将Markdown转换为HTML
-  const dirtyHtml = marked.parse(markdown) as string;
+  const dirtyHtml = <string>marked.parse(markdown);
   // 使用DOMPurify清理生成的HTML，防止XSS攻击
   // 只HTML，不转化SVG和MathML
   return DOMPurify.sanitize(dirtyHtml, { USE_PROFILES: { html: true } });

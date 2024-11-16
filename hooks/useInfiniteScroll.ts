@@ -39,7 +39,7 @@ const useInfiniteScroll = <T = any>(
   const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < initialSize);
 
   // 处理返回的数据
-  const flattenedData = data ? ([] as T[]).concat(...data) : undefined;
+  const flattenedData = data ? (<T[]>[]).concat(...data) : undefined;
 
   return {
     data: flattenedData,

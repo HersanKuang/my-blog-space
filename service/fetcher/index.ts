@@ -53,7 +53,7 @@ export default async function fetchData<T, B = undefined>(
 
     // 处理请求体
     if (method === 'GET' && typeof body === 'object') {
-      const queryString = createQueryString(body as Record<string, any>);
+      const queryString = createQueryString(<Record<string, any>>body);
       fetchUrl += queryString;
     } else if (body && method !== 'GET') {
       fetchOptions.body = JSON.stringify(body);
@@ -85,7 +85,7 @@ export default async function fetchData<T, B = undefined>(
     return (
       responseData || {
         code: res.status,
-        data: {} as T,
+        data: <T>{},
         message: responseText || undefined
       }
     );

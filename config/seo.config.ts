@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: {
     default: 'Hersan的个人空间', // 默认标题
-    template: '%s | Hersan的个人空间' // 标题模板，%s会被页面标题替换
+    template: '%s - Hersan的个人空间' // 标题模板，%s会被页面标题替换
   },
   description: '一个分享技术见解、编程技巧和生活感悟的博客，涵盖前端、后端和全栈开发。', // 页面描述
   applicationName: 'Hersan的个人空间', // 应用名称
