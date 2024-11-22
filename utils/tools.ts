@@ -1,16 +1,20 @@
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
-// 使用东八区的时间
-export const localizedDayjs = (date?: string | number | Date | dayjs.Dayjs) => {
-  return dayjs(date).tz('Asia/Shanghai');
-};
+function isTzExist(): boolean {
+  return dayjs.tz !== undefined;
+}
+
+// 时区化dayjs
+export function localizedDayjs(date?: string | number | Date | Dayjs): Dayjs {
+  return isTzExist() ? dayjs(date).tz('Asia/Shanghai') : dayjs(date);
+}
 
 /**
  * 获取更新时间距离当前时间的差值
  * @param timestamp 更新时间戳
  * @returns 返回更新时间距离当前时间的差值
  */
-export const getTimeDifference = (timestamp: number): string => {
+export function getTimeDifference(timestamp: number): string {
   const updateDate = dayjs(timestamp);
   const currentDate = localizedDayjs();
 
@@ -40,4 +44,4 @@ export const getTimeDifference = (timestamp: number): string => {
   }
 
   return '刚刚更新';
-};
+}
