@@ -45,3 +45,7 @@ export function getTimeDifference(timestamp: number): string {
 
   return '刚刚更新';
 }
+
+export function getCurrentTheme(): Theme | undefined {
+  return typeof window !== 'undefined' ? window.__theme : undefined;
+}

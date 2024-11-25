@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import { VerticalTimeline } from 'react-vertical-timeline-component';
+import BaseLoading from 'components/base_loading';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import 'react-vertical-timeline-component/style.min.css';
 import BaseEmpty from '@/components/base_empty';
-import BaseLoader from '@/components/base_loader';
 import BizTimelineItem from '@/components/biz_timeline_item';
 
 // 定义fetcher函数，用于数据请求
@@ -58,7 +58,7 @@ const ArchivePage = () => {
   // 暂无数据
   if (error) return <BaseEmpty />;
   // 数据加载中
-  if (!data) return <BaseLoader />;
+  if (!data) return <BaseLoading />;
 
   const previousYear: string[] = [];
   for (let i = 0; i < data.length; i++) {
