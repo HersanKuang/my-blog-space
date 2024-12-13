@@ -16,6 +16,7 @@ declare interface BlogEntity {
   content: string;
   createAt: string;
   updateAt: string;
+  isPrivate: 0 | 1;
   categoryId: string;
   createTimestamp: number;
   updateTimestamp: number;
