@@ -1,8 +1,7 @@
 import { fetchData } from '@/service';
-import { _ADMIN_ID } from '@/config/next.env';
 
 // 根据用户id获取博客列表
-export async function getBlogList<T = BlogListData>(userId: string = _ADMIN_ID!): Promise<T> {
+export async function getBlogList<T = BlogListData>(userId?: string): Promise<T> {
   const url = `/blog/list/${userId}`;
   const response = await fetchData<T>(url, {
     method: 'POST'

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const BlogPage = async () => {
   const { list } = await getBlogList();
-  const dataList = list.filter(item => item.private === 0);
+  const dataList = list.filter(item => item.isPrivate === 0);
   return (
     <div className="box-border flex-1">
       {dataList.length > 0 ? (
