@@ -1,4 +1,5 @@
 import { BASE_URL, TIME_OUT } from '@/service/config';
+import { _SERVER_REVALIDATE } from '@/config/next.env';
 
 export interface ApiResponse<T> {
   code: number;
@@ -31,7 +32,7 @@ export default async function fetchData<T, B = undefined>(
       'Content-Type': 'application/json'
     },
     body,
-    revalidateSeconds = 0,
+    revalidateSeconds = _SERVER_REVALIDATE || 0,
     timeout = TIME_OUT
   } = options;
 

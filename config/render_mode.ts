@@ -36,7 +36,7 @@ const renderMap: Record<renderMapKey, Partial<RenderConfig>> = {
   isr: {
     dynamic: 'auto',
     dynamicParams: true,
-    revalidate: _SERVER_REVALIDATE, // 600s 10分钟
+    revalidate: _SERVER_REVALIDATE,
     ...sharedConfig
   }
 };
