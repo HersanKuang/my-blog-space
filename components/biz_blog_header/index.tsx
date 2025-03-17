@@ -30,6 +30,7 @@ const BizBlogHeader = async () => {
               <Link
                 href={route.path}
                 key={route.menu}
+                prefetch
                 className="inline-flex items-center px-4 pt-1 border-b-2 border-transparent text-sm font-medium text-text-light dark:text-text-dark hover:border-secondary-light dark:hover:border-secondary-dark hover:bg-secondary-light dark:hover:bg-secondary-dark"
               >
                 {route.menu}

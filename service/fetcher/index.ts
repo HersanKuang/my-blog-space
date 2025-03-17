@@ -1,5 +1,5 @@
 import { BASE_URL, TIME_OUT } from '@/service/config';
-import { _SERVER_REVALIDATE } from '@/config/next.env';
+import { _SERVER_REVALIDATE, _RENDER_MODE } from '@/config/next.env';
 
 export interface ApiResponse<T> {
   code: number;
@@ -62,7 +62,7 @@ export default async function fetchData<T, B = undefined>(
 
     const res = await fetch(fetchUrl, {
       ...fetchOptions,
-      next: { revalidate: revalidateSeconds }
+      next: _RENDER_MODE === 'isr' ? { revalidate: revalidateSeconds } : undefined
     });
 
     // 请求成功后清除定时器，防止内存泄漏
