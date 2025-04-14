@@ -12,6 +12,7 @@ interface GenerateMetadata {
 }
 
 export const dynamicParams = false;
+
 // 设置页面的静态元数据
 export async function generateMetadata({ params }: GenerateMetadata): Promise<Metadata> {
   const blogId = params.id;

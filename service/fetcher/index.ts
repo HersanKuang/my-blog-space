@@ -22,6 +22,12 @@ function createQueryString(params: Record<string, any>): string {
   return queryString ? `?${queryString}` : '';
 }
 
+/**
+ * Next.js v14 用于网络请求的工具函数，扩展了原生的 fetch，我们在这里对它进行封装
+ * 注意：fetchData 中设置的 revalidate 不会和页面导出的冲突
+ * @param {string} url 网络请求的 url
+ * @param {FetchOptions} options 配置参数
+ */
 export default async function fetchData<T, B = undefined>(
   url: string,
   options: FetchOptions<B> = {}

@@ -16,7 +16,7 @@ export async function getBlogList<T = BlogListData>(userId = _ADMIN_ID): Promise
 
 // 根据博客id查看博客详情
 export async function getBlogDetail<T = BlogEntity>(blogId: string): Promise<T> {
-  const response = await fetchData<T>(`/blog/detail/${blogId}`);
+  const response = await fetchData<T>(`/blog/detail/${blogId}`, { revalidateSeconds: 0 });
   if (response.code !== 0) {
     throw new Error(response.message);
   }
