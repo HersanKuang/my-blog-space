@@ -12,8 +12,8 @@ node_modules
 public/assets/**/*.md
 
 # 忽略本地环境变量文件
-.env.local
-.env.*.local
+.env.*
+.env*
 
 # 日志文件
 npm-debug.log*
