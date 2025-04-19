@@ -1,36 +1,46 @@
-# 使用 Node.js 20 版本的官方镜像
-FROM node:20
+# 使用 Alpine 版 Node.js 20 作为基础镜像
+FROM node:20-alpine AS base
 
-# 设置构建参数
-ARG NPM_REGISTRY
-ENV NPM_CONFIG_REGISTRY=${NPM_REGISTRY}
+# 添加 Alpine 兼容依赖
+RUN apk add --no-cache tzdata libc6-compat
 
-# 设置工作目录
+# 配置环境变量及Corepack
+ENV TZ=Asia/Shanghai \
+    NODE_ENV=production \
+    NODE_PATH="/app"
+RUN corepack enable && corepack prepare pnpm@9.4.0 --activate
+
+FROM base AS deps
 WORKDIR /app
 
-# 配置 npm 和安装 pnpm
-RUN npm config set registry ${NPM_CONFIG_REGISTRY} \
-    && echo "npm registry:" \
-    && npm config get registry \
-    && npm install -g pnpm \
-    && pnpm config set registry ${NPM_CONFIG_REGISTRY} \
-    && echo "pnpm registry:" \
-    && pnpm config get registry
-
-# 复制 package.json 和 pnpm-lock.yaml
+# 复制依赖文件并安装依赖
 COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
-# 安装依赖
-RUN pnpm install
+FROM base AS builder
+WORKDIR /app
 
-# 复制所有文件到工作目录
+# 复用依赖阶段的 node_modules
+COPY --from=deps /app/node_modules ./node_modules
+
+# 复制全部源代码
 COPY . .
 
-# 构建项目
+# 执行构建命令（需确保 next.config.js 配置 output: 'standalone'）
 RUN pnpm build
 
-# 暴露端口
-EXPOSE 9090
+# 把静态资源复制到 standalone 中
+RUN cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/
 
-# 启动 Next.js 应用
-CMD ["pnpm", "start"]
+FROM base AS runner
+WORKDIR /app
+
+# 设置环境变量
+ENV PORT=9090
+
+# 复制构建产物
+COPY --from=builder /app/.next/standalone ./
+
+# 暴露端口并启动应用
+EXPOSE 9090
+CMD ["node", ".next/standalone/server.js"]

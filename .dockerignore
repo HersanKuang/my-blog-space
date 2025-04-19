@@ -4,9 +4,6 @@ node_modules
 # 忽略日志文件
 *.log
 
-# 忽略构建输出目录
-.next
-
 # 忽略 TypeScript 编译输出（如果使用 TypeScript）
 dist
 *.tsbuildinfo

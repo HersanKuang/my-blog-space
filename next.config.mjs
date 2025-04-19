@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { execSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } from 'next/constants.js';
@@ -9,18 +8,6 @@ const { NEXT_PUBLIC_HOST, NEXT_PUBLIC_HOSTNAME, FILE_VISIT_HOSTNAME, SERVER_REVA
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-function getGitHash() {
-  try {
-    const gitHash = execSync('git rev-parse HEAD').toString().trim();
-    console.log('Git Hash:', gitHash);
-    return gitHash;
-  } catch (error) {
-    console.error('获取 Git hash 失败:', error);
-    // 这里直接使用时间戳作为默认值
-    return `build-${Date.now()}`;
-  }
-}
 
 /**
  * @type {import('next').NextConfig}
@@ -103,6 +90,8 @@ const config = (phase, { defaultConfig }) => {
   if (phase === PHASE_PRODUCTION_BUILD) {
     return {
       ...sharedConfig,
+      // 输出跟踪依赖，大幅减少Docker部署的规模，可以直接使用node运行，不在依赖node_modules
+      output: 'standalone',
       // swc -> speedy web compiler Rust-base -> Babel + Terser
       swcMinify: true, // 默认开启
       // 打包的目录，这里使用默认的 .next 目录，否则在打包之后本地运行 `next start dist` 会无法读取环境配置文件
@@ -111,7 +100,7 @@ const config = (phase, { defaultConfig }) => {
       productionBrowserSourceMaps: false,
       // 构建时生成一个 ID，用于识别应用程序版本
       generateBuildId: async () => {
-        return getGitHash();
+        return `build-${Date.now()}`;
       },
       typescript: {
         // 禁用类型检查

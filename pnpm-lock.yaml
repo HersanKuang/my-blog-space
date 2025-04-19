@@ -29,6 +29,12 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      cssnano:
+        specifier: ^7.0.4
+        version: 7.0.4(postcss@8.4.39)
+      cssnano-preset-advanced:
+        specifier: ^7.0.4
+        version: 7.0.4(postcss@8.4.39)
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -66,7 +72,7 @@ importers:
         specifier: ^2.2.5
         version: 2.2.5(react@18.3.1)
       tailwindcss:
-        specifier: ^3.4.1
+        specifier: 3.4.4
         version: 3.4.4(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))
     devDependencies:
       '@types/lodash-es':
@@ -99,12 +105,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.15.0
         version: 7.15.0(eslint@8.57.0)(typescript@5.5.3)
-      cssnano:
-        specifier: ^7.0.4
-        version: 7.0.4(postcss@8.4.39)
-      cssnano-preset-advanced:
-        specifier: ^7.0.4
-        version: 7.0.4(postcss@8.4.39)
       eslint:
         specifier: ^8.56.0
         version: 8.57.0
