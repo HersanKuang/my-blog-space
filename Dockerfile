@@ -29,9 +29,6 @@ COPY . .
 # 执行构建命令（需确保 next.config.js 配置 output: 'standalone'）
 RUN pnpm build
 
-# 把静态资源复制到 standalone 中
-RUN cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/
-
 FROM base AS runner
 WORKDIR /app
 

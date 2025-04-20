@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+import { LRUCache } from 'lru-cache';
 import { marked, Renderer, Tokens } from 'marked';
 import DOMPurify from 'isomorphic-dompurify';
 import { createHighlighterCore } from 'shiki/core';
@@ -13,12 +15,10 @@ const highlighter = await createHighlighterCore({
     import('shiki/langs/sh.mjs'),
     import('shiki/langs/bash.mjs'),
     import('shiki/langs/json.mjs'),
-    import('shiki/langs/c.mjs'),
     import('shiki/langs/cmd.mjs'),
     import('shiki/langs/css.mjs'),
     import('shiki/langs/docker.mjs'),
     import('shiki/langs/git-commit.mjs'),
-    import('shiki/langs/go.mjs'),
     import('shiki/langs/html.mjs'),
     import('shiki/langs/http.mjs'),
     import('shiki/langs/java.mjs'),
@@ -26,7 +26,6 @@ const highlighter = await createHighlighterCore({
     import('shiki/langs/markdown.mjs'),
     import('shiki/langs/md.mjs'),
     import('shiki/langs/nginx.mjs'),
-    import('shiki/langs/postcss.mjs'),
     import('shiki/langs/regexp.mjs'),
     import('shiki/langs/py.mjs'),
     import('shiki/langs/python.mjs'),
@@ -34,12 +33,9 @@ const highlighter = await createHighlighterCore({
     import('shiki/langs/scss.mjs'),
     import('shiki/langs/shell.mjs'),
     import('shiki/langs/sql.mjs'),
-    import('shiki/langs/ssh-config.mjs'),
     import('shiki/langs/zsh.mjs'),
     import('shiki/langs/vue.mjs'),
-    import('shiki/langs/ts.mjs'),
-    import('shiki/langs/cpp.mjs'),
-    import('shiki/langs/yaml.mjs')
+    import('shiki/langs/ts.mjs')
   ],
   loadWasm: getWasm
 });
@@ -87,17 +83,32 @@ marked.use({
   async: false
 });
 
+const htmlCache = new LRUCache<string, string>({ max: 500 });
+
+function getCacheKey(markdown: string): string {
+  return crypto.createHash('sha256').update(markdown).digest('hex');
+}
+
 /**
  * 将Markdown字符串转换为安全的HTML字符串
  * @param markdown - 要转换的Markdown字符串
  * @returns 安全的HTML字符串
  */
 function markdownToHtml(markdown: string): string {
-  // 将Markdown转换为HTML
+  const cacheKey = getCacheKey(markdown);
+  const cachedHtml = htmlCache.get(cacheKey);
+
+  if (cachedHtml) {
+    return cachedHtml;
+  }
+
   const dirtyHtml = <string>marked.parse(markdown);
   // 使用DOMPurify清理生成的HTML，防止XSS攻击
   // 只HTML，不转化SVG和MathML
-  return DOMPurify.sanitize(dirtyHtml, { USE_PROFILES: { html: true } });
+  const cleanHtml = DOMPurify.sanitize(dirtyHtml, { USE_PROFILES: { html: true } });
+
+  htmlCache.set(cacheKey, cleanHtml);
+  return cleanHtml;
 }
 
 export default markdownToHtml;
