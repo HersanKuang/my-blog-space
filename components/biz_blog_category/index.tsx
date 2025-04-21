@@ -18,7 +18,7 @@ const BizBlogCategory = async ({ params }: BizBlogCategoryProps) => {
         分类
       </h3>
       {listData.map(item => (
-        <Link key={item.id} href={!id ? `/category/${item.id}` : '/'}>
+        <Link key={item.id} href={id !== item.id ? `/category/${item.id}` : '/'}>
           <div
             className={classNames(
               'flex justify-between align-center mt-2 py-1 cursor-pointer hover:bg-secondary-light dark:hover:bg-secondary-dark rounded-sm overflow-hidden archive-transition-bg',
